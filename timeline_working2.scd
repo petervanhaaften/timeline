@@ -96,7 +96,6 @@ Out.ar(0,Pan2.ar(concat,0.0))}.play
 )
 
 
-
 // GRANULAR EXPERIMENTS
 
 
@@ -104,7 +103,7 @@ Out.ar(0,Pan2.ar(concat,0.0))}.play
 (
 SynthDef(\buf_grain_test, {arg gate = 1, sndbuf, amp = 1;
     Out.ar(0,
-        BufGrain.ar(Impulse.kr(10), 0.1, sndbuf, SinOsc.kr(99, 0, 1, add: 1), PinkNoise.kr.range(0, 9), 2,
+        BufGrain.ar(Impulse.kr(2), .1, sndbuf, SinOsc.kr(5, 0.8, 1, add: 0), PinkNoise.kr.range(5, 9), 2,
             EnvGen.kr(
                 Env([0, 1, 0], [1, 1], \sin, 1),
                 gate,

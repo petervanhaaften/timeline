@@ -1,0 +1,14 @@
+Hey Martin,
+Nice to see you last night.
+
+Ultra-brief context : Telephone music. You pick up a telephone, dial a phone number, an operator asks you a question, you respond to the question. Music generated from your response is performed back through the earpiece.
+
+Specific issue : I need to record into a buffer (or direct to disk) the callers voice. The recording should be (as much as possible) strictly composed of voice---silences should be left out.
+
+Step1 -  If the caller takes a few moments to respond, the buffer should wait until they begin speaking (pass threshold « X ») before recording.
+
+Step2 - If the caller pauses speaking, the buffer should pause recording and wait until the callers voice passes threshold « X » before recording again from the same position it had paused.
+
+Step3 - If amount of time « Y » has passed, and the buffer has already recorded some content, the buffer should stop recording.
+
+Step4 - If amount of time « Y » has passed, and the buffer has NOT recorded voice (threshold « X » never passed), the operator should play an « ErrorMsg » buffer, repeat the original question, and return to Step1.

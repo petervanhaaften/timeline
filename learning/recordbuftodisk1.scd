@@ -18,12 +18,12 @@ a.free;
 
 //send pause trig from server
 (
-SynthDef("test1",{
+SynthDef("amptrig",{
    var mic = SoundIn.ar(0,1,0),
    amplitude = Amplitude.kr(mic),
    trig = amplitude > 0.1,
    timer = Timer.kr(trig),  // how long since the last trigger?
-   filteredTrig = (timer > 0.25) * trig;
+   filteredTrig = (timer > 0.3) * trig;
 
 	SendTrig.kr(filteredTrig, 0, amplitude);
 }).add;
@@ -33,7 +33,7 @@ o = OSCFunc({ arg msg, time;
 },'/tr', s.addr);
 )
 
-Synth("test1");
+Synth("amptrig");
 o.free;
 
 
@@ -87,33 +87,3 @@ SynthDef("diskin", { |out, bufnum = 0|
 }).add;
 )
 )
-
-RecNodeProxy
-
-// start something to record
-x = Synth("voiceinput");
-
-// allocate a disk i/o buffer
-b= Buffer.alloc(s, 65536, 2);
-
-// create an output file for this buffer, leave it open
-b.write("~/diskouttest4.aiff".standardizePath, "aiff", "int16", 0, 0, true);
-// create the diskout node; making sure it comes after the source
-d = Synth.tail(nil, "diskout", ["bufnum", b]);
-// stop recording
-d.free;
-// stop the bubbles
-x.free;
-// close the buffer and the soundfile
-b.close;
-// free the buffer
-b.free;
-
-// play it back
-(
-x = Synth.basicNew("help-Diskin-2chan");
-m = { |buf| x.addToHeadMsg(nil, [\bufnum,buf])};
-
-b = Buffer.cueSoundFile(s,"~/diskouttest.aiff".standardizePath, 0, 2, completionMessage: m);
-)
-x.free; b.close; b.free; // cleanup

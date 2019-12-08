@@ -5,9 +5,9 @@ Ultra-brief context : Telephone music. You pick up a telephone, dial a phone num
 
 Specific issue : I need to record into a buffer (or direct to disk) the callers voice. The recording should be (as much as possible) strictly composed of voice---silences should be left out.
 
-Step1 -  If the caller takes a few moments to respond, the buffer should wait until they begin speaking (pass threshold « X ») before recording.
+Step1 -  If the caller takes a few moments to respond, the buffer should wait until they begin speaking (signal passes threshold « X ») before recording.
 
-Step2 - If the caller pauses speaking, the buffer should pause recording and wait until the callers voice passes threshold « X » before recording again from the same position it had paused.
+Step2 - If the caller pauses speaking, the buffer should pause recording and wait until the callers voice signal passes threshold « X » before recording again from the same position it had paused.
 
 Step3 - If amount of time « Y » has passed, and the buffer has already recorded some content, the buffer should stop recording.
 

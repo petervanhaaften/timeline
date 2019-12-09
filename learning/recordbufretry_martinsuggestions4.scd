@@ -4,7 +4,7 @@
 //
 //3. Another SynthDef records in a buffer (using BufWr() ). The phase of the BufWr is a Line.ar() that goes through a Gate.ar(), so it can pause.  This is controled by the routines mentioned before.  Not sure of the details.
 
-s.options.sampleRate = 44100;
+s.options.sampleRate = 48000;
 s.boot;
 
 //////////////
@@ -58,7 +58,7 @@ o = OSCFunc({ arg msg, time;
 (
 //allocate 10 second buffer for audience voice
 s = Server.local;
-s.sendMsg("/b_alloc", 0, 44100 * 10);
+s.sendMsg("/b_alloc", 0, 48000 * 10);
 )
 
 //record voice synthdef, with gate for pausing/unpausing
@@ -71,7 +71,7 @@ SynthDef(\voicerec, { | out, rate = 1, trig = 0 |
 		//gate the phasor to pause
 		phase: Gate.ar(
 			in: Line.ar(start: 0, end: BufFrames.kr(0), dur: 10.0, mul: 1, add: 0, doneAction: 0),
-			trig: trig),
+			trig: trig).poll,
 		loop: 1.0
 	);
 	//debugging
@@ -80,6 +80,19 @@ SynthDef(\voicerec, { | out, rate = 1, trig = 0 |
 )
 
 //NOT WORKING: instead of pausing, the Line.ar seems to restart whenever the gate re-opens.
+//Pbind version
+q = Synth("voicerec");
+
+//pause recording
+p = Pbind(\type, \set, \id, q.nodeID, \trig, 0).play;
+//start recording
+p = Pbind(\type, \set, \id, q.nodeID, \trig, 1).play;
+
+
+p = Pbind(\type, \set, \id, q.nodeID, \trig, 1).pause;
+
+//NOT WORKING: instead of pausing, the Line.ar seems to restart whenever the gate re-opens.
+//Pmono version
 //pause recording
 p = Pmono(\voicerec, \trig, 0).play
 //start recording

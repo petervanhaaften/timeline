@@ -71,6 +71,7 @@ SynthDef(\voicerec, { | out, rate = 1, trig = 0 |
 		bufnum: 0,
 		//gate the phasor to pause
 		phase: Gate.ar(
+			//start needs to be variable, sent from q.set
 			in: Line.ar(start: 0, end: BufFrames.kr(0), dur: 100.0, mul: 1, add: 0, doneAction: 0),
 			trig: trig).poll,
 		loop: 1.0

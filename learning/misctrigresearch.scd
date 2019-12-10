@@ -4,7 +4,8 @@
 // register to receive a trigger message
 
 o = OSCFunc({ arg msg,time,address,receivedPort;
-
+var b;
+	b = if (\val == 5, { "test1".postln }, { "test2".postln }
 
 "received trigger!".postln;
 

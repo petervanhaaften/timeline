@@ -13,7 +13,7 @@ s.boot;
 
 (
 SynthDef(\voicesig, { |out|
-	var mic, gate, trig_pause, trig_record;
+	var mic, gate, trig_pause, trig_record, start_time, end_time;
 	mic = SoundIn.ar(0,1,0);
 	//pass microphone through noisegate
 	//noisegate opens when audience speaks, closes when they stop
@@ -30,7 +30,7 @@ SynthDef(\voicesig, { |out|
 		releaseTime: 0.01,
 	);
 	//send "trig_record" trigger to client, to begin recording buffer
-	SendTrig.ar(in: trig_record > 0, id: 1, value: 1);
+	SendTrig.ar(in: trig_record > 0, id: 0, value: 1);
 	//detect when the noisegate closes with DetectSilence
 	trig_pause = DetectSilence.ar(gate,
 		amp: 0.0001,
@@ -38,6 +38,8 @@ SynthDef(\voicesig, { |out|
 		doneAction: 0
 	);
 	//send "trig_pause" trigger to client, to pause recording buffer
+	SendTrig.ar(in: trig_pause, id: 0, value: 0);
+	//send "end_time" trigger, the moment recording paused
 	SendTrig.ar(in: trig_pause, id: 0, value: 0);
 	Out.ar(out, gate);
 }).add;
@@ -57,8 +59,9 @@ s.sendMsg("/b_alloc", 0, 48000 * 100);
 )
 
 //record voice synthdef, with gate for pausing/unpausing
+//reconfig for named controls
 (
-SynthDef(\voicerec, { | out, rate = 1, trig = 0 |
+SynthDef(\voicerec, { | out, rate = 1, start = 0, trig = 0 |
 	var mic;
 	mic = SoundIn.ar(0,1,0);
     BufWr.ar(mic,
@@ -66,7 +69,7 @@ SynthDef(\voicerec, { | out, rate = 1, trig = 0 |
 		//gate the phasor to pause
 		phase: Gate.ar(
 			//start needs to be variable, sent from q.set
-			in: Line.ar(start: 0, end: BufFrames.kr(0), dur: 100.0, mul: 1, add: 0, doneAction: 0),
+			in: Line.ar(start: start, end: BufFrames.kr(0), dur: 100.0, mul: 1, add: 0, doneAction: 0),
 			trig: trig).poll,
 		loop: 1.0
 	);
@@ -117,8 +120,10 @@ y = Synth("voicesig");
 (
 o = OSCFunc({ arg msg, time;
 	//need to set it up so it looks for the id first
-	var a = msg[3], b;
-	q.set(\trig, a);
+	var a = msg[3], b, start;
+	//also send start position
+
+	q.set(\trig, a, \start, start);
 },'/tr', s.addr);
 )
 

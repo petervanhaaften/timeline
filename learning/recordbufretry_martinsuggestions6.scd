@@ -47,10 +47,11 @@ Synth("voicesig");
 p = Pmono(\voicesig).play
 
 //receive trigger from server
+(
 o = OSCFunc({ arg msg, time;
     [time, msg].postln;
 },'/tr', s.addr);
-
+)
 //////////////
 //voice record synthdef
 //////////////
@@ -143,10 +144,25 @@ Pdef(\z).play;
 ////newlogic
 
 q = Synth("voicerec");
+y = Synth("voicesig");
 
+//receive trigger from server
+(
+o = OSCFunc({ arg msg, time;
+    [msg].postln;
+},'/tr', s.addr);
+)
+
+n = NetAddr("127.0.0.1", NetAddr.langPort); // local machine
+OSCFunc.newMatching({|msg, time, addr, recvPort| \matching.postln}, '/tr', n); // path matching
+
+
+//logic routine
 (
 var a = 1, b;
-b = if (a < 5, { q.set(\trig, 1) },{ q.set(\trig, 0) });
+b = if (a < 2, { q.set(\trig, 1) },{ q.set(\trig, 0) });
 b.postln;
 )
+
+
 

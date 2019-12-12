@@ -6,20 +6,19 @@ b = Buffer.alloc(s, 10 * s.sampleRate);
 
 (
 SynthDef(\trigger, {
-	var in, ctl, timer;
+	var in, ctl, timer = 0, t_trig2 =1;
 	in = SoundIn.ar(0);
 	//release of Amplitude controls how long before stop recording, after audience speaks
 	ctl = Amplitude.ar(in, 0.001, 1);
 	//trigger record, id 1000
-	SendTrig.ar(Schmidt.ar(ctl, 0.07, 0.15), 1000, ctl);
+	SendTrig.ar(in: Schmidt.ar(ctl, 0.07, 0.15), id: 1000, value: ctl);
 	//trigger pause, id 1001
-	SendTrig.ar(Schmidt.ar(1 - ctl, 0.85, 0.93), 1001, 1);
+	SendTrig.ar(in: Schmidt.ar(1 - ctl, 0.85, 0.93), id: 1001, value: 1);
 	//make timer
-	timer = Timer.kr(trig: triggerwhatever;
-	SendTrig.ar(time, 9998, 1);
+	timer = Timer.kr(trig: Impulse.ar(1,0,1,0));
+	SendTrig.kr(in: Impulse.kr(1, 0, 1, 0), id: 9998, value: timer);
 }).add;
 );
-)
 
 (
 SynthDef(\voiceRecorder, {
@@ -32,6 +31,14 @@ SynthDef(\voiceRecorder, {
 	SendTrig.kr(t_sendTime, 9999, phase);
 	BufWr.ar(in, bufnum, phase);
 	0.0;
+}).add;
+);
+
+(
+SynthDef(\timer, {
+	arg t_trig = 0;
+	var p = Timer.kr(trig: t_trig);
+	p.poll;
 }).add;
 );
 )
@@ -65,7 +72,7 @@ OSCdef(\trigger, {
 	//if signal < threshold (id1001), ask synth to send position in buffer
 	(msg[2] == 1001).if({
 		//start timer
-		//~timer.set(\t_trig, 1);
+		~timer.set(\t_trig, 1);
 		//pause recorder, send time position
 		~rec.set(\t_sendTime, 1);
 		"Requesting position from server".postln;
@@ -78,14 +85,6 @@ OSCdef(\trigger, {
 		//THIS PART IS DEF WRONG!!!
 		Tdef(\waiter).play;
 		"paused, waiting".postln;
-	});
-	//peteraddition
-	(msg[2] == 9998).if({
-		//receive position from buffer
-		~timer = msg[3];
-		//start waiting (10 sec)
-		//THIS PART IS DEF WRONG!!!
-		"newtime"+~timer.postln;
 	});
 }, '/tr', s.addr)
 )

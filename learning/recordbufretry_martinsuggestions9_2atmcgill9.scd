@@ -7,7 +7,7 @@ b = Buffer.alloc(s, 10 * s.sampleRate);
 (
 SynthDef(\trigger, {
 	var in, ctl;
-	in = 6*SoundIn.ar(0);
+	in = 2*SoundIn.ar(0);
 	//release of Amplitude controls how long before stop recording, after audience speaks
 	ctl = Amplitude.ar(in, 0.001, 1);
 	//trigger record, id 1000

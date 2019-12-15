@@ -37,7 +37,8 @@ SynthDef(\timer, {
 	var timer;
 	//make timer
 	timer = Timer.kr(trig: t_trig);
-	SendTrig.ar(in: Impulse.ar(1, 0, 1, 0), id: 9998, value: timer);
+	SendTrig.kr(in: t_trig, id: 9998, value: timer);
+	//SendTrig.ar(in: Impulse.ar(100, 0, 1, 0), id: 9998, value: timer);
 }).add;
 );
 )
@@ -45,7 +46,8 @@ SynthDef(\timer, {
 (
 //TDEF waiter, is waiting for when signal is zero
 //10.wait does not give desired logic
-Tdef(\waiter, { 10.wait; ~position = 0; ~time = 0; "done waiting".postln;});
+Tdef(\waiter, { 10.wait; ~position = 0; ~time = 0;  ~maxtime = 5; "done waiting".postln;});
+
 //~position = 0;
 //create voicerecorder
 ~rec = Synth(\voiceRecorder, [\bufnum, b.bufnum, \pos, 0, \t_trig, 0]);
@@ -54,14 +56,13 @@ Tdef(\waiter, { 10.wait; ~position = 0; ~time = 0; "done waiting".postln;});
 //adding timer to replace 10.wait
 //timer will make sure audience voice only records for X amount of time
 ~timer = Synth(\timer, \t_trig, 0);
+~timesum = 0;
 OSCdef(\trigger, {
 	arg msg;
 	//if signal > threshold (id1000), trigger record
 	(msg[2] == 1000).if({
 		//trig timer
 		~timer.set(\t_trig, 1);
-		"timer value @ record ".post;
-		~time.postln;
 		//start recorder
 		~rec.set(\pos, ~position, \t_trig, 1);
 		//cancel waiting
@@ -74,6 +75,11 @@ OSCdef(\trigger, {
 		//pause recorder, send time position
 		~rec.set(\t_sendTime, 1);
 		"Requesting position from server".postln;
+		//calculating recorded time
+		~timer.set(\t_trig, 1);
+		~timesum = (~timesum + ~time);
+		"TIMESUM : ".post;
+		~timesum.postln;
 	});
 	(msg[2] == 9999).if({
 		//receive position from buffer
@@ -83,18 +89,25 @@ OSCdef(\trigger, {
 		Tdef(\waiter).play;
 		"paused, waiting".postln;
 		//receive time
-		~time = msg[3];
+		//~time = msg[3];
 		//trig timer
 		~timer.set(\t_trig, 1);
-		"timer value @ pause ".post;
+		"timer value @ PAUSE ".post;
 		~time.postln;
 	});
 	(msg[2] == 9998).if({
 		//receive time
 		~time = msg[3];
+		"TIME : ".post;
+		~time.postln;
+		//~timesum = (~timesum + ~time);
+		//"TIMESUM : ".post;
+		//~timesum.postln;
 	});
 }, '/tr', s.addr)
 )
 Timer.kr(trig: 1).postln
 x.free;
 b.play
+
+~timesum = 0;

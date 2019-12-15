@@ -60,13 +60,12 @@ Tdef(\waiter, { //10.wait;
 ~time = 0;
 ~timesum = 0;
 ~maxtime = 5;
-~foo = 0;
 
 OSCdef(\trigger, {
 	arg msg;
 	//if signal > threshold (id1000), trigger record
 	(msg[2] == 1000).if({
-		//trig timer, to calculate record length
+		//trig timer
 		~timer.set(\t_trig, 1);
 		//start recorder
 		~rec.set(\pos, ~position, \t_trig, 1);
@@ -95,8 +94,8 @@ OSCdef(\trigger, {
 		Tdef(\waiter).play;
 		"paused, waiting".postln;
 		//calculating amount of time recorded so far
-		"time value at pause : ".post;
-		~time.postln;
+		//trig timer
+		~timer.set(\t_trig, 1);
 		~timesum = (~time + ~timesum);
 		"TIMESUM : ".post;
 		~timesum.postln;
@@ -105,7 +104,6 @@ OSCdef(\trigger, {
 		(~timesum > ~maxtime).if({
 			"OVER MAX TIME".postln;
 		})
-
 	});
 	(msg[2] == 9998).if({
 		//receive time

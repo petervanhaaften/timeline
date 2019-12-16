@@ -4,23 +4,36 @@ s.boot;
 //voice rec synthdef
 Require("/Users/pvh/src/Projects/timeline/experiment1/simplerec.scd");
 //voice rec logic, interacts with synthdef
-e = Require("/Users/pvh/src/Projects/timeline/experiment1/simplelogic.scd");
-d.play;
-e.play
+~recordvoice = Require("/Users/pvh/src/Projects/timeline/experiment1/simplelogic.scd");
+~recordvoice.play
+~recordvoice.stop
+~recordvoice.free
 b.play;
+
+b.numFrames = 50;
+b.numFrames.postln;
 //need to receive position from logic...convert to time, use that for controlling position in gran synth
 
 ///////////////////////
 // VOICE-REC PDEF
 ///////////////////////
+(
+SynthDef(\rectest, {
+	~recordvoice.play
+    }
+).play;
+)
+
+
+~fuck = Synth(\rectest);
+~fuck.play;
 
 (
-Pdef(\part, Pdef(\first,
+Pdef(\part, Pdef(\recording,
 	Ppar([
 		Pmono(
-			\bufferplay,
-			\bufnum, c.bufnum,
-			\dur, 1,
+			\rectest,
+			\dur, 5,
 		);
 	])
 )).play;
@@ -689,10 +702,6 @@ Pdef(\part, Pdef(\part7,
 )).play;
 )
 
-
-		Pmono(\recordbuffer).play;
-
-
 ///////////////////////
 //    SCORE PLAYER
 ///////////////////////
@@ -704,7 +713,8 @@ Pdef(\part, Pdef(\main,
 		Rest(0.5),
 		Pfindur(2, Pdef(\second)),
 		Rest(0.5),
-		e.play,
+		~recordvoice.play,
+		Pfindur(5, Pdef(\rectest)),
 		//Pfindur(4, Pdef(\recordbuffer)),
 		//Synth.new("recordbuffer2", ["out",0,"bufnum",b.bufnum, "length", 5]);
 		//record audio input

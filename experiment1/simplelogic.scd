@@ -28,7 +28,7 @@ OSCdef(\trigger, {
 		~position.postln;
 
 		//calculating amount of time recorded so far
-		~postime = (~position / 48000);
+		~postime = (~position / s.sampleRate);
 		"position calculation = ".post;
 		~postime.postln;
 

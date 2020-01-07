@@ -1,6 +1,6 @@
 
 (
-b = Buffer.alloc(s, 100 * s.sampleRate);
+b = Buffer.alloc(s, 3 * s.sampleRate);
 
 (
 SynthDef(\trigger, {

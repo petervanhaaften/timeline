@@ -710,10 +710,41 @@ Pdef(\part, Pdef(\part7,
 //    SCORE PLAYER
 ///////////////////////
 
+//voice rec synthdef
+Require("/Users/pvh/src/Projects/timeline/experiment1/simplerec.scd");
+//voice rec logic, interacts with synthdef
 ~recordvoice = Require("/Users/pvh/src/Projects/timeline/experiment1/simplelogic.scd");
 ~recordvoice.play;
-Pfindur(2, Pdef(\first)).play;
-Pfindur(2, Pdef(\second));
+~recordvoice.stop;
+~recordvoice.resume;
+~recordvoice.stop.reset;
+
+b.play;
+
+SynthDef(\sine, {arg out=0, amp=0.1, freq=440, envdur=1, pan=0.0;
+	var signal;
+	signal = Pan2.ar(SinOsc.ar(freq, 0, amp**amp).cubed, pan); // note the pan
+	signal = signal * EnvGen.ar(Env.perc(0.01, envdur), doneAction:2);
+	Out.ar(out, signal);
+}).add;
+(
+Routine({
+	1.postln;
+	~recordvoice.play;
+	Synth(\sine, [\freq, 220]);
+	0.1.wait;
+	2.postln;
+	Synth(\sine, [\freq, 220*2]);
+	0.8.wait;
+	3.postln;
+	Synth(\sine, [\freq, 220*3]);
+	0.5.wait;
+}).play
+)
+
+///////////////////////
+//    SCORE PLAYER2
+///////////////////////
 (
 //~recordvoice.play;
 Pdef(\part, Pdef(\main,

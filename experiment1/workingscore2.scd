@@ -710,10 +710,37 @@ Pdef(\part, Pdef(\part7,
 //    SCORE PLAYER
 ///////////////////////
 
+//voice rec synthdef
+Require("/Users/pvh/src/Projects/timeline/experiment1/simplerec.scd");
+//voice rec logic, interacts with synthdef
 ~recordvoice = Require("/Users/pvh/src/Projects/timeline/experiment1/simplelogic.scd");
 ~recordvoice.play;
 Pfindur(2, Pdef(\first)).play;
 Pfindur(2, Pdef(\second));
+
+
+~recordvoice = Require("/Users/pvh/src/Projects/timeline/experiment1/simplelogic.scd").play;
+~recordvoice.stop;
+~recordvoice.resume;
+~recordvoice.stop.reset;
+
+
+
+Routine({
+	1.postln;
+	Synth(\sine, [\freq, 220]);
+	0.5.wait;
+	2.postln;
+	Synth(\sine, [\freq, 220*2]);
+	0.5.wait;
+	3.postln;
+	Synth(\sine, [\freq, 220*3]);
+	0.5.wait;
+}).play
+
+///////////////////////
+//    SCORE PLAYER2
+///////////////////////
 (
 //~recordvoice.play;
 Pdef(\part, Pdef(\main,

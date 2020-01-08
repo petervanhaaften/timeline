@@ -713,18 +713,13 @@ Pdef(\part, Pdef(\part7,
 b = Buffer.alloc(s, 1 * s.sampleRate);
 
 //voice rec synthdef
-Require("/Users/pvh/src/Projects/timeline/experiment1/simplerec.scd");
+Require(Platform.userHomeDir +/+ "src/Projects/timeline/experiment1/simplerec.scd");
 //voice rec logic, interacts with synthdef
-~recordvoice = Require("/Users/pvh/src/Projects/timeline/experiment1/simplelogic.scd");
+~recordvoice = Require(Platform.userHomeDir +/+ "src/Projects/timeline/experiment1/simplelogic.scd");
 ~recordvoice.play;
-~recordvoice.stop;
-~recordvoice.resume;
-~recordvoice.stop.reset;
+
 
 b.play;
-b.writeMsg(path: "/Users/pvh/src/Projects/timeline/experiment1/audio/craprecord.wav", headerFormat: "wav", sampleFormat: "int24", numFrames: 44100, startFrame: 0, leaveOpen: false, completionMessage: "finished".postln;);
-
-thisProcess.platform.recordingsDir;
 
 SynthDef(\sine, {arg out=0, amp=0.1, freq=440, envdur=1, pan=0.0;
 	var signal;

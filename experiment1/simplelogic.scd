@@ -35,9 +35,14 @@ OSCdef(\trigger, {
 		//stop recording
 		(~postime > ~maxtime).if({
 			"OVER MAX TIME".postln;
+			//Buffer.set
 			//stop recording
 			~rec.free;
 			~trigger.free;
+			//print buffer as .wav
+			b.write(path: Platform.userHomeDir +/+ "src/Projects/timeline/experiment1/audio/fuktest1.wav";, headerFormat: "wav", sampleFormat: "int24", numFrames: ~position, startFrame: 0, leaveOpen: false, completionMessage: "finished".postln;);
+			//normalize recorded buffer
+			//compress recorded file
 			//free OSCdef
 			OSCdef.freeAll;
 		})
@@ -45,3 +50,13 @@ OSCdef(\trigger, {
 }, '/tr', s.addr)
 }
 )
+
+a = "/Users/pvh/cdpr7/_cdp/_cdprogs/modify loudness 3" + Platform.userHomeDir +/+ "/src/Projects/timeline/experiment1/audio/fuktest1.wav" + Platform.userHomeDir +/+ "src/Projects/timeline/experiment1/audio/fuktest1_new51.wav -l0.95"
+
+a.unixCmd("done".postln, false);
+
+"/Users/pvh/cdpr7/_cdp/_cdprogs/modify loudness 3 /Users/pvh/src/Projects/timeline/experiment1/audio/fuktest1.wav /Users/pvh/src/Projects/timeline/experiment1/audio/fuktest1_new59.wav -l0.95".unixCmd("done".postln, false);
+
+"/Users/pvh/cdpr7/_cdp/_cdprogs/modify loudness 3" + Platform.userHomeDir +/+ "/src/Projects/timeline/experiment1/audio/fuktest1.wav" + Platform.userHomeDir +/+ "src/Projects/timeline/experiment1/audio/fuktest1_new51.wav -l0.95".unixCmd("done".postln, false);
+
+"/Users/pvh/cdpr7/_cdp/_cdprogs/modify loudness 3 /Users/pvh/src/Projects/timeline/experiment1/audio/fuktest1.wav /Users/pvh/src/Projects/timeline/experiment1/audio/fuktest1_new49.wav -l0.95".unixCmd("done".postln, false);

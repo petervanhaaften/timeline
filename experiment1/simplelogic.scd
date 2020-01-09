@@ -1,4 +1,20 @@
 (
+~wavprocess = Routine {
+	//normalise recorded wave w/sox
+	a = "/usr/local/bin/sox" + Platform.userHomeDir +/+ "/src/Projects/timeline/experiment1/audio/bufferrec1.wav" + Platform.userHomeDir +/+ "src/Projects/timeline/experiment1/audio/bufferrec1_normalised.wav" + "gain -n -3";
+	a.unixCmd("done : normalise".postln, false);
+	0.1.wait;
+	//compress recorded file
+	//compand 0.02,0.2 5:-60,-40,-20 -5 -80 0.1
+	c = "/usr/local/bin/sox" + Platform.userHomeDir +/+ "/src/Projects/timeline/experiment1/audio/bufferrec1_normalised.wav" + Platform.userHomeDir +/+ "src/Projects/timeline/experiment1/audio/bufferrec1_compressed.wav" + "compand 0.02,0.2 5:-60,-40,-20 -5 -80 0.1";
+	c.unixCmd("done : compression".postln, false);
+	0.1.wait;
+	//switch buffer
+	b = Buffer.read(s, Platform.userHomeDir +/+ "src/Projects/timeline/experiment1/audio/bufferrec1_compressed.wav");
+};
+);
+
+(
 Routine {
 ~maxtime = 2;
 ~position = 0;
@@ -40,23 +56,13 @@ OSCdef(\trigger, {
 			~rec.free;
 			~trigger.free;
 			//print buffer as .wav
-			b.write(path: Platform.userHomeDir +/+ "src/Projects/timeline/experiment1/audio/fuktest1.wav";, headerFormat: "wav", sampleFormat: "int24", numFrames: ~position, startFrame: 0, leaveOpen: false, completionMessage: "finished".postln;);
-			//normalize recorded buffer
-			//compress recorded file
+			b.write(path: Platform.userHomeDir +/+ "src/Projects/timeline/experiment1/audio/bufferrec1.wav";, headerFormat: "wav", sampleFormat: "int24", numFrames: ~position, startFrame: 0, leaveOpen: false, completionMessage: "finished".postln;);
+			//compress and normalize
+			~wavprocess.play;
 			//free OSCdef
 			OSCdef.freeAll;
 		})
 	});
 }, '/tr', s.addr)
-}
+};
 )
-
-a = "/Users/pvh/cdpr7/_cdp/_cdprogs/modify loudness 3" + Platform.userHomeDir +/+ "/src/Projects/timeline/experiment1/audio/fuktest1.wav" + Platform.userHomeDir +/+ "src/Projects/timeline/experiment1/audio/fuktest1_new51.wav -l0.95"
-
-a.unixCmd("done".postln, false);
-
-"/Users/pvh/cdpr7/_cdp/_cdprogs/modify loudness 3 /Users/pvh/src/Projects/timeline/experiment1/audio/fuktest1.wav /Users/pvh/src/Projects/timeline/experiment1/audio/fuktest1_new59.wav -l0.95".unixCmd("done".postln, false);
-
-"/Users/pvh/cdpr7/_cdp/_cdprogs/modify loudness 3" + Platform.userHomeDir +/+ "/src/Projects/timeline/experiment1/audio/fuktest1.wav" + Platform.userHomeDir +/+ "src/Projects/timeline/experiment1/audio/fuktest1_new51.wav -l0.95".unixCmd("done".postln, false);
-
-"/Users/pvh/cdpr7/_cdp/_cdprogs/modify loudness 3 /Users/pvh/src/Projects/timeline/experiment1/audio/fuktest1.wav /Users/pvh/src/Projects/timeline/experiment1/audio/fuktest1_new49.wav -l0.95".unixCmd("done".postln, false);

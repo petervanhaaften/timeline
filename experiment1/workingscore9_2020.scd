@@ -4,19 +4,7 @@ s.boot;
 // # flag for timeline src directory
 // # flag for timeline voice buffer audio directory
 // # flag for timeline operator speech audio directory
-
-///////////////////////
-//  SINBEEP SYNTHDEF
-///////////////////////
 (
-SynthDef(\sinbeep, {|freq = 440, out, gate = 1, attack = 0, release = 1, amp = 1|
-	var env = Linen.kr(gate, attack, release) * amp;
-	Out.ar(out, SinOsc.ar(freq, 0,0.2) * env)
-    }
-).play;
-)
-
-
 ///////////////////////
 // VOICE INTRO SYNTHDEF
 ///////////////////////
@@ -28,24 +16,31 @@ SynthDef("bufferplay",{ arg out = 0, bufnum;
 			)
 }
 ).add;
-c = Buffer.read(s, Platform.userHomeDir +/+ "src/Projects/timeline/experiment1/audio/sayyourname.wav");
-)
+e = Buffer.read(s, Platform.userHomeDir +/+ "src/Projects/timeline/experiment1/audio/sayyourname.wav");
+);
 
 (
-Pdef(\part, Pdef(\first,
+Pdef(\part, Pdef(\operator_intro,
 	Ppar([
 		Pmono(
 			\bufferplay,
-			\bufnum, c.bufnum,
+			\bufnum, e.bufnum,
 			\dur, 1,
 		);
 	])
-)).play;
-)
+));
+);
 
 ///////////////////////
 //    SINE TONE BEEP
 ///////////////////////
+(
+SynthDef(\sinbeep, {|freq = 440, out, gate = 1, attack = 0, release = 1, amp = 1|
+	var env = Linen.kr(gate, attack, release) * amp;
+	Out.ar(out, SinOsc.ar(freq, 0,0.2) * env)
+    }
+);
+);
 
 (
 Pdef(\part, Pdef(\second,
@@ -59,9 +54,9 @@ Pdef(\part, Pdef(\second,
 			\freq, 440,
 		);
 	])
-)).play;
-)
-
+));
+);
+);
 
 
 ///////////////////////
@@ -144,18 +139,17 @@ Require(Platform.userHomeDir +/+ "src/Projects/timeline/experiment1/simplerec.sc
 //voice rec logic, interacts with synthdef
 ~recordvoice = Require(Platform.userHomeDir +/+ "src/Projects/timeline/experiment1/simplelogic.scd");
 //read score elements
-Require(Platform.userHomeDir +/+ "src/Projects/timeline/experiment1/timescoreA1.scd");
+~timescore = Require(Platform.userHomeDir +/+ "src/Projects/timeline/experiment1/timescoreA1.scd");
 //play master score
 Pdef(\part, Pdef(\main,
 	Pseq([
-		//Pfindur(2, Pdef(\first)),
-		//Rest(0.5),
-		//Pfindur(2, Pdef(\second)),
-		//Rest(0.5),
+		Pfindur(2, Pdef(\operator_intro)),
+		Rest(0.5),
+		Pfindur(2, Pdef(\second)),
+		Rest(0.5),
 		//record audio input
-		//Rest(2),
 		~recordvoice;,
-		Rest(4);,
+		Rest(1);
 		Pfindur(10, Pdef(\part1)),
 		Pfindur(16, Pdef(\part2)),
 		Pfindur(16, Pdef(\part3)),
@@ -166,3 +160,6 @@ Pdef(\part, Pdef(\main,
 	],1),
 )).play; //.trace.play;
 )
+
+
+

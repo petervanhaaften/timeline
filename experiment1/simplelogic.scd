@@ -15,7 +15,7 @@
 );
 
 (
-Routine {
+~recordvoice = Routine {
 ~maxtime = 2;
 ~position = 0;
 ~postime = 0;

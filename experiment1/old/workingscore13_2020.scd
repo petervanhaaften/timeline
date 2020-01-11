@@ -39,8 +39,8 @@ e = Buffer.read(s, ~operatorwav);
 //    SINE TONE BEEP
 ///////////////////////
 (
-SynthDef(\sinbeep, {|freq = 440, out, gate = 1, attack = 0, release = 1, amp = 1|
-	var env = Linen.kr(gate, attack, release) * amp;
+SynthDef(\sinbeep, {|freq = 440, out, gate = 1, attack = 0, sustain = 1, release = 1, amp = 1|
+	var env = Linen.kr(gate, attack, sustain, release) * amp;
 	Out.ar(out, SinOsc.ar(freq, 0,0.2) * env)
     }
 ).add;
@@ -64,10 +64,11 @@ r = Routine {
 	//should programatically determine the audio file length
 	2.3.wait;
 	//beep!
-	f = Pmono(\sinbeep, \dur, 1, \amp, 2, \attack, 0, \release, 1, \freq, 440).play;
+	f = Pmono(\sinbeep, \dur, 1, \amp, 2, \attack, 0, \sustain, 1, \release, 0, \freq, 440).play;
 	//wait until beep is finished
 	2.wait;
 	f.stop;
+	1.wait;
 	~recordvoice.play;
 };
 );
@@ -86,7 +87,7 @@ f.stop
 p = Pdef(\part, Pdef(\main,
 	Pseq([
 		//start score
-		//Pfindur(10, Pdef(\part1)),
+		Pfindur(10, Pdef(\part1)),
 		Pfindur(16, Pdef(\part2)),
 		Pfindur(16, Pdef(\part3)),
 		Pfindur(16, Pdef(\part4)),
@@ -94,7 +95,7 @@ p = Pdef(\part, Pdef(\main,
 		Pfindur(16, Pdef(\part6)),
 		Pfindur(16, Pdef(\part7)),
 	],1),
-)); //.trace.play;
+)).trace.play;
 )
 
 r.play
@@ -102,3 +103,10 @@ Require(~timescore);
 p.play
 
 b.play
+
+
+
+
+
+
+

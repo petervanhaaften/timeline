@@ -59,6 +59,8 @@ OSCdef(\trigger, {
 			b.write(path: Platform.userHomeDir +/+ "src/Projects/timeline/experiment1/audio/bufferrec1.wav";, headerFormat: "wav", sampleFormat: "int24", numFrames: ~position, startFrame: 0, leaveOpen: false, completionMessage: "finished".postln;);
 			//compress and normalize
 			~wavprocess.play;
+
+
 			//free OSCdef
 			OSCdef.freeAll;
 		})

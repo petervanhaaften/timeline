@@ -15,6 +15,8 @@
 );
 
 (
+//netaddress re: trigger for second beep and music perform
+n = NetAddr("127.0.0.1", 57120);
 ~recordvoice = Routine {
 ~maxtime = 2;
 ~position = 0;
@@ -59,10 +61,10 @@ OSCdef(\trigger, {
 			b.write(path: Platform.userHomeDir +/+ "src/Projects/timeline/experiment1/audio/bufferrec1.wav";, headerFormat: "wav", sampleFormat: "int24", numFrames: ~position, startFrame: 0, leaveOpen: false, completionMessage: "finished".postln;);
 			//compress and normalize
 			~wavprocess.play;
-
-
+			//trigger oscdef in main score file, for second beep and music score !
+			n.sendMsg("/timenet", \recdone);
 			//free OSCdef
-			OSCdef.freeAll;
+			//OSCdef.freeAll;
 		})
 	});
 }, '/tr', s.addr)

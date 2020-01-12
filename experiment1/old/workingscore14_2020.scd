@@ -75,6 +75,20 @@ r = Routine {
 
 	//play next beep
 	//musik
+
+	(
+	OSCdef(\test, {|msg, time, addr, recvPort|
+	(msg[1] == \recdone).if({
+		Routine {
+		"beep2".postln;
+		f = Pmono(\sinbeep, \dur, 1, \amp, 2, \attack, 0, \sustain, 1, \release, 0, \freq, 440).play;
+		//wait until beep is finished
+		2.wait;
+		f.stop;
+		}.play;
+	});
+	}, '/timenet', n); // def style
+	)
 };
 );
 )
@@ -84,16 +98,32 @@ r.play;
 
 (
 OSCdef(\test, {|msg, time, addr, recvPort|
-		(msg[1] == \blah).if({
-		msg.postln;
+	(msg[1] == \recdone).if({
 		"win2".postln;
 	});
-}, '/recdone', n); // def style
+}, '/timenet', n); // def style
 )
+//why does obly 57120 work?? related2 recvPort in OSCDef
+n = NetAddr("127.0.0.1", 57120);
+n.sendMsg("/timenet", \recdone)
 
-m = NetAddr("127.0.0.1", 57120);
-m.sendMsg("/recdone", \blah)
 
+
+
+
+(
+	OSCdef(\test, {|msg, time, addr, recvPort|
+	(msg[1] == \recdone).if({
+		Routine {
+		"beep2".postln;
+		f = Pmono(\sinbeep, \dur, 1, \amp, 2, \attack, 0, \sustain, 1, \release, 0, \freq, 440).play;
+		//wait until beep is finished
+		2.wait;
+		f.stop;
+		}.play;
+	});
+	}, '/timenet', n); // def style
+	)
 
 
 (

@@ -9,7 +9,10 @@ s.boot;
 
 //CONFIGURATION
 // # flag for timeline src directory
+// - macbook location
 ~srcdir = Platform.userHomeDir +/+ "src/Projects/timeline/";
+// - debian location
+//~srcdir = Platform.userHomeDir +/+ "src/timeline/";
 // # flag for timeline operator speech audio directory
 ~operatorwav = ~srcdir +/+ "audio/stateyourname.wav";
 // # flag for simplelogic location
@@ -26,6 +29,16 @@ s.boot;
 ~maxrecordtime = 4;
 // # flags for recording input lvl
 // # flags for attack/decay of amp when recording
+// # flag for recorder time to wait before stop recording :
+// [ release of Amplitude controls how long before stop recording, after audience speaks ]
+~recorderAttackTime = 0.0001;
+~recorderReleaseTime = 0.4;
+// # flag for record sensitivity //trigger record, id 1000
+~recorderRecordTrigLo = 0.07;
+~recorderRecordTrigHi = 0.15;
+// # flag for record pause sensitivity //trigger pause, id 1001
+~recorderPauseTrigLo = 0.85;
+~recorderPauseTrigHi = 0.93;
 
 (
 ///////////////////////

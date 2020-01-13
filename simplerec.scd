@@ -4,7 +4,7 @@ b = Buffer.alloc(s, 100 * s.sampleRate);
 (
 SynthDef(\trigger, {
 	var in, ctl;
-	in = SoundIn.ar(0);
+	in = ~telephoneAmp * SoundIn.ar(0);
 	//release of Amplitude controls how long before stop recording, after audience speaks
 	ctl = Amplitude.ar(in: in, attackTime: ~recorderAttackTime, releaseTime: ~recorderReleaseTime);
 	//trigger record, id 1000
@@ -18,7 +18,7 @@ SynthDef(\trigger, {
 SynthDef(\voiceRecorder, {
 	arg bufnum=0, pos=0, t_trig=1, t_sendTime=0;
 	var in, phase, ctl;
-	in = SoundIn.ar(0);
+	in = ~telephoneAmp * SoundIn.ar(0);
 	//phasor drives BufWr, gated by t_trig
 	phase = Phasor.ar(t_trig, BufRateScale.kr(bufnum), 0, BufFrames.kr(bufnum), pos);
 	//send phasor position to client

@@ -7,7 +7,7 @@
 s.options.sampleRate = 48000;
 s.boot;
 
-//CONFIGURATION
+//CONFIGURATION -- could be split to GLOBAL file and A1 local file
 // # flag for timeline src directory
 // - macbook location
 ~srcdir = Platform.userHomeDir +/+ "src/Projects/timeline/";
@@ -26,8 +26,9 @@ s.boot;
 // # flag for min recording length
 ~minrecordtime = 0; //not functioning
 // # flag for max recording length
-~maxrecordtime = 4;
+~maxrecordtime = 3;
 // # flags for recording input lvl
+~telephoneAmp = 1;
 // # flags for attack/decay of amp when recording
 // # flag for recorder time to wait before stop recording :
 // [ release of Amplitude controls how long before stop recording, after audience speaks ]
@@ -134,11 +135,6 @@ r = Routine {
 ).play;
 )
 //r.play;
-b.play
+//b.play
 //b.plot;
-
-
-
-
-
 

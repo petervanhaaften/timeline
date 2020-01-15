@@ -621,3 +621,11 @@ Pdef(\part, Pdef(\part3,
 	])
 )).play;
 );
+
+
+//var mintime, var maxtime, var recordedtime, var pausewaittime
+//if recorded or paused. . .
+//////if recordtime > maxtime, then STOP
+//if paused. . .
+//////if (recordtime > mintime) && (pausewaittime > 4) then STOP
+//////if (recordtime > mintime) && (pausewaittime < 5) then STILL ALLOW RECORDING POTENTIAL

@@ -13,22 +13,24 @@ s.boot;
 ~srcdir = Platform.userHomeDir +/+ "src/Projects/timeline/";
 // - debian location
 //~srcdir = Platform.userHomeDir +/+ "src/timeline/";
-// # flag for timeline operator speech audio directory
+// # flag for timeline operator speech
 ~operatorwav = ~srcdir +/+ "audio/stateyourname.wav";
+// # flag for timeline operator error msg
+~operatorerrorwav = ~srcdir +/+ "audio/sorry.wav";
 // # flag for simplelogic location
-~simplelogic = ~srcdir +/+ "simplelogic.scd";
+~simplelogic = ~srcdir +/+ "simplelogic5.scd";
 // # flag for simplerec location
-~simplerec = ~srcdir +/+ "simplerec.scd";
+~simplerec = ~srcdir +/+ "simplerec2.scd";
 // # flag for gransyn1 location
 ~gransyn1 = ~srcdir +/+ "pvh.gransyn1.scd";
-// # flag for timescore location
+// # flag for timescore location.
 ~timescore = ~srcdir +/+ "timescoreA1.scd";
 // # flag for min recording length
-~minrecordtime = 0; //not functioning
+~minrecordtime = 8; //not functioning
 // # flag for time (in seconds) before min recording breaks, function stops waiting for ~maxrecordtime to pass, and prints wav
-~minrecordtimeBreak = 3; //not functioning
+~minrecordtimeBreak = 4;
 // # flag for max recording length
-~maxrecordtime = 3;
+~maxrecordtime = 12;
 // # flags for recording input lvl
 ~telephoneAmp = 1;
 // # flags for attack/decay of amp when recording
@@ -58,6 +60,22 @@ SynthDef("bufferplay",{ arg out = 0, bufnum;
 e = Buffer.read(s, ~operatorwav);
 );
 
+///////////////////////
+// VOICE ERROR SYNTHDEF
+///////////////////////
+
+(
+SynthDef("bufferplay",{ arg out = 0, bufnum;
+			Out.ar( out,
+				PlayBuf.ar(1, bufnum, BufRateScale.kr(bufnum))
+			)
+}
+).add;
+o = Buffer.read(s, ~operatorerrorwav);
+);
+
+
+
 
 
 ///////////////////////
@@ -83,24 +101,26 @@ r = Routine {
 	Require(~simplerec);
 	//voice rec logic, interacts with synthdef
 	Require(~simplelogic);
-	"operator speaks".postln;
+	"// operator speaks".postln;
 	a = Pmono(\bufferplay, \bufnum, e.bufnum, \dur, 1).play;
 	//wait until audio file is finished (saymyname, 2.2sec)
 	//should programatically determine the audio file length
 	4.968.wait;
-	//beep!
+	"// beep1".postln;
 	f = Pmono(\sinbeep, \dur, 1, \amp, 2, \attack, 0, \sustain, 1, \release, 0, \freq, 440).play;
 	//wait until beep is finished
 	2.wait;
 	f.stop;
-	0.3.wait;
+	0.5.wait;
+	//timestuff, to enable minimum & maximum recording lengths
+	m = Date.getDate.rawSeconds;
 	~recordvoice.play;
 	//OSCdef
 	(
 	OSCdef(\receivewhatever, {|msg, time, addr, recvPort|
 	(msg[1] == \recdone).if({
 		Routine {
-		"beep2".postln;
+		"// beep2".postln;
 		f = Pmono(\sinbeep, \dur, 1, \amp, 2, \attack, 0, \sustain, 1, \release, 0, \freq, 440).play;
 		//wait until beep is finished
 		2.wait;
@@ -139,4 +159,5 @@ r = Routine {
 //r.play;
 //b.play
 //b.plot;
+
 

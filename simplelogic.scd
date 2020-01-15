@@ -15,6 +15,16 @@ c = "/usr/local/bin/sox" + ~srcdir +/+ "audio/bufferrec1_normalised.wav" + ~srcd
 );
 
 (
+//elapsed actual recording time
+//TODO: figure out better labels
+(
+//timeCurrent
+var recordClock = 0;
+//timeOld
+m = Date.getDate.rawSeconds;
+)
+
+
 //netaddress re: trigger for second beep and music perform
 n = NetAddr("127.0.0.1", 57120);
 ~recordvoice = Routine {
@@ -24,12 +34,15 @@ n = NetAddr("127.0.0.1", 57120);
 ~rec = Synth(\voiceRecorder, [\bufnum, b.bufnum, \pos, 0, \t_trig, 0]);
 //trigger is always running
 ~trigger = Synth(\trigger);
+
 OSCdef(\trigger, {
 	arg msg;
 	//if signal > threshold (id1000), trigger record
 	(msg[2] == 1000).if({
 		//start recorder
 		~rec.set(\pos, ~position, \t_trig, 1);
+		//timestuff
+		u = Date.getDate.rawSeconds + u;
 	});
 	//if signal < threshold (id1001), ask synth to send position in buffer
 	(msg[2] == 1001).if({
@@ -48,16 +61,22 @@ OSCdef(\trigger, {
 		//DEBUG//"position calculation = ".post;
 		//DEBUG//~postime.postln;
 
+		//time stuff
+		t = Date.getDate.rawSeconds - u;
+		"SAVEDTIME : " + t.postln;
+
 		//if amount of recorded time is more than maxtime,
 		//stop recording
 		(~postime > ~maxrecordtime).if({
+			"TIME"+t.poll;
+				t.postln;
 			"OVER MAX TIME".postln;
 			//Buffer.set
 			//stop recording
 			~rec.free;
 			~trigger.free;
 			//print buffer as .wav
-				b.write(path: ~srcdir +/+ "audio/bufferrec1.wav";, headerFormat: "wav", sampleFormat: "int24", numFrames: ~position, startFrame: 0, leaveOpen: false, completionMessage: "finished".postln;);
+			b.write(path: ~srcdir +/+ "audio/bufferrec1.wav";, headerFormat: "wav", sampleFormat: "int24", numFrames: ~position, startFrame: 0, leaveOpen: false, completionMessage: "finished".postln;);
 			//compress and normalize
 			~wavprocess.play;
 			//trigger oscdef in main score file, for second beep and music score !
@@ -68,4 +87,12 @@ OSCdef(\trigger, {
 	});
 }, '/tr', s.addr)
 };
+)
+
+
+
+(
+//u = ((Date.getDate.rawSeconds - m) + u );//(Date.getDate.rawSeconds - u));
+var recordClock = (Date.getDate.rawSeconds - m);
+recordClock.postln;
 )

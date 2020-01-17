@@ -26,6 +26,7 @@ c = "/usr/local/bin/sox" + ~srcdir +/+ "audio/bufferrec1_normalised.wav" + ~srcd
 	//turn off clcoks
 	v.stop;
 	t.stop;
+	w.stop;
 	//Buffer.set
 	//stop recording
 	~rec.free;
@@ -54,8 +55,9 @@ n = NetAddr("127.0.0.1", 57120);
 //trigger is always running
 ~trigger = Synth(\trigger);
 ~recpause = 0;
-m = Date.getDate.rawSeconds;
 
+//sorry.wav var trig
+k = 0;
 //clock1 time, record time
 d = 0;
 //clock2 time, paused time
@@ -76,8 +78,24 @@ OSCdef(\trigger, {
 	(msg[2] == 9998).if({
 		//if < min record play sorry.wav
 		//if paused or no record for more than 8 seconds then
-			if((((d <= ~minrecordtime)&&(~recpause == 0;))&&(r >= 5))&&(h == 1),
-				{ w.stop; ~errorplayback.play; h = 0; };
+			if((((d <= ~minrecordtime)&&(~recpause == 0;))&&(r >= 5))&&(h == 1)&&(k == 0), {
+				//"minrecordtime".post; ~minrecordtime.postln;
+				~errorplayback.reset;
+				//"rVal : ".post; r.postln;
+				//"hVal : ".post; h.postln;
+				//"kVal : ".post; k.postln;
+
+				w.stop;
+				~errorplayback.play;
+				h = 0;
+				d = 0;
+				q = 0;
+				r = 0;
+				//"dval".post; d.postln;
+				~recpause == 1;
+				"LoopEnd".postln;
+
+			};
 		);
 		//if current time >= ~maxrecordtime, then stop & run ~finalprocess
 
@@ -87,10 +105,10 @@ OSCdef(\trigger, {
 			~finalprocess.play;
 		});
 		//if (t > ~minrecordtime) && (~minrecordtimeBreak < 5) then STILL ALLOW RECORDING POTENTIAL
-		if((d >= ~minrecordtime)&&(~recpause == 0;),
+			if((d >= ~minrecordtime)&&(~recpause == 0;)&&(k == 0),
 				//minimum recording time reached
 				//only v.play if recording is paused.....
-				{ v.start;}
+				{ v.start; "kVALUEblaa : ".post; k.postln; }
 		);
 		//record pause longer than ~minrecordtimeBreak, then process recorded audio
 		if(((q >= ~minrecordtimeBreak)&&(~recpause == 0;))&&(d >= ~minrecordtime),
@@ -99,27 +117,30 @@ OSCdef(\trigger, {
 	});
 	//if signal > threshold (id1000), trigger record
 	(msg[2] == 1000).if({
-		~recpause = 1;
-		h = 1;
-		r = 0;
-		q =0;
-		//start < minrecordtime pause counter before error
-		w.play;
-		v.stop;
-		//start recording clock, on begin record
-		t.start;
-		//start recorder
-		~rec.set(\pos, ~position, \t_trig, 1);
+				~recpause = 1;
+				k = 0;
+				h = 1;
+				r = 0;
+				q =0;
+				//start < minrecordtime pause counter before error
+				w.play;
+				v.stop;
+				//start recording clock, on begin record
+				t.start;
+				//start recorder
+				~rec.set(\pos, ~position, \t_trig, 1);
 	});
 	//if signal < threshold (id1001), ask synth to send position in buffer, pause record
 	(msg[2] == 1001).if({
 		~recpause = 0;
+		k = 0;
 		h = 1;
 		r = 0;
 		q =0;
 		v.stop;
 		//pause recording clock, on pause record
 		t.pause;
+		"dval".post; d.postln;
 		//pause recorder, send time position
 		~rec.set(\t_sendTime, 1);
 	});
@@ -131,4 +152,5 @@ OSCdef(\trigger, {
 }, '/tr', s.addr)
 };
 );
+
 

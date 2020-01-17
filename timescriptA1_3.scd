@@ -18,7 +18,7 @@ s.boot;
 // # flag for timeline operator error msg
 ~operatorerrorwav = ~srcdir +/+ "audio/sorry.wav";
 // # flag for simplelogic location
-~simplelogic = ~srcdir +/+ "simplelogic5.scd";
+~simplelogic = ~srcdir +/+ "simplelogic7.scd";
 // # flag for simplerec location
 ~simplerec = ~srcdir +/+ "simplerec2.scd";
 // # flag for gransyn1 location
@@ -26,7 +26,7 @@ s.boot;
 // # flag for timescore location.
 ~timescore = ~srcdir +/+ "timescoreA1.scd";
 // # flag for min recording length
-~minrecordtime = 8; //not functioning
+~minrecordtime = 8;
 // # flag for time (in seconds) before min recording breaks, function stops waiting for ~maxrecordtime to pass, and prints wav
 ~minrecordtimeBreak = 4;
 // # flag for max recording length
@@ -46,9 +46,9 @@ s.boot;
 ~recorderPauseTrigHi = 0.93;
 
 (
-///////////////////////
+/////////////////////////
 // VOICE INTRO SYNTHDEF
-///////////////////////
+/////////////////////////
 
 (
 SynthDef("bufferplay",{ arg out = 0, bufnum;
@@ -60,9 +60,9 @@ SynthDef("bufferplay",{ arg out = 0, bufnum;
 e = Buffer.read(s, ~operatorwav);
 );
 
-///////////////////////
+/////////////////////////
 // VOICE ERROR SYNTHDEF
-///////////////////////
+/////////////////////////
 
 (
 SynthDef("bufferplay",{ arg out = 0, bufnum;
@@ -87,12 +87,21 @@ SynthDef(\sinbeep, {|freq = 440, out, gate = 1, attack = 0, sustain = 1, release
 );
 
 ///////////////////////
-// ERROR SCORE
+// ERROR SCORE PLAYBACK
 ///////////////////////
 (
-~errorplayback = Routine {
+~errorplayback = Routine.new( {
+	"rVal : ".post; r.postln;
+	"hVal : ".post; h.postln;
+	"kVal : ".post; k.postln;
+	"errorplayback".postln;
+	//reset crap
+	b.free;
+	b = Buffer.alloc(s, 100 * s.sampleRate);
+	//clear buffer!!
 	o.play;
 	6.22.wait;
+	o.stop;
 	"// beep_error".postln;
 	f = Pmono(\sinbeep, \dur, 1, \amp, 2, \attack, 0, \sustain, 1, \release, 0, \freq, 440).play;
 	//wait until beep is finished
@@ -101,15 +110,21 @@ SynthDef(\sinbeep, {|freq = 440, out, gate = 1, attack = 0, sustain = 1, release
 	Require(~timescore);
 	//start global score
 	1.wait;
-	u.play;
-};
+	~recordvoice.play;
+	//u.play;
+	k = 0;
+	d = 0;
+};);
 );
 
 ///////////////////////
 // VOICE SCORE PLAYBACK
 ///////////////////////
 (
-~voiceplayback = Routine {
+~voiceplayback_pt2 = Routine {
+	//reset crap
+	b.free;
+	b = Buffer.alloc(s, 100 * s.sampleRate);
 	"// beep2".postln;
 	f = Pmono(\sinbeep, \dur, 1, \amp, 2, \attack, 0, \sustain, 1, \release, 0, \freq, 440).play;
 	//wait until beep is finished
@@ -118,7 +133,7 @@ SynthDef(\sinbeep, {|freq = 440, out, gate = 1, attack = 0, sustain = 1, release
 	Require(~timescore);
 	//start global score
 	1.wait;
-	u.play;
+	~recordvoice.play;
 }
 );
 
@@ -144,15 +159,13 @@ r = Routine {
 	2.wait;
 	f.stop;
 	0.5.wait;
-	//timestuff, to enable minimum & maximum recording lengths
-	m = Date.getDate.rawSeconds;
 	~recordvoice.play;
 	//OSCdef
 	(
 	OSCdef(\receivewhatever, {|msg, time, addr, recvPort|
 	(msg[1] == \recdone).if({
-	~voiceplayback.play;
-			});
+	~voiceplayback_pt2.play;
+	});
 	}, '/timenet', n);
 	);
 
@@ -181,7 +194,3 @@ r = Routine {
 //r.play;
 //b.play
 //b.plot;
-
-~errorplayback.play
-
-

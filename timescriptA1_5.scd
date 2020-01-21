@@ -18,7 +18,7 @@ s.boot;
 // # flag for timeline operator error msg
 ~operatorerrorwav = ~srcdir +/+ "audio/sorry.wav";
 // # flag for simplelogic location
-~simplelogic = ~srcdir +/+ "simplelogic8.scd";
+~simplelogic = ~srcdir +/+ "simplelogic9.scd";
 // # flag for simplerec location
 ~simplerec = ~srcdir +/+ "simplerec2.scd";
 // # flag for gransyn1 location
@@ -97,8 +97,8 @@ SynthDef(\sinbeep, {|freq = 440, out, gate = 1, attack = 0, sustain = 1, release
 	k = 1;
 	//clear buffer!!
 	"kVALUEbegrec : ".post; k.postln;
-	b.free;
-	b = Buffer.alloc(s, 100 * s.sampleRate);
+	//b.free;
+	//b = Buffer.alloc(s, 100 * s.sampleRate);
 	o.play;
 	6.22.wait;
 	o.stop;
@@ -109,7 +109,7 @@ SynthDef(\sinbeep, {|freq = 440, out, gate = 1, attack = 0, sustain = 1, release
 	f.stop;
 	//sorry trig
 	m = 0;
-	Require(~timescore);
+	//Require(~timescore);
 	//start global score
 	1.wait;
 	~recordvoice.play;
@@ -143,7 +143,7 @@ SynthDef(\sinbeep, {|freq = 440, out, gate = 1, attack = 0, sustain = 1, release
 // MASTER SCORE PLAYER
 ///////////////////////
 (
-r = Routine {
+z = Routine {
 	//the synthesizer for this score
 	Require(~gransyn1);
 	//voice rec synthdef

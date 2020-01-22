@@ -37,6 +37,7 @@ c = "/usr/local/bin/sox" + ~srcdir +/+ "audio/bufferrec1_normalised.wav" + ~srcd
 	~wavprocess.play;
 	//trigger oscdef in main score file, for second beep and music score !
 	n.sendMsg("/timenet", \recdone);
+	~voiceplayback_pt2.play
 	//free OSCdef
 	//OSCdef.freeAll;
 }
@@ -49,7 +50,7 @@ c = "/usr/local/bin/sox" + ~srcdir +/+ "audio/bufferrec1_normalised.wav" + ~srcd
 //netaddress re: trigger for second beep and music perform
 n = NetAddr("127.0.0.1", 57120);
 ~recordvoice = Routine {
-/*
+
 //~position = 0;
 //create voicerecorder
 ~rec = Synth(\voiceRecorder, [\bufnum, b.bufnum, \pos, 0, \t_trig, 0]);
@@ -74,7 +75,7 @@ w = Task({ { r = r + 1; "$ ERROR klok : ".post; r.postln; 1.wait; }.loop });
 //trig for min record time pause length
 h = 1;
 //trig for pause sorry
-m = 0;*/
+m = 0;
 OSCdef(\trigger, {
 	arg msg;
 	//constantly triggered on id 9998 once per-second during recording
@@ -83,7 +84,8 @@ OSCdef(\trigger, {
 		//if paused or no record for more than 8 seconds then
 			if((((d <= ~minrecordtime)&&(~recpause == 0;))&&(r >= ~errortime))&&(h == 1)&&(k == 0),
 				{
-				m = 1;
+				//close microphone gate [ positive int closes gate ]
+				//~micGate = 1;
 				//"minrecordtime".post; ~minrecordtime.postln;
 				//pause recorder, send time position
 				//~rec.set(\t_sendTime, 1);
@@ -123,8 +125,6 @@ OSCdef(\trigger, {
 	});
 	//if signal > threshold (id1000), trigger record
 	(msg[2] == 1000).if({
-		if((m == 0),
-			{
 				~recpause = 1;
 				k = 0;
 				h = 1;
@@ -138,14 +138,9 @@ OSCdef(\trigger, {
 				//start recorder
 				"RECORDING RECORDING RECORDING".postln;
 				~rec.set(\pos, ~position, \t_trig, 1);
-				},
-				{ "1000 IF THEN FAIL".postln }
-			);
 	});
 	//if signal < threshold (id1001), ask synth to send position in buffer, pause record
 	(msg[2] == 1001).if({
-		if((m == 0),
-			{
 					~recpause = 0;
 					k = 0;
 					h = 1;
@@ -158,9 +153,6 @@ OSCdef(\trigger, {
 					//pause recorder, send time position
 					"PAUSE PAUSE PAUSE".postln;
 					~rec.set(\t_sendTime, 1);
-			},
-			{ "1001 IF THEN FAIL".postln }
-			);
 	});
 	//receive position from buffer
 	(msg[2] == 9999).if({

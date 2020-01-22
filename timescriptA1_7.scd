@@ -18,15 +18,15 @@ s.boot;
 // # flag for timeline operator error msg
 ~operatorerrorwav = ~srcdir +/+ "audio/sorry.wav";
 // # flag for simplelogic location
-~simplelogic = ~srcdir +/+ "simplelogic9.scd";
+~simplelogic = ~srcdir +/+ "simplelogic11.scd";
 // # flag for simplerec location
-~simplerec = ~srcdir +/+ "simplerec2.scd";
+~simplerec = ~srcdir +/+ "simplerec3.scd";
 // # flag for gransyn1 location
 ~gransyn1 = ~srcdir +/+ "pvh.gransyn1.scd";
 // # flag for timescore location.
-~timescore = ~srcdir +/+ "timescoreA1_2.scd";
+~timescore = ~srcdir +/+ "timescoreA1_3.scd";
 // # flag for min recording length
-~minrecordtime = 2;
+~minrecordtime = 3;
 // # flag for time (in seconds) before min recording breaks, function stops waiting for ~maxrecordtime to pass, and prints wav
 ~minrecordtimeBreak = 2;
 // # flag for max recording length
@@ -35,6 +35,8 @@ s.boot;
 ~errortime = 2;
 // # flags for recording input lvl
 ~telephoneAmp = 1;
+// # flag for telephone mic gate [ non-positive value opens gate ]
+//~micGate = -1.0;
 // # flags for attack/decay of amp when recording
 // # flag for recorder time to wait before stop recording :
 // [ release of Amplitude controls how long before stop recording, after audience speaks ]
@@ -107,8 +109,6 @@ SynthDef(\sinbeep, {|freq = 440, out, gate = 1, attack = 0, sustain = 1, release
 	//wait until beep is finished
 	2.wait;
 	f.stop;
-	//sorry trig
-	m = 0;
 	//Require(~timescore);
 	//start global score
 	1.wait;
@@ -125,8 +125,8 @@ SynthDef(\sinbeep, {|freq = 440, out, gate = 1, attack = 0, sustain = 1, release
 (
 ~voiceplayback_pt2 = Routine {
 	//reset crap
-	b.free;
-	b = Buffer.alloc(s, 100 * s.sampleRate);
+	//b.free;
+	//b = Buffer.alloc(s, 100 * s.sampleRate);
 	"// beep2".postln;
 	f = Pmono(\sinbeep, \dur, 1, \amp, 2, \attack, 0, \sustain, 1, \release, 0, \freq, 440).play;
 	//wait until beep is finished
@@ -135,7 +135,7 @@ SynthDef(\sinbeep, {|freq = 440, out, gate = 1, attack = 0, sustain = 1, release
 	Require(~timescore);
 	//start global score
 	1.wait;
-	~recordvoice.play;
+	//~recordvoice.play;
 }
 );
 
@@ -151,33 +151,10 @@ z = Routine {
 	//voice rec logic, interacts with synthdef
 	Require(~simplelogic);
 
-	//PULLED FROM LOGIC RECORD--start
-	//set recording position to default start
-	~position = 0;
-	//create voicerecorder
-	~rec = Synth(\voiceRecorder, [\bufnum, b.bufnum, \pos, 0, \t_trig, 0]);
-	//trigger is always running
-	~trigger = Synth(\trigger);
-	//sorry.wav var trig
-	k = 0;
-	//clock1 time, record time
-	d = 0;
-	//clock2 time, paused time
-	q = 0;
-	//clock3 time, paused time
-	r = 0;
-	//clock1, record
-	t = Task({ { d = d + 1; 1.wait;}.loop });
-	//clock2, pause
-	v = Task({ { q = q + 1; "$ pause klok : ".post; q.postln; 1.wait; }.loop });
-	//clock3, pause time before error message
-	w = Task({ { r = r + 1; "$ ERROR klok : ".post; r.postln; 1.wait; }.loop });
-	//trig for min record time pause length
-	h = 1;
-	//trig for pause sorry
-	m = 0;
-	//PULLED FROM LOGIC RECORD--end
 
+		//reset crap
+	b.free;
+	b = Buffer.alloc(s, 100 * s.sampleRate);
 	"// operator speaks".postln;
 	a = Pmono(\bufferplay, \bufnum, e.bufnum, \dur, 1).play;
 	//wait until audio file is finished (saymyname, 2.2sec)
@@ -227,3 +204,6 @@ b.play
 u.play;
 
 ~position.postln;
+
+~recordvoice.reset
+~recordvoice.play

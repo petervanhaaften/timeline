@@ -1,6 +1,9 @@
 
 (
+b.free;
 b = Buffer.alloc(s, 100 * s.sampleRate);
+// # flag for telephone mic gate [ non-positive value opens gate ]
+//~micGate = -1;
 (
 SynthDef(\trigger, {
 	var in, ctl;
@@ -30,4 +33,3 @@ SynthDef(\voiceRecorder, {
 }).add;
 )
 )
-

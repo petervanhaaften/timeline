@@ -113,7 +113,7 @@ SynthDef(\sinbeep, {|freq = 440, out, gate = 1, attack = 0, sustain = 1, release
 	//Require(~timescore);
 	//start global score
 	1.wait;
-	//~trigger.set(\micGate, 1);
+	~trigger.set(\micGate, 1);
 	~recordvoice.play;
 	//u.play;
 	k = 0;
@@ -134,7 +134,7 @@ SynthDef(\sinbeep, {|freq = 440, out, gate = 1, attack = 0, sustain = 1, release
 	//wait until beep is finished
 	2.wait;
 	f.stop;
-	Require(~timescore);
+	//Require(~timescore);
 	//start global score
 	1.wait;
 	//~recordvoice.play;
@@ -154,21 +154,20 @@ z = Routine {
 	Require(~simplelogic);
 
 
-		//reset crap
+	//reset crap
 	b.free;
 	b = Buffer.alloc(s, 100 * s.sampleRate);
 	"// operator speaks".postln;
-	//a = Pmono(\bufferplay, \bufnum, e.bufnum, \dur, 1).play;
+	a = Pmono(\bufferplay, \bufnum, e.bufnum, \dur, 1).play;
 	//wait until audio file is finished (saymyname, 2.2sec)
 	//should programatically determine the audio file length
-	//4.968.wait;
+	4.968.wait;
 	"// beep1".postln;
 	f = Pmono(\sinbeep, \dur, 1, \amp, 2, \attack, 0, \sustain, 1, \release, 0, \freq, 440).play;
 	//wait until beep is finished
 	2.wait;
 	f.stop;
 	0.5.wait;
-	~trigger.set(\micGate, 1);
 	~recordvoice.play;
 	//OSCdef
 	(
@@ -209,10 +208,3 @@ u.play;
 
 ~recordvoice.reset
 ~recordvoice.play
-
-~micGate = 0
-~micGate = 1;
-{ Gate.ar(SoundIn.ar(0), ~micGate) }.play
-
-
-{ Gate.ar(SinOsc.ar(200, 0, 0.5), 1) }.play;

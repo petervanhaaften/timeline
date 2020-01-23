@@ -55,7 +55,7 @@ n = NetAddr("127.0.0.1", 57120);
 //create voicerecorder
 ~rec = Synth(\voiceRecorder, [\bufnum, b.bufnum, \pos, 0, \t_trig, 0]);
 //trigger is always running
-~trigger = Synth(\trigger);
+	~trigger = Synth(\trigger, [\micGate, 1]);
 ~recpause = 0;
 
 //sorry.wav var trig
@@ -85,7 +85,8 @@ OSCdef(\trigger, {
 			if((((d <= ~minrecordtime)&&(~recpause == 0;))&&(r >= ~errortime))&&(h == 1)&&(k == 0),
 				{
 				//close microphone gate [ positive int closes gate ]
-				//~micGate = 1;
+				~micGate = 0;
+				~trigger.set(\micGate, 0);
 				//"minrecordtime".post; ~minrecordtime.postln;
 				//pause recorder, send time position
 				//~rec.set(\t_sendTime, 1);
@@ -138,6 +139,7 @@ OSCdef(\trigger, {
 				//start recorder
 				"RECORDING RECORDING RECORDING".postln;
 				~rec.set(\pos, ~position, \t_trig, 1);
+			~trigger.set(\micGate, 1);
 	});
 	//if signal < threshold (id1001), ask synth to send position in buffer, pause record
 	(msg[2] == 1001).if({
@@ -153,6 +155,7 @@ OSCdef(\trigger, {
 					//pause recorder, send time position
 					"PAUSE PAUSE PAUSE".postln;
 					~rec.set(\t_sendTime, 1);
+			~trigger.set(\micGate, 1);
 	});
 	//receive position from buffer
 	(msg[2] == 9999).if({

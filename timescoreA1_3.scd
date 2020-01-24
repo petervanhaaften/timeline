@@ -79,6 +79,51 @@ Pdef(\part, Pdef(\part3,
 )).play;
 );
 
+///////////////////////
+//    SCORE INIT
+///////////////////////
+
+(
+Pdef(\part, Pdef(\part3,
+	Ppar([
+			Pmono(
+				\gran_1e,
+			    \soundBuf, b.bufnum,
+				\dur, Pseq([1], 1),
+				\attack, Pseq([0], 1),
+				\release, Pseq([1], 1),
+				\posLo, Pseq([0], 1),
+				\posHi, Pseq([1], 1),
+				\posRateE, Pseq([0], 1),
+				\posRateM, Pseq([1], 1),
+				\posRateMLag, Pseq([3], 1),
+				\posRateMCurve, Pseq([1], 1),
+				\overlap, Pseq([3], 1),
+				\overlapLag, Pseq([1], 1),
+				\overlapCurve, Pseq([1], 1),
+				\trigRate, Pseq([1], 1),
+				\trigRateLag, Pseq([5], 1),
+				\trigRateCurve, Pseq([0.5], 1),
+				\rate, Pseq([1], 1),
+				\rateLag, Pseq([1], 1),
+				\rateCurve, Pseq([-1], 1),
+				\bpRQ, Pseq([0.25], 1),
+				\bpRQLag, Pseq([0.25], 1),
+				\bpRQCurve, Pseq([1], 1),
+				\bpLo, Pseq([50], 1),
+				\bpLoLag, Pseq([50], 1),
+				\bpLoCurve, Pseq([0], 1),
+				\bpHi,Pseq([1], 1),
+				\bpHiLag, Pseq([1], 1),
+				\bpHiCurve, Pseq([1], 1),
+				\panmax, Pseq([0], 1),
+			    \amp, Pseq([0.8], 1),
+			    //amp, 0,
+			)
+	])
+)).play;
+);
+
 
 //var mintime, var maxtime, var recordedtime, var pausewaittime
 //if recorded or paused. . .

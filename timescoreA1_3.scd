@@ -84,7 +84,7 @@ Pdef(\part, Pdef(\part3,
 ///////////////////////
 
 (
-Pdef(\part, Pdef(\part3,
+Pdef(\part, Pdef(\part1,
 	Ppar([
 			Pmono(
 				\gran_1e,

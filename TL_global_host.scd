@@ -13,6 +13,7 @@ s.boot;
 // - debian location
 //~srcdir = Platform.userHomeDir +/+ "src/timeline/";
 
+// call external config files
 Require(~srcdir +/+ "/config/TL_globalcfg.scd");
 Require(~srcdir +/+ "/scenes/scene1/TL_localcfg_scene1.scd");
 
@@ -22,7 +23,7 @@ q = OSCFunc({
 	(msg[1] == 1).if({
 		// /timeline/scene 1
 		"/timeline/scene 1".postln;
-		Require("/Users/pvh/src/Projects/timeline/scenes/scene1/TL_callflow_scene1.scd");
+		Require(~srcdir +/+ "/scenes/scene1/TL_callflow_scene1.scd");
 	});
 	(msg[1] == 2).if({
 		// /timeline/scene/2

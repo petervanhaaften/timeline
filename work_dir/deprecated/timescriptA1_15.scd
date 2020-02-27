@@ -17,7 +17,7 @@ Routine {
 	// - debian location
 	//~srcdir = Platform.userHomeDir +/+ "src/timeline/";
 	// # flag for timeline operator speech
-	~operatorwav = ~srcdir +/+ "audio/stateyourname.wav";
+	~operatorwav = ~srcdir +/+ "audio/speakoneword.wav";
 	// # flag for timeline operator error msg
 	~operatorerrorwav = ~srcdir +/+ "audio/sorry.wav";
 	// # flag for simplelogic location
@@ -184,9 +184,9 @@ Routine {
 			0.wait;
 			"// operator speaks".postln;
 			a = Pmono(\bufferplay, \bufnum, e.bufnum, \dur, 1).play;
-			//wait until audio file is finished (saymyname, 2.2sec)
+			//wait until audio file is finished (speakoneword, 5.9sec)
 			//should programatically determine the audio file length
-			4.968.wait;
+			6.5.wait;
 			"// beep1".postln;
 			f = Pmono(\sinbeep, \dur, 1, \amp, 0.8, \attack, 0, \sustain, 1, \release, 0, \freq, 440).play;
 			//wait until beep is finished

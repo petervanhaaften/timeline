@@ -1,0 +1,5 @@
+local osc = require 'osc'
+
+client = osc.Client('127.0.0.1', 11000)
+
+client:send('/hello', 'lubyk', 2014)

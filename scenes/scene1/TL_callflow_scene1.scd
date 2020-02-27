@@ -3,7 +3,7 @@
 //peter van haaften, january 2020
 //
 (
-Routine {
+~callflow = Routine {
 
 
 	// # flag for telephone mic gate [ non-positive value opens gate ]
@@ -154,7 +154,7 @@ Routine {
 			~recordvoice.play;
 		};
 	).play;
-}.play;
+};
 )
 //r.play;
 //b.play

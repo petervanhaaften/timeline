@@ -142,7 +142,8 @@
 			//
 			//DEAL ALLOWS AUDIO TO BOOT
 			//
-			0.wait;
+			//wait for ringing to complete
+			3.wait;
 			"// operator speaks".postln;
 			a = Pmono(\bufferplay, \bufnum, e.bufnum, \dur, 1).play;
 			//wait until audio file is finished (speakoneword, 5.9sec)

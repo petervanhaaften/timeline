@@ -4,12 +4,13 @@
 (
 ~wavprocess = Routine {
 	//normalise recorded wave w/sox
-	a = "/usr/local/bin/sox" + ~srcdir +/+ "audio/bufferrec1.wav" + ~srcdir +/+ "audio/bufferrec1_normalised.wav" + "gain -n -3";
+	//formerly /usr/local/bin/sox, from osx
+	a = "/usr/bin/sox" + ~srcdir +/+ "audio/bufferrec1.wav" + ~srcdir +/+ "audio/bufferrec1_normalised.wav" + "gain -n -3";
 	a.unixCmd("done : normalise".postln, false);
 	0.1.wait;
 	//compress recorded file
 	//compand 0.02,0.2 5:-60,-40,-20 -5 -80 0.1
-c = "/usr/local/bin/sox" + ~srcdir +/+ "audio/bufferrec1_normalised.wav" + ~srcdir +/+ "audio/bufferrec1_compressed.wav" + "compand 0.02,0.2 5:-60,-40,-20 -5 -80 0.1";
+	c = "/usr/bin/sox" + ~srcdir +/+ "audio/bufferrec1_normalised.wav" + ~srcdir +/+ "audio/bufferrec1_compressed.wav" + "compand 0.02,0.2 5:-60,-40,-20 -5 -80 0.1";
 	c.unixCmd("done : compression".postln, false);
 	0.1.wait;
 	//switch buffer

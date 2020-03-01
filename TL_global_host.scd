@@ -13,9 +13,9 @@ s.boot;
 // MASTER HOST CONFIG
 // # flag for timeline src directory
 // - macbook location
-~srcdir = Platform.userHomeDir +/+ "src/Projects/timeline/";
+//~srcdir = Platform.userHomeDir +/+ "src/Projects/timeline/";
 // - debian location
-//~srcdir = Platform.userHomeDir +/+ "src/timeline/";
+~srcdir = Platform.userHomeDir +/+ "src/timeline/";
 
 // call external config files
 Require(~srcdir +/+ "/config/TL_globalcfg.scd");
@@ -35,8 +35,9 @@ Require(~srcdir +/+ "/scenes/scene1/TL_localcfg_scene1.scd");
 	});
 	(msg[1] == 1).if({
 		// /timeline/scene 1
-		"/timeline/scene 1".postln;
+		"/timeline/scene 1 << run scene 1 >>".postln;
 		Require(~srcdir +/+ "/scenes/scene1/TL_callflow_scene1.scd");
+		"loaded scene 1".postln;
 		~callflow.reset;
 		~callflow.play;
 	});

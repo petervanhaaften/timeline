@@ -1,37 +1,37 @@
-OSCFunc.trace(true); // Turn posting on
-OSCFunc.trace(false); // Turn posting off
-
-s = Server.default
-s.options.sampleRate = 48000;
+//OSCFunc.trace(true); // Turn posting on
+//OSCFunc.trace(false); // Turn posting off
+(
+(
+s = Server.default;
+//s.options.sampleRate = 48000;
 s.boot;
-s.reboot;
+);
 
 (
-s.boot;
-Require("/home/asterisk/src/timeline/scenes/scene1/TL_callflow_scene1.scd");
-~callflow.play;
-)
-~callflow.reset;
-~callflow.stop;
-(
+
+~globalscenectl = Routine {
 // MASTER HOST CONFIG
 // # flag for timeline src directory
 // - macbook location
-//~srcdir = Platform.userHomeDir +/+ "src/Projects/timeline/";
+~srcdir = Platform.userHomeDir +/+ "src/Projects/timeline/";
 // - debian location
-~srcdir = Platform.userHomeDir +/+ "src/timeline/";
+//~srcdir = Platform.userHomeDir +/+ "src/timeline/";
 
 // call external config files
 Require(~srcdir +/+ "/config/TL_globalcfg.scd");
 Require(~srcdir +/+ "/scenes/scene1/TL_localcfg_scene1.scd");
 
 //calling scenes, on receipt of OSC message
-q = OSCFunc({
+~globalosc_scene = OSCFunc({
 	arg msg, time, addr, recvPort; [msg, time, addr, recvPort].postln;
 	(msg[1] == 9999).if({
 		// HANGUP, KILL running audio
-		"/timeline/scene 999 << kill audio >>".postln;
-		~callflow.stop;
+		"/timeline/scene 9999 << kill audio >>".postln;
+		CmdPeriod.run;
+		"hangup command complete, cleaning up routine".postln;
+		~globalscenectl.reset;
+		~globalscenectl.play;
+		"ready for incoming call".postln;
 	});
 	(msg[1] == 1).if({
 		// /timeline/scene 1
@@ -49,7 +49,7 @@ q = OSCFunc({
 		"/timeline/scene 3".postln;
 	});
 }, '/timeline/scene')
-);s
+}.play;
 )
-
-b.play;
+)
+//b.play;

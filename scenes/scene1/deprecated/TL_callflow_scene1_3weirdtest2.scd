@@ -2,9 +2,16 @@
 //first working voice2music composition for 'the timeline' project
 //peter van haaften, january 2020
 //
-//~callflow.reset
-//~callflow.play
-//CmdPeriod.run
+~callflow.reset;
+~callflow.play;
+~callflow.stop;
+s.freeAll;
+(
+z.stop;
+a.stop;
+~errorplayback.stop;
+~voiceplayback_pt2.stop;
+)
 (
 ~callflow = Routine {
 

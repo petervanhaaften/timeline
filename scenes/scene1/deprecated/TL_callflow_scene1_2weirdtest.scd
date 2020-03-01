@@ -2,9 +2,17 @@
 //first working voice2music composition for 'the timeline' project
 //peter van haaften, january 2020
 //
-//~callflow.reset
-//~callflow.play
-//CmdPeriod.run
+
+
+~callflow.play
+~callflow.stop
+~zebra.reset
+a.stop
+~zebra.play
+~zebra.stop
+~zebra.free
+CmdPeriod.run
+s.freeAll;
 (
 ~callflow = Routine {
 
@@ -127,7 +135,7 @@
 	// MASTER SCORE PLAYER
 	///////////////////////
 	(
-		z = Routine {
+		~zebra = Routine {
 			//the synthesizer for this score
 			Require(~gransyn1);
 			//voice rec synthdef
@@ -156,7 +164,7 @@
 			0.5.wait;
 			~recordvoice.play;
 		};
-	).play;
+	);
 };
 )
 //r.play;

@@ -1,0 +1,5 @@
+
+*.sh~
+*.sh#
+*.scd#
+boot/.DS_Store

@@ -44,7 +44,6 @@ Require(~srcdir +/+ "/scenes/scene1/TL_localcfg_scene1.scd");
 	(msg[1] == 2).if({
 		// /timeline/scene/2
 		"/timeline/scene 2".postln;
-		u.play;
 	});
 	(msg[1] == 3).if({
 		// /timeline/scene/3

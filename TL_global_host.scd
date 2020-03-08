@@ -13,10 +13,14 @@ Platform.case(
 
 (
 (
-Server.default.options.inDevice_("JackRouter");
-Server.default.options.outDevice_("JackRouter");
+Platform.case(
+    \osx,       {
+		Server.default.options.inDevice_("JackRouter");
+		Server.default.options.outDevice_("JackRouter"); },
+    \linux,     {  },
+    );
 s = Server.default;
-s.options.sampleRate = 48000;
+s.options.sampleRate = 44100;
 s.boot;
 );
 
@@ -72,6 +76,6 @@ Require(~srcdir +/+ "/scenes/scene1/TL_localcfg_scene1.scd");
 )
 )
 //b.play;
-~playscore.reset;
-~playscore.play;
+//~playscore.reset;
+//~playscore.play;
 

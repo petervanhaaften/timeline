@@ -4,10 +4,12 @@
 //building telephone filter
 //{SinOsc.ar(440,0,0.5).round(2**(-8))}.scope //bit reduction to 8 bit signal
 
+/*
 Platform.case(
     \osx,       { "OSX".postln },
     \linux,     { "Linux".postln },
 );
+*/
 
 (
 (

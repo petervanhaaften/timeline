@@ -1,20 +1,33 @@
 //OSCFunc.trace(true); // Turn posting on
 //OSCFunc.trace(false); // Turn posting off
+
+//building telephone filter
+//{SinOsc.ar(440,0,0.5).round(2**(-8))}.scope //bit reduction to 8 bit signal
+
+Platform.case(
+    \osx,       { "OSX".postln },
+    \linux,     { "Linux".postln },
+);
+
 (
 (
+Server.default.options.inDevice_("JackRouter");
+Server.default.options.outDevice_("JackRouter");
 s = Server.default;
-//s.options.sampleRate = 48000;
+s.options.sampleRate = 48000;
 s.boot;
 );
+
+//things to do on platform switch
+// TL_recorder_logic:
+// - modify sox location in both compressor and normalize processes
+
 
 (
 
 ~globalscenectl = Routine {
 // MASTER HOST CONFIG
 // # flag for timeline src directory
-// - macbook location
-//~srcdir = Platform.userHomeDir +/+ "src/Projects/timeline/";
-// - debian location
 ~srcdir = Platform.userHomeDir +/+ "src/timeline/";
 
 // call external config files
@@ -43,8 +56,10 @@ Require(~srcdir +/+ "/scenes/scene1/TL_localcfg_scene1.scd");
 	});
 	(msg[1] == 2).if({
 		// /timeline/scene/2
+		Require(~srcdir +/+ "/scenes/scene1/TL_callflow_scene1.scd");
 		"/timeline/scene 2".postln;
-		u.play;
+		~playscore.reset;
+		~playscore.play;
 	});
 	(msg[1] == 3).if({
 		// /timeline/scene/3
@@ -55,3 +70,6 @@ Require(~srcdir +/+ "/scenes/scene1/TL_localcfg_scene1.scd");
 )
 )
 //b.play;
+~playscore.reset;
+~playscore.play;
+

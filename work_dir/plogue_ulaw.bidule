@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<BoardLayout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation='Bidule.xsd' scaleFactor="2">
+	<MediaPool>
+	</MediaPool>
+	<BiduleGroup id="UID_1026570522" displayName="" zoom="1" processingMode="process" version="0.0">
+		<Geometry x="203" y="159" w="1388" h="651"/>
+		<Parameter id="-11" userMin="0" userMax="1" lockedForRandom="false" mutationFactor="0.1">0</Parameter>
+		<Parameter id="-9" userMin="0" userMax="0" lockedForRandom="false" mutationFactor="0.1">1.0</Parameter>
+		<Parameter id="-7" userMin="0" userMax="1" lockedForRandom="false" mutationFactor="0.1">1</Parameter>
+		<Parameter id="-5" userMin="0" userMax="0" lockedForRandom="false" mutationFactor="0.1">0.0</Parameter>
+		<Parameter id="-2" userMin="0" userMax="2" lockedForRandom="false" mutationFactor="0.1">0.0</Parameter>
+		<Bidule id="UID_1583538598" type="1145269556_1_1" displayName="Decimort 1 ins 1 outs_0" processingMode="process">
+			<Geometry x="-204" y="15.0001" w="0" h="0"/>
+			<ChannelConfig numSampleIn="1" numSampleOut="1" numMidiIn="1" numMidiOut="0" numFreqIn="0" numFreqOut="0" numMagIn="0" numMagOut="0" numDiscIn="0" numDiscOut="0"/>
+			<Gui state="normal" hidden="true" generic="false">
+				<Geometry x="580" y="338" w="0" h="0"/>
+			</Gui>
+			<Parameter id="-10000" userMin="0" userMax="1" lockedForRandom="false" mutationFactor="0.1">1</Parameter>
+			<Parameter id="-9" userMin="0" userMax="0" lockedForRandom="false" mutationFactor="0.1">1.0</Parameter>
+			<Parameter id="-7" userMin="0" userMax="1" lockedForRandom="false" mutationFactor="0.1">1</Parameter>
+			<Parameter id="-5" userMin="0" userMax="0" lockedForRandom="false" mutationFactor="0.1">0.0</Parameter>
+			<Parameter id="-2" userMin="0" userMax="2" lockedForRandom="false" mutationFactor="0.1">0.0</Parameter>
+			<Parameter id="0" userMin="0" userMax="1" lockedForRandom="false" mutationFactor="0.1">0.555000</Parameter>
+			<Parameter id="1" userMin="0" userMax="1" lockedForRandom="false" mutationFactor="0.1">1.0</Parameter>
+			<Parameter id="2" userMin="0" userMax="1" lockedForRandom="false" mutationFactor="0.1">0.485000</Parameter>
+			<Parameter id="3" userMin="0" userMax="1" lockedForRandom="false" mutationFactor="0.1">1.0</Parameter>
+			<Parameter id="4" userMin="0" userMax="1" lockedForRandom="false" mutationFactor="0.1">0.510000</Parameter>
+			<Parameter id="5" userMin="0" userMax="1" lockedForRandom="false" mutationFactor="0.1">0.205000</Parameter>
+			<Parameter id="6" userMin="0" userMax="1" lockedForRandom="false" mutationFactor="0.1">0.0</Parameter>
+			<Parameter id="7" userMin="0" userMax="1" lockedForRandom="false" mutationFactor="0.1">1.0</Parameter>
+			<Parameter id="8" userMin="0" userMax="1" lockedForRandom="false" mutationFactor="0.1">1.0</Parameter>
+			<Parameter id="9" userMin="0" userMax="1" lockedForRandom="false" mutationFactor="0.1">0.0</Parameter>
+			<Parameter id="10" userMin="0" userMax="1" lockedForRandom="false" mutationFactor="0.1">1.0</Parameter>
+			<Parameter id="11" userMin="0" userMax="1" lockedForRandom="false" mutationFactor="0.1">1.0</Parameter>
+			<Parameter id="12" userMin="0" userMax="1" lockedForRandom="false" mutationFactor="0.1">0.0</Parameter>
+			<Parameter id="13" userMin="0" userMax="1" lockedForRandom="false" mutationFactor="0.1">1.0</Parameter>
+			<Parameter id="14" userMin="0" userMax="1" lockedForRandom="false" mutationFactor="0.1">1.0</Parameter>
+			<Parameter id="15" userMin="0" userMax="1" lockedForRandom="false" mutationFactor="0.1">0.275000</Parameter>
+			<Parameter id="16" userMin="0" userMax="1" lockedForRandom="false" mutationFactor="0.1">0.0</Parameter>
+			<Parameter id="17" userMin="0" userMax="1" lockedForRandom="false" mutationFactor="0.1">0.0</Parameter>
+			<CustomData name="VSTChunk">eJztndty20YShrPvsA8wqxtfWcZhDkCV7apYPmXXB5XlxFt7B4uQhDIFyCSYrPMy+6o7kGVFaMyIDREg6OTXhcuUABAYzjd9+LuHvxxE//j7//72w8PD+eq0KI/qrM5FdnExL46zuqjKR3tP8+PivFrUe48f/lwWn1f506zOHjx+eJgtsvO8zhfLy5MeP7xofiFK+8tHe4eLPDu/2BO/ZvOVfRnsK6WC5seEKlLKxCYO1N6D9kmv8pNaPCnq5fV5ofOQ54vc3kZ5/OXG9WVyef1Q2uuGoTRSB6nz5FdF+enyCuvepJjbZxPvv1zkNx8jSC9/AqnjSOkkVql0nn6wqquTkxtnRoG8PDOJwjDRgVbauM98ly+rB0+ycvZbMavP/rgCPfhdcXq2bri+HtMdL8+B3bHxvKtrcDzXJAPhOYr70Jd3eHCWlWU+v+W5n//b/7e3q/piVYtfqvnq/OZHG5mvM1Sl2n66Uhqj3B/Q1cO/XczyBXOgHMc+6PBjmVnm9ddX4ni1WORl/fV3j/YitfftADtKn67e4xua4ml+kq3mdjbYv10f+GJRrS6ujjyYZ8tlcSyeVP/Nl9dHeEC/Ouf14YHQwZ5Y5L82w7gGcItcevPHmGQ938G+/srt9Y+KIze3LujTuHVuIJPEvagwJrYXevfysG5aA+UpUY7bczHR2j0Zh0L5kiYeVaH+WNQi+fTydyZZQ1pJFbaBCZLEPTAA5i8FjHvVnIyOUE+Dhwlay0baeAHAA3jsGB5xNA0eKbEecciOsYAH8BgfjzRIxcus+Vh5MUuYEncoiiJO0BKTuCNUvlDRQVGStiOe0BgNikCRZM7FCbg60PLqfu1AnRbLevGFi1hEXKo0imIOYmHSDuG8+QQXYjokb6rU8Ii5j+zk/ZKEfK5SIu+3S9zFEfmAtHZPlonAO/zwWhxUs6I8ZZu1sG1hOJl2u/4oYpf6GDUT8bJ/WwAujdvsS236Gbp9ZUgYaF1dUDguhezQewIKn52v5lldLdj8BcR26dA9AymB8QY2L4nWT9qtIajJc8SxewmCzYOvSWB7/p/7oXhV8W0d09UjrLGlI2canZwcaT287gTWwNrYhu3wiM0ZkXeTxJ36oyaNWKU0jvlOJfKNIMpJVEjmooVqV5A6Orwf2oCSixXX4yNYGeJhep09Z6xGMhKjWC9g9d1hFRGvponItoHVgxvlSq7apeaR89kfD80D8VXxeVXMJlDJiD9mHVI1vNWyKwdNrPqWjo7HKJN2hiRRxn2D3gRJFKv2FYzqBOugc1g6ddge8zQKbi1cbRPnG/phjN677PzjvChPxYtVUWfsPIlO24+kosDtHN612ilqW7pIJsOXczDDNEmeNdWyX5i2H8e6/TRB92kAHQs6O/UkmRqB7DhQ/kJh8kHEnrBkAvfz/SI7zrOP81z8eF6tSrYUzorlJJEVvEKJqz6fGQVvZhQDWt/YUMIDVBEZyCvLewENFUE87VpkAMoENNFExgm6urHfVLaTgkniWWvd0O2nUXuiSynHtZ9Pi+b/PKNporY6lQSSkfDkG824m1EdQTvfl0RjS6KI2UgjifOZJtpt1f3uKyMABqhMUANNRtOVSfdmctqWNLBTb2cK9Q8Whf1zPkEEyfYVN0PQfc0Ob4br7iBvMzBaKmp7TVEYd5wmb00mmUNGetZXjw3klC0NittLe7HmMersdDjm7Fqfklyx9JhLpwCxDaeVSSGxyr1lvv2IzCbrN3RGwoFmk2kiSWqHhrNNXj2HdocsaruQRqdTRJoksLA31TFxXkc2IL6e7BNo2gFY72PdxrD3Av0UkeMG23xnskIJcaBVEo3i4CbtsUvD0L14dDvFGaCuQd3hXcMK3wlgdn42SDfzZfeTgESdDj96UIv743ExEweL1fKMHXtyjdAdLIifV6KR9mjKuzVBTvUURRwFdkDKWWb/Ag5ys+yQj9lRi3U7r/sxpzlmRAlUt5feMOqmhaeKR59UdV2dF7/bSz14tzo5uVfe+2d2zi406MqSrDo5RZK+1qXy1OW6Kg3IkjhKu3mPepDOjA1Izbs90aOi+ovFSYDhWhO/T6CncJYZu4F4+zhItBbG3Wh5KnbfVOX9eVHm2UI8+7y6PGhIZYbdY+SCNCKdVkapMSA1DOPghjTW5EyfJ+1nlFzB1RICRoc1pew2nAlwvPR8Gx651pPdXHHnmLQ9QXvUDPXxcaVuL6/WYWMayrAjrHro9cekjEZQMDgsg2HKVey3z+DLfD6vxPlCvPnyeVUs2fpnzLV1dy3fi8mYjeOz3r18L+3YUc9a4ZmAsHwjU8eur56Aup/K2WpZL4psLl5Vzwt29wd13gJP8SEtGWLnxBwkBvRNE1+6aTMU2ca9W4rArWry1wyRR0xlV+oFn8PyScvYQk937gR4vivK06aO9l/F8Sc+m+unkLOHhN/vSNzGkYr3uDB1szgJdXPCoG/tHs1UxTG807E5jHgthRNweHhWlbk4yOZzvmpJIrgwHHh/a+aWphvub83dINS7v/X1DZqeXSXAbVzcvu1vvW55naJp0g6MOMwu+EUCAY0CQ5+TfVfemE7CNnaQ4m4Y57duhjxMFCEKHBk3RTwK/8bm2+ftaXFa1Jch4GpW5sshpQi2GO5MgwZtH1CadIzSHENS0/zSHG5Bll/fZpdVgsTBSEzbZSsm0L3K6DRJ1blcr0HxfDbPj+tFcVLkw/Uv94r3JCmRS8NRekC4mx90e7VITaXUYd8OZtmVp8DhuBwa0inSNDTzORy3A+vtfCbeF/wq1SFdzSRsz2algjEK3ALiBDZikPv8Lm9Ipuw6XNrR1LYNuNZt3vFzOb/T9h0f8mIxEy/fvX8+ZAfzJhssGtPGNEw9+6NOpUZwNghYFycSx9jb6dHZO7Y9+RzRsg/mZv1rF/zLbng7RNcIq5DYU9kqE+L3p76B8Y4tL2PhXCA6T/ldb9J/WXEuPhSzvBzQ3DZaI2Hbpxa65mBIq/eNGkNqjJg9l5JsTxGkXQs6ioPbqDBkGB3lgH6WI7K3kJHdWGsQmCPSXuOq+fXAzNkWZg3MrBad3iw31dbEcVKKvevBzgB+ZC+SV5bwcsjwNQnX13D6BUySApC+xM1UPV8xWX/CxJPO9meWNDHeMWv3EZ7D4QfepG2vKDaekzfknbO6e3iPyS2Gqqcbz9owYkTTzd7yw9dZxv+EPX2gnufvqalmy1wcnRUn3Fo/zrLA/qoPp+fZbWgbxaUn7+LVhrtTdwtfHtKrT9g1iOyFZ1P/nWjTLkXFswQw8vZDRPJbd9RZKtMtaIe9KX6/yMrjXMzzbCbCITkmD+Ld63mqzcVYqTL3QZvBSYqvXG1Nfjg5GY/vO3v25wqOb+IVDYoXaeN0BBZ+vLiR9Yab90U0ixRzi4/YwYHfxeOU3fLKvG6hkdGoOoipDOi2+47aOo+pTMP1M2Wtu5yufcwRYWZvGDBNYeHy+EtVit+a/FeP7/TiOD/O/m3D7Cxz92+vtz0DgK/JfPHS203lcL+IxZ+W7ezZyQybVcLNJjtHlr1VwoYrgVlf9ecLm2lVtaMUdF3OmyU5jrcScPSMqVaCt2VuF4HlmbX19gYuFtWJPWcK+ZkBwLYqHTnpz2krHZvNYck9OjbEGMaGc9qffClugq5/B9tbOpMYLV/joctuw5ykfHJZ3yvv9do6ibOnsFPVIiuot2rblZlhrOADmO+79wyw2wr9Fobt6FLzzbjpW3JejH79YdLeDEXBswbwq3A2Gt1RzffONgi9qcRRJZqFICtrcZix+9c5zHO/THfg70zrU0zG2ajHzbwh2/T0tvHMrNkmeHP2LhnGO2cMhi+lzQiadtw95+d8J2mUzy9y+4/Fuxk7bo/EfnejFE8lyZ3c9RGakPgbQDlkFWIefE2Jt6jWxMJ44+DdKRVttgnkri6OjAVJrznm/NriE/Lurt60EdXoHf6m7uvSk9kU+/ZvZbvDaXSoPuWc3UYTKEzbUZjWFWO/qWqxWuYzZg321TFyOCFqOjO349igpWGHRdlvHMTgAByAAynBATgAB1KBA3AADqQGB+AAHEgDDsABOJAJOAAH4ECm4AAcgAMVgANwAA7UcP2S4AAcfL8cQE8GB+BAKOjJ4AAcCAU9GRyAA6GgJ4MDcCAU9GRwAA6Egp4MDsCBUNCTwQE4EAp6MjgAB0JDTwYH4EBo6MngABwIDT0ZHIADoaEngwNwIDT0ZHAADoSGngwOwIHQ0JPBATgQGnoyOAAHQkNPBgfgQGjoyeAAHAgDPRkcgANhoCeDA3AgDPRkcAAOhIGeDA7AgTDQk8EBOBAGejI4AAfCQE8GB+BAGOjJ4AAcCAM9GRyAA2GgJ4MDcCAS6MngAByIBHoyOAAHIoGeDA7AgUigJ4MDcCAS6MngAByIBHoyOAAHIoGeDA7AgUigJ4MDcCAS6MngAByIBHoyOAAHIoWeDA7AgUihJ4MDcCBS6MngAByIFHoyOAAHIoWeDA7AgUihJ4MDcCBS6MngAByIFHoyOAAHIoWeDA7AgUihJ4MDcCDCAIIyQAAIFgQoygABIFgQICkDBIBgQYCmDBAAggUBojJAAAgWBKjKAAEgWBAgKwMEgGBBgK4MEACCBQHCMkAACBYEKMsAASCIMISyDBAAggUByjJAAAgWBCjLAAEgWBCgLAMEgGBBgLIMEACCBQHKMkAACBYEKMsAASBYEKAsAwSAYEGAsgwQAIIFAcoyQAAIIoygLAMEgGBBgLIMEACCBQHKMkAACBYEKMsAASBYEKAsAwSAYEGAsgwQAIIFAcoyQAAIFgQoywDhzwrC1X9eLKrVxfUr+9yfrl8sj+qszh8/fF3MioOqrBfV/HV2cfU+18xcXnO+Oi3Kr4f/8H8HzVL1</CustomData>
+			<CustomData name="VSTChunkCompressed">yes</CustomData>
+			<CustomData name="VSTChunkSize">106269</CustomData>
+			<CustomData name="VSTChunkSum">-6843</CustomData>
+		</Bidule>
+		<Bidule id="UID_1583538698" type="AudioDuplex_0" displayName="JackRouter(duplex)" processingMode="process">
+			<Geometry x="-204" y="-117" w="0" h="0"/>
+			<Geometry x="-204" y="137" w="0" h="0"/>
+			<ChannelConfig numSampleIn="4" numSampleOut="4" numMidiIn="0" numMidiOut="0" numFreqIn="0" numFreqOut="0" numMagIn="0" numMagOut="0" numDiscIn="0" numDiscOut="0"/>
+			<Parameter id="-9" userMin="0" userMax="0" lockedForRandom="false" mutationFactor="0.1">1.0</Parameter>
+			<CustomData name="DeviceName">JackRouter(duplex)</CustomData>
+		</Bidule>
+		<Link producerId="UID_1583538698" producerChannel="0" listenerId="UID_1583538598" listenerChannel="0"/>
+		<Link producerId="UID_1583538598" producerChannel="0" listenerId="UID_1583538698" listenerChannel="0"/>
+		<Link producerId="UID_1583538598" producerChannel="0" listenerId="UID_1583538698" listenerChannel="1"/>
+	</BiduleGroup>
+	<Automation id="Automation"/>
+</BoardLayout>

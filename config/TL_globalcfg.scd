@@ -10,6 +10,6 @@
 // # flag for simplerec location
 ~simplerec = ~srcdir +/+ "/synths/TL_recorder.scd";
 // # flag for gransyn1 location
-~gransyn1 = ~srcdir +/+ "/synths/pvh.gransyn1_3.scd";
+~gransyn1 = ~srcdir +/+ "/synths/pvh.gransyn1_4.scd";
 // # flag for timescore location.
 //~timescore = ~srcdir +/+ "TL_score_scene1.scd";

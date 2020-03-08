@@ -1,207 +1,168 @@
-
-
-///////////////////////
-//    SCORE BLOCK 3
-///////////////////////
-/*
-(
-Pdef(\part, Pdef(\part3,
-	Ppar([
-			Pmono(
-				\gran_1e,
-			    \soundBuf, b.bufnum,
-				\dur, Pseq([8, 3, 8, 1, 2, 3, 18, 10, 15], 1),
-				\attack, 3,
-				\release, Pseq([4, 4, 8, 3, 4, 4, 4, 4, 10], 1),
-				\posLo, 0.4,
-				\posHi, 0.70,
-				\posRateE, 0,
-				\posRateM, Pseq([0.002, 0.002, 0.029, 0.005, 0.002, 0.002, 0.002, 0.002, 0.008], 1),
-				\posRateMLag, 3,
-				\posRateMCurve, 1,
-				\overlap, Pseq([2, 2, 1, 1, 3, 1, 1, 1, 10], 1),
-				\overlapLag, 1,
-				\overlapCurve, 1,
-				\trigRate, Pseq([9, 0, 5, 0, 0, 0, 9, 0, 50], 1),
-				\trigRateLag, Pseq([2, 2, 2, 2, 2, 2, 0, 2, 2], 1),
-				\trigRateCurve, 0.5,
-				\rate, Pseq([0.4, 0.5, 0.5, 0.8, 2, 0.4, 0.4, 1], 1),
-				\rateLag, Pseq([2, 2, 2, 2, 2, 1, 2, 2, 10], 1),
-				\rateCurve, -1,
-				\bpRQ, 0.25,
-				\bpRQLag, 0.25,
-				\bpRQCurve, 1,
-				\bpLo, 50,
-				\bpLoLag, 50,
-				\bpLoCurve, 0,
-				\bpHi,Pseq([2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 15000], 1),
-				\bpHiLag, Pseq([1, 1, 1, 1, 1, 1, 1, 1, 20], 1),
-				\bpHiCurve, 1,
-				\panmax, 0,
-			    \amp, Pseq([0.8, 0.8, 0.5, 1, 0.5, 0.8, 6, 0.8, 0.8], 1),
-			    //amp, 0,
-			),
-			Pmono(
-				\gran_1e,
-			    \soundBuf, b.bufnum,
-				\dur, Pseq([8, 1, 2, 4, 4, 3, 20 ], 1),
-				\attack, 3,
-				\release, 7,
-				\posLo, 0.2,
-				\posHi, 0.70,
-				\posRateE, 0,
-				\posRateM, 0.001,
-				\posRateMLag, 3,
-				\posRateMCurve, 1,
-				\overlap, Pseq([1, 2, 1, 10, 15, 30, 2], 1),
-				\overlapLag, 1,
-				\overlapCurve, 1,
-				\trigRate, Pseq([3, 30, 0, 2, 0, 20, 50], 1),
-				\trigRateLag, 1,
-				\trigRateCurve, 0.5,
-				\rate, Pseq([2, 2, 3, 5, 2, 10, 50], 1),
-				\rateLag, Pseq([1, 3, 1, 1, 1, 1, 15], 1),
-				\rateCurve, -1,
-				\bpRQ, 0.25,
-				\bpRQLag, 0.25,
-				\bpRQCurve, 1,
-				\bpLo, 50,
-				\bpLoLag, 50,
-				\bpLoCurve, 0,
-				\bpHi, 20000,
-				\bpHiLag, 0,
-				\bpHiCurve, 1,
-				\panmax, 0,
-			    \amp, Pseq([0, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5], 1),
-			    //\amp, 0,
-			),
-	])
-)).play;
-);
-*/
-///////////////////////
-//    NEW TRY, SPEAK
-///////////////////////
-
-(
-Pdef(\part, Pdef(\part3,
-	Ppar([
-			Pmono(
-				\gran_1e,
-			    \soundBuf, b.bufnum,
-				\dur, Pseq([10, 5, 8], 1),
-				\attack, 3,
-				\release, 4,
-				\posLo, 0.4,
-				\posHi, 0.70,
-				\posRateE, 0,
-				\posRateM, Pseq([0.002, 1, 0.02], 1),
-				\posRateMLag, 1,
-				\posRateMCurve, 1,
-				\overlap, Pseq([2, 50, 20], 1),
-				\overlapLag, Pseq([1, 6, 20], 1),
-				\overlapCurve, 1,
-				\trigRate, Pseq([9, 3, 20], 1),
-				\trigRateLag, Pseq([1, 1, 4], 1),
-				\trigRateCurve, 0.5,
-				\rate, Pseq([0.4, 1, 2], 1),
-				\rateLag, Pseq([2, 5, 2], 1),
-				\rateCurve, -1,
-				\bpRQ, 0.25,
-				\bpRQLag, 0.25,
-				\bpRQCurve, 1,
-				\bpLo, 50,
-				\bpLoLag, 50,
-				\bpLoCurve, 0,
-				\bpHi,Pseq([20000, 20000, 20000], 1),
-				\bpHiLag, Pseq([1, 1, 1, 1, 1, 1, 1, 1, 20], 1),
-				\bpHiCurve, 1,
-				\panmax, 0,
-			    \amp, Pseq([1, 0.8, 0.1], 1),
-			    \out, 0,
-			)
-	])
-)).play;
-);
-
 ///////////////////////
 //    NEW TRY2, SPEAK2
 ///////////////////////
 
 (
-Pdef(\part, Pdef(\part3,
+Pdef(\part, Pdef(\part2,
 	Ppar([
-			Pmono(
+		Pmono(
 				\gran_1e,
 			    \soundBuf, b.bufnum,
-				\dur, Pseq([4, 7, 4, 15], 1),
-				\attack, 3,
-				\release, 4,
+				\dur, Pseq([6, 4, 2], 1),
+				\attack, 0,
+				\release, 3,
 				\posLo, 0.4,
 				\posHi, 0.70,
 				\posRateE, 0,
-				\posRateM, Pseq([0.002, 1, 0.02, 1], 1),
+				\posRateM, Pseq([0.002, 0.002, 1], 1),
 				\posRateMLag, 3,
 				\posRateMCurve, 1,
-				\overlap, Pseq([0.5, 100, 2, 0.1], 1),
-				\overlapLag, Pseq([1, 6, 4, 1], 1),
+				\overlap, Pseq([1, 1, 1], 1),
+				\overlapLag, Pseq([1, 1, 1], 1),
 				\overlapCurve, 1,
-				\trigRate, Pseq([9, 3, 20, 1000], 1),
-				\trigRateLag, Pseq([2, 2, 5, 2], 1),
+				\trigRate, Pseq([15, 1, 1], 1),
+				\trigRateLag, Pseq([2, 2, 1], 1),
 				\trigRateCurve, 0.5,
-				\rate, Pseq([0.4, 1, 2, 1], 1),
-				\rateLag, Pseq([2, 5, 2, 2], 1),
+				\rate, Pseq([2, 1, 1], 1),
+				\rateLag, Pseq([2, 5, 5], 1),
 				\rateCurve, -1,
 				\bpRQ, 0.25,
 				\bpRQLag, 0.25,
 				\bpRQCurve, 1,
-				\bpLo, 50,
-				\bpLoLag, 50,
+				\bpLo, Pseq([3000, 50, 50], 1),
+				\bpLoLag, 0,
 				\bpLoCurve, 0,
-				\bpHi,Pseq([20000, 20000, 20000, 20000], 1),
-				\bpHiLag, Pseq([1, 1, 1, 1], 1),
+			    \bpHi,Pseq([20000, 20000, 20000], 1),
+				\bpHiLag, Pseq([1, 1, 1], 1),
 				\bpHiCurve, 1,
 				\panmax, 0,
-			    \amp, Pseq([0.8, 1, 0.5, 1], 1),
+			    \amp, Pseq([0, 0, 0, 0.8], 1),
+				\ampLag, Pseq([0, 0, 0], 1),
+				\ampCurve, 1,
 			    //amp, 0,
 			),
 		Pmono(
 				\gran_1e,
 			    \soundBuf, b.bufnum,
-				\dur, Pseq([4, 7, 4, 15], 1),
+				\dur, Pseq([6, 4, 2], 1),
 				\attack, 0,
-				\release, 1,
+				\release, 3,
 				\posLo, 0.4,
 				\posHi, 0.70,
 				\posRateE, 0,
-				\posRateM, Pseq([0.002, 1, 0.02, 1], 1),
+				\posRateM, Pseq([0.002, 0.002, 1], 1),
 				\posRateMLag, 3,
 				\posRateMCurve, 1,
-				\overlap, Pseq([1, 50, 5, 10], 1),
-				\overlapLag, Pseq([1, 6, 5, 3], 1),
+				\overlap, Pseq([1.3, 10, 10], 1),
+				\overlapLag, Pseq([1, 6, 6], 1),
 				\overlapCurve, 1,
-				\trigRate, Pseq([15, 3, 2, 15], 1),
-				\trigRateLag, Pseq([2, 2, 2, 2], 1),
+				\trigRate, Pseq([15, 1, 1], 1),
+				\trigRateLag, Pseq([2, 2, 1], 1),
 				\trigRateCurve, 0.5,
-				\rate, Pseq([2, 1, 4, 2], 1),
-				\rateLag, Pseq([2, 5, 7], 1),
+				\rate, Pseq([2, 1, 1], 1),
+				\rateLag, Pseq([2, 5, 5], 1),
 				\rateCurve, -1,
 				\bpRQ, 0.25,
 				\bpRQLag, 0.25,
 				\bpRQCurve, 1,
-				\bpLo, 50,
-				\bpLoLag, 50,
+				\bpLo, Pseq([3000, 50, 50], 1),
+				\bpLoLag, 0,
 				\bpLoCurve, 0,
-				\bpHi,Pseq([20000, 20000, 20000, 2000, 2000, 2000, 2000, 2000, 15000], 1),
-				\bpHiLag, Pseq([1, 1, 1, 1, 1, 1, 1, 1, 20], 1),
+				\bpHi,Pseq([20000, 20000, 20000], 1),
+				\bpHiLag, Pseq([1, 1, 1], 1),
 				\bpHiCurve, 1,
 				\panmax, 0,
-			    \amp, Pseq([0.8, 1, 0.5, 1, 0.5, 0.8, 6, 0.8, 0.8], 1),
+			    \amp, Pseq([0.8, 0.5, 0], 1),
+				\ampLag, Pseq([0, 4, 4], 1),
+				\ampCurve, 1,
 			    //amp, 0,
 			)
 	])
 )).play;
 );
+
+(
+Pdef(\part, Pdef(\part3,
+	Ppar([
+		Pmono(
+				\gran_1e,
+			    \soundBuf, b.bufnum,
+				\dur, Pseq([6, 6, 7, 16, 12, 16], 1),
+				\attack, 0,
+				\release, 3,
+				\posLo, 0.4,
+				\posHi, 0.70,
+				\posRateE, 0,
+				\posRateM, Pseq([0.002, 0.002, 0.002], 1),
+				\posRateMLag, 3,
+				\posRateMCurve, 1,
+				\overlap, Pseq([2, 3.5, 3.5], 1),
+				\overlapLag, Pseq([2, 1, 0], 1),
+				\overlapCurve, 1,
+				\trigRate, Pseq([15, 7, 6], 1),
+				\trigRateLag, Pseq([2, 4, 0], 1),
+				\trigRateCurve, 0.5,
+				\rate, Pseq([5, 3, 3], 1),
+				\rateLag, Pseq([2, 0, 3], 1),
+				\rateCurve, -1,
+				\bpRQ, 0.25,
+				\bpRQLag, 0.25,
+				\bpRQCurve, 1,
+				\bpLo, Pseq([3000, 3000, 3000], 1),
+				\bpLoLag, 0,
+				\bpLoCurve, 0,
+			    \bpHi,Pseq([20000, 20000, 20000], 1),
+				\bpHiLag, Pseq([1, 1], 1),
+				\bpHiCurve, 1,
+				\panmax, 0,
+			    \amp, Pseq([1, 1, 0], 1),
+				\ampLag, Pseq([2, 0, 2], 1),
+				\ampCurve, 1,
+			    //amp, 0,
+			),
+		Pmono(
+				\gran_1e,
+			    \soundBuf, b.bufnum,
+				\dur, Pseq([6, 6, 6, 7, 16, 12, 16], 1),
+				\attack, 0,
+				\release, 3,
+				\posLo, 0.4,
+				\posHi, 0.70,
+				\posRateE, 0,
+				\posRateM, Pseq([0.002, 0.002, 0.002, 1, 0.02, 1], 1),
+				\posRateMLag, 3,
+				\posRateMCurve, 1,
+				\overlap, Pseq([1, 1, 1, 50, 0.5, 3000], 1),
+				\overlapLag, Pseq([2, 1, 1, 6, 5, 0], 1),
+				\overlapCurve, 1,
+				\trigRate, Pseq([15, 15, 3, 3, 1, 1], 1),
+				\trigRateLag, Pseq([2, 2, 2, 2, 2, 10, 0], 1),
+				\trigRateCurve, 0.5,
+				\rate, Pseq([2, 2, 4, 4, 2, 1], 1),
+				\rateLag, Pseq([2, 1, 7, 7, 4, 0], 1),
+				\rateCurve, -1,
+				\bpRQ, 0.25,
+				\bpRQLag, 0.25,
+				\bpRQCurve, 1,
+				\bpLo, Pseq([3000, 50, 50, 50, 50, 50], 1),
+				\bpLoLag, 0,
+				\bpLoCurve, 0,
+				\bpHi,Pseq([20000, 20000, 20000, 2020, 20000, 20000], 1),
+				\bpHiLag, Pseq([1, 1, 1, 1, 1], 1),
+				\bpHiCurve, 1,
+				\panmax, 0,
+			    \amp, Pseq([0.8, 0.8, 0.5, 0, 0.5, 0, 1], 1),
+				\ampLag, Pseq([0, 0, 2, 0, 3, 11, 0], 1),
+				\ampCurve, 1,
+			    //amp, 0,
+			)
+	])
+)).play;
+);
+
+b.play;
+
+/*
 ///////////////////////
 //    SCORE INIT
 ///////////////////////
@@ -246,11 +207,4 @@ Pdef(\part, Pdef(\part1,
 	])
 )).play;
 );
-
-
-//var mintime, var maxtime, var recordedtime, var pausewaittime
-//if recorded or paused. . .
-//////if recordtime > maxtime, then STOP
-//if paused. . .
-//////if (recordtime > mintime) && (pausewaittime > 4) then STOP
-//////if (recordtime > mintime) && (pausewaittime < 5) then STILL ALLOW RECORDING POTENTIAL
+*/

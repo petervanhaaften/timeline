@@ -16,7 +16,7 @@
 ~m = 5;
 ~n = 2 * ~m;
 
-SynthDef(\gran_1e, { |out = 0, soundBuf, gate = 1, attack = 0.01, release = 0.5, posLo = 0.1, posHi = 0.9, posRateE = 0, posRateM= 1, posRateMLag = 0, posRateMCurve = 0, rate= 1, rateLag = 0, rateCurve = 0, panMax = 0.8, bpRQ = 0.1, bpRQLag = 0, bpRQCurve = 0, bpLo = 50, bpLoLag = 0, bpLoCurve = 0, bpHi = 5000, bpHiLag = 0, bpHiCurve = 0, amp = 1, overlap = 2, overlapLag = 0, overlapCurve = 0, trigRate = 1, trigRateLag = 0, trigRateCurve = 0, interp = 2|
+SynthDef(\gran_1e, { |out = 0, soundBuf, gate = 1, attack = 0.01, release = 0.5, posLo = 0.1, posHi = 0.9, posRateE = 0, posRateM= 1, posRateMLag = 0, posRateMCurve = 0, rate= 1, rateLag = 0, rateCurve = 0, panMax = 0.8, bpRQ = 0.1, bpRQLag = 0, bpRQCurve = 0, bpLo = 50, bpLoLag = 0, bpLoCurve = 0, bpHi = 5000, bpHiLag = 0, bpHiCurve = 0, amp = 1, ampLag = 0, ampCurve = 0 overlap = 2, overlapLag = 0, overlapCurve = 0, trigRate = 1, trigRateLag = 0, trigRateCurve = 0, interp = 2|
 
     var sig, sigL, sigR, sigOut, env, bpFreq, chan, bpFreqSeqs, dUgen, trig, trigs, bufDur, pos, posRate;
 
@@ -27,7 +27,7 @@ SynthDef(\gran_1e, { |out = 0, soundBuf, gate = 1, attack = 0.01, release = 0.5,
 
     chan = Demand.ar(trig, 0, Dseq((0..~n-1), inf));
 
-	env = Linen.kr(gate, attack, 1, release, 2) * amp;
+	env = Linen.kr(gate, attack, 1, release, 2) * VarLag.kr(amp, ampLag, ampCurve);
 
     posRate = 10 ** posRateE * VarLag.kr(posRateM, posRateMLag, posRateMCurve);
     bufDur = BufDur.kr(soundBuf);
@@ -62,7 +62,7 @@ SynthDef(\gran_1e, { |out = 0, soundBuf, gate = 1, attack = 0.01, release = 0.5,
 
     // ... in order to have L/R-spreading with panMax as in other examples
 	//Out.ar(0, Pan2.ar(sigL, panMax.neg) + Pan2.ar(sigR, panMax) * env)
-	Out.ar(out, sigOut * env).round(2**(-2))
+	Out.ar(out, sigOut * env);
 }
 ).add;
 

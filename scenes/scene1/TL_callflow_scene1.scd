@@ -5,6 +5,7 @@
 //~callflow.reset
 //~callflow.play
 //CmdPeriod.run
+~playscore.play;
 (
 ~callflow = Routine {
 
@@ -79,7 +80,6 @@
 			1.wait;
 			~trigger.set(\micGate, 1);
 			~recordvoice.play;
-			//u.play;
 			k = 0;
 			d = 0;
 		};);
@@ -102,7 +102,7 @@
 			//start global score
 			1.wait;
 			"crappppp".postln;
-			u.play;
+			~playscore.play;
 			//~recordvoice.play;
 		};);
 	);
@@ -111,7 +111,7 @@
 	// THE GLOBAL SCORE
 	///////////////////////
 	(
-		u = Routine {
+		~playscore = Routine {
 			Require(~timescore);
 			//play master score
 			p = Pdef(\part, Pdef(\main,
@@ -163,7 +163,6 @@
 //r.play;
 //b.play
 //b.plot;
-//u.play;
 
 //~recordvoice.reset
 //~recordvoice.play

@@ -110,18 +110,20 @@
 	///////////////////////
 	// THE GLOBAL SCORE
 	///////////////////////
-	(
+(	(
 		~playscore = Routine {
 			Require(~timescore);
 			//play master score
 			p = Pdef(\part, Pdef(\main,
 				Pseq([
 					//start score
+					Pfindur(12, Pdef(\part1)),
+					Pfindur(18, Pdef(\part2)),
 					Pfindur(100, Pdef(\part3)),
 				],1),
 			)).play;
 		};
-	);
+));
 
 	///////////////////////
 	// MASTER SCORE PLAYER

@@ -18,7 +18,7 @@
 
 SynthDef(\gran_1e, { |out = 0, soundBuf, gate = 1, attack = 0.01, release = 0.5, posLo = 0.1, posHi = 0.9, posRateE = 0, posRateM= 1, posRateMLag = 0, posRateMCurve = 0, rate= 1, rateLag = 0, rateCurve = 0, panMax = 0.8, bpRQ = 0.1, bpRQLag = 0, bpRQCurve = 0, bpLo = 50, bpLoLag = 0, bpLoCurve = 0, bpHi = 5000, bpHiLag = 0, bpHiCurve = 0, amp = 1, ampLag = 0, ampCurve = 0 overlap = 2, overlapLag = 0, overlapCurve = 0, trigRate = 1, trigRateLag = 0, trigRateCurve = 0, interp = 2|
 
-    var sig, sigL, sigR, sigOut, env, bpFreq, chan, bpFreqSeqs, dUgen, trig, trigs, bufDur, pos, posRate;
+	var sig, sigL, sigR, sigOut, sigLimiter, sigCompressor, env, bpFreq, chan, bpFreqSeqs, dUgen, trig, trigs, bufDur, pos, posRate;
 
 	trig = Impulse.ar(VarLag.kr(trigRate, trigRateLag, trigRateCurve));
 
@@ -60,9 +60,22 @@ SynthDef(\gran_1e, { |out = 0, soundBuf, gate = 1, attack = 0.01, release = 0.5,
 	//sigOut = Mix(((0..(~m-1))).collect(sig[_]));
 	sigOut = (sigL + sigR)/2;
 
+	// apply compression
+    sigCompressor = Compander.ar(sigOut, sigOut,
+        thresh: 0.5,
+        slopeBelow: 0.4,
+        slopeAbove: 0.8,
+        clampTime:  0.01,
+        relaxTime:  0.01,
+		mul: 1.5,
+		add: 0,
+    );
+
+	sigLimiter = Limiter.ar(in: sigCompressor, level: 0.9, dur: 0.02);
+
     // ... in order to have L/R-spreading with panMax as in other examples
 	//Out.ar(0, Pan2.ar(sigL, panMax.neg) + Pan2.ar(sigR, panMax) * env)
-	Out.ar(out, sigOut * env);
+	Out.ar(out, sigLimiter * env);
 }
 ).add;
 

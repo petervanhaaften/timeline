@@ -38,7 +38,7 @@ s.boot;
 
 // call external config files
 Require(~srcdir +/+ "/config/TL_globalcfg.scd");
-Require(~srcdir +/+ "/scenes/scene1/TL_localcfg_scene1.scd");
+Require(~srcdir +/+ "/scenes/scene1/TL_localcfg_scene1_video.scd");
 
 //calling scenes, on receipt of OSC message
 ~globalosc_scene = OSCFunc({
@@ -55,14 +55,14 @@ Require(~srcdir +/+ "/scenes/scene1/TL_localcfg_scene1.scd");
 	(msg[1] == 1).if({
 		// /timeline/scene 1
 		"/timeline/scene 1 << run scene 1 >>".postln;
-		Require(~srcdir +/+ "/scenes/scene1/TL_callflow_scene1.scd");
+		Require(~srcdir +/+ "/scenes/scene1/TL_callflow_scene1_video.scd");
 		"loaded scene 1".postln;
 		~callflow.reset;
 		~callflow.play;
 	});
 	(msg[1] == 2).if({
 		// /timeline/scene/2
-		Require(~srcdir +/+ "/scenes/scene1/TL_callflow_scene1.scd");
+		Require(~srcdir +/+ "/scenes/scene1/TL_callflow_scene1_video.scd");
 		"/timeline/scene 2".postln;
 		~playscore.reset;
 		~playscore.play;

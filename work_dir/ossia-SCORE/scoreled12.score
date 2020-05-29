@@ -2,7 +2,7 @@
     "Document": {
         "BaseScenario": {
             "Constraint": {
-                "Center": 10147.592412734222,
+                "Center": 10097.140892691634,
                 "Components": [
                 ],
                 "DefaultDuration": 15000,
@@ -73,7 +73,7 @@
                         ],
                         "Constraints": [
                             {
-                                "Center": 3112.640712920075,
+                                "Center": 3111.367681775506,
                                 "Components": [
                                 ],
                                 "DefaultDuration": 5504.401118375144,
@@ -81,6 +81,12 @@
                                 "FullViewRack": [
                                     {
                                         "Process": 1
+                                    },
+                                    {
+                                        "Process": 2
+                                    },
+                                    {
+                                        "Process": 3
                                     }
                                 ],
                                 "GuiDuration": 6229.896163739218,
@@ -210,102 +216,123 @@
                                                     ],
                                                     "Duration": 5504.401118375146,
                                                     "Gradient": [
-                                                        0.008098283585507019,
+                                                        0.011708304011259676,
                                                         [
-                                                            0.9867399099717709,
-                                                            0.1543450064850843,
-                                                            0.028244449530785077,
+                                                            0.986984054322118,
+                                                            0.19073777370870526,
+                                                            0.029571984435797664,
                                                             1
                                                         ],
-                                                        0.2291034482758621,
+                                                        0.09236550942215967,
                                                         [
-                                                            0.19264515144579233,
-                                                            0.933653772793164,
-                                                            0.9989776455329213,
+                                                            0.9893797207598993,
+                                                            0.426840619516289,
+                                                            0.031952391851682305,
                                                             1
                                                         ],
-                                                        0.2911429250891796,
+                                                        0.12488857612010322,
                                                         [
-                                                            0.19264515144579233,
-                                                            0.933653772793164,
-                                                            0.9989776455329213,
+                                                            0.9911802853437095,
+                                                            0.5496757457846952,
+                                                            0.0349736781872282,
                                                             1
                                                         ],
-                                                        0.3093393579072533,
+                                                        0.23139077853363565,
                                                         [
-                                                            0.9872129396505684,
-                                                            0.22203402761882962,
-                                                            0.028992141603723202,
+                                                            0.9873197528038453,
+                                                            0.2362706950484474,
+                                                            0.029190508888380255,
                                                             1
                                                         ],
-                                                        0.3821250891795482,
+                                                        0.3001373141849332,
                                                         [
-                                                            0.1301289387350271,
-                                                            0.9026169222552834,
-                                                            0.9989013504234379,
+                                                            0.9917906462195774,
+                                                            0.5859311818112459,
+                                                            0.034042877851529714,
                                                             1
                                                         ],
-                                                        0.41548521601268334,
+                                                        0.3269652305366591,
                                                         [
-                                                            0.9868772411688411,
-                                                            0.1761654077973602,
-                                                            0.028458075837338826,
+                                                            0.9866025787747006,
+                                                            0.12899977111467156,
+                                                            0.02801556420233463,
                                                             1
                                                         ],
-                                                        0.5642083256204437,
+                                                        0.38377218703573385,
                                                         [
-                                                            0.17886625467307546,
-                                                            0.9543907835507744,
-                                                            1,
+                                                            0.9922331578545815,
+                                                            0.6119478141451133,
+                                                            0.03466849774929427,
+                                                            1
+                                                        ],
+                                                        0.46613504661123706,
+                                                        [
+                                                            0.9870450904097048,
+                                                            0.2008850232700084,
+                                                            0.02873273823147936,
+                                                            1
+                                                        ],
+                                                        0.4979931972789115,
+                                                        [
+                                                            0.9895933470664531,
+                                                            0.4433356221866178,
+                                                            0.03228809033340963,
+                                                            1
+                                                        ],
+                                                        0.5357199546485261,
+                                                        [
+                                                            0.9895933470664531,
+                                                            0.4433356221866178,
+                                                            0.03228809033340963,
                                                             1
                                                         ],
                                                         0.6114482758620691,
                                                         [
-                                                            0.9868772411688411,
-                                                            0.1761654077973602,
-                                                            0.028458075837338826,
+                                                            0.9861448081177997,
+                                                            0,
+                                                            0.027283131151293202,
                                                             1
                                                         ],
-                                                        0.7460537455410227,
+                                                        0.6958490803728898,
                                                         [
-                                                            0.9868772411688411,
-                                                            0.1761654077973602,
-                                                            0.028458075837338826,
+                                                            0.9872434576943618,
+                                                            0.22633707179369802,
+                                                            0.030167086289768826,
                                                             1
                                                         ],
-                                                        0.8951724137931035,
+                                                        0.7324194620376886,
                                                         [
-                                                            0.19264515144579233,
-                                                            0.933653772793164,
-                                                            0.9989776455329213,
+                                                            0.9919279774166476,
+                                                            0.5939116502632181,
+                                                            0.034164950026703285,
                                                             1
                                                         ],
-                                                        0.9558620689655174,
+                                                        0.7688452967393854,
                                                         [
-                                                            0.9874113069352255,
-                                                            0.24676890211337454,
-                                                            0.029327840085450523,
+                                                            0.9913328755626765,
+                                                            0.5586022735942626,
+                                                            0.033661402304112305,
+                                                            1
+                                                        ],
+                                                        0.9171793902746282,
+                                                        [
+                                                            0.9878690775921264,
+                                                            0.29694056610971237,
+                                                            0.030075532158388648,
                                                             1
                                                         ],
                                                         0.9862068965517242,
                                                         [
+                                                            0.98974593728542,
+                                                            0.45343709468223087,
+                                                            0.032272831311512935,
+                                                            1
+                                                        ],
+                                                        1.1227586206896554,
+                                                        [
                                                             0.19264515144579233,
                                                             0.933653772793164,
                                                             0.9989776455329213,
-                                                            1
-                                                        ],
-                                                        1.0811713832738805,
-                                                        [
-                                                            0.9862516212710766,
-                                                            0.019684138246738384,
-                                                            0.027450980392156862,
-                                                            1
-                                                        ],
-                                                        1.1205969877130402,
-                                                        [
-                                                            1,
-                                                            1,
-                                                            1,
                                                             1
                                                         ],
                                                         1.2805517241379312,
@@ -676,6 +703,986 @@
                                         },
                                         "id": 1,
                                         "uuid": "995d41a8-0f10-4152-971d-e4c033579a02"
+                                    },
+                                    {
+                                        "Components": [
+                                        ],
+                                        "Constraint": {
+                                            "Center": 3627.639658796977,
+                                            "Components": [
+                                            ],
+                                            "DefaultDuration": 5504.401118375146,
+                                            "EndState": 1,
+                                            "FullViewRack": [
+                                                {
+                                                    "Process": 1
+                                                }
+                                            ],
+                                            "GuiDuration": 7265.809476255194,
+                                            "HeightPercentage": 0.5,
+                                            "Inlet": {
+                                                "Address": {
+                                                    "Accessors": [
+                                                    ],
+                                                    "Unit": "none",
+                                                    "address": {
+                                                        "Device": "",
+                                                        "Path": ""
+                                                    }
+                                                },
+                                                "Custom": "",
+                                                "Description": "",
+                                                "Exposed": "",
+                                                "Hidden": false,
+                                                "ObjectName": "Inlet",
+                                                "Type": 1,
+                                                "id": 0,
+                                                "uuid": "8884228a-d197-4b0a-b6ca-d1fb15291559"
+                                            },
+                                            "MaxDuration": 5504,
+                                            "MaxInf": false,
+                                            "Metadata": {
+                                                "Color": "Transparent1",
+                                                "Comment": "",
+                                                "Label": "",
+                                                "ScriptingName": "pattern",
+                                                "Touched": true
+                                            },
+                                            "MinDuration": 5504.401118375146,
+                                            "MinNull": true,
+                                            "ObjectName": "Scenario::IntervalModel",
+                                            "Outlet": {
+                                                "Address": {
+                                                    "Accessors": [
+                                                    ],
+                                                    "Unit": "none",
+                                                    "address": {
+                                                        "Device": "",
+                                                        "Path": ""
+                                                    }
+                                                },
+                                                "Custom": "",
+                                                "Description": "",
+                                                "Exposed": "",
+                                                "Hidden": false,
+                                                "ObjectName": "Outlet",
+                                                "Propagate": true,
+                                                "Type": 1,
+                                                "id": 0,
+                                                "uuid": "34e2c5a7-18c4-4759-b6cc-46feaeee06e2"
+                                            },
+                                            "Processes": [
+                                                {
+                                                    "Components": [
+                                                    ],
+                                                    "Duration": 5504.401118375146,
+                                                    "Gradient": [
+                                                        0.026278195987801487,
+                                                        [
+                                                            1,
+                                                            0,
+                                                            0.9536888685435264,
+                                                            1
+                                                        ],
+                                                        0.14684874228477302,
+                                                        [
+                                                            0.1743495841916533,
+                                                            0.12303349355306324,
+                                                            1,
+                                                            1
+                                                        ],
+                                                        0.27514816975462736,
+                                                        [
+                                                            0.9857938506141757,
+                                                            0,
+                                                            0.3201342793926909,
+                                                            1
+                                                        ],
+                                                        0.40765857268833455,
+                                                        [
+                                                            1,
+                                                            0.08876173037308309,
+                                                            0.5663843747615778,
+                                                            1
+                                                        ],
+                                                        0.5162892623485704,
+                                                        [
+                                                            0.2661326009002823,
+                                                            0.25171282520790417,
+                                                            1,
+                                                            1
+                                                        ],
+                                                        0.6676521739130435,
+                                                        [
+                                                            1,
+                                                            0,
+                                                            1,
+                                                            1
+                                                        ],
+                                                        0.7212173913043479,
+                                                        [
+                                                            0.49750514991989014,
+                                                            0.5464713511863889,
+                                                            1,
+                                                            1
+                                                        ],
+                                                        0.930557293215088,
+                                                        [
+                                                            0.8839246204318303,
+                                                            0,
+                                                            1,
+                                                            1
+                                                        ],
+                                                        0.9641739130434784,
+                                                        [
+                                                            1,
+                                                            0,
+                                                            0.39034103913939117,
+                                                            1
+                                                        ]
+                                                    ],
+                                                    "Height": 300,
+                                                    "Metadata": {
+                                                        "Color": "Transparent1",
+                                                        "Comment": "",
+                                                        "Label": "",
+                                                        "ScriptingName": "Automation (color).1",
+                                                        "Touched": false
+                                                    },
+                                                    "ObjectName": "Gradient",
+                                                    "Outlet": {
+                                                        "Address": {
+                                                            "Accessors": [
+                                                            ],
+                                                            "Unit": "color.argb",
+                                                            "address": {
+                                                                "Device": "peter",
+                                                                "Path": "ledstripctl1/rgb"
+                                                            }
+                                                        },
+                                                        "Custom": "Out",
+                                                        "Description": "",
+                                                        "Exposed": "",
+                                                        "Hidden": false,
+                                                        "ObjectName": "Outlet",
+                                                        "Propagate": false,
+                                                        "Type": 0,
+                                                        "id": 0,
+                                                        "uuid": "34e2c5a7-18c4-4759-b6cc-46feaeee06e2"
+                                                    },
+                                                    "Tween": false,
+                                                    "id": 1,
+                                                    "uuid": "b5da735b-a76d-4314-8853-3e8a96486fb9"
+                                                }
+                                            ],
+                                            "Rigidity": false,
+                                            "SmallViewRack": [
+                                                {
+                                                    "Height": 21,
+                                                    "Process": 1,
+                                                    "Processes": [
+                                                        1
+                                                    ]
+                                                }
+                                            ],
+                                            "SmallViewShown": true,
+                                            "StartDate": 0,
+                                            "StartState": 0,
+                                            "Zoom": 10.530158661239412,
+                                            "id": 0
+                                        },
+                                        "Duration": 5504.401118375144,
+                                        "EndEvent": {
+                                            "Components": [
+                                            ],
+                                            "Condition": {
+                                                "Children": [
+                                                ],
+                                                "RootNode": {
+                                                }
+                                            },
+                                            "Date": 5504.401118375146,
+                                            "Metadata": {
+                                                "Color": "Emphasis4",
+                                                "Comment": "",
+                                                "Label": "",
+                                                "ScriptingName": "Event.end",
+                                                "Touched": true
+                                            },
+                                            "ObjectName": "Scenario::EventModel",
+                                            "Offset": 0,
+                                            "States": [
+                                                1
+                                            ],
+                                            "TimeNode": 1,
+                                            "id": 1
+                                        },
+                                        "EndState": {
+                                            "Components": [
+                                            ],
+                                            "Event": 1,
+                                            "HeightPercentage": 0.5,
+                                            "Messages": {
+                                                "Accessors": [
+                                                ],
+                                                "Children": [
+                                                ],
+                                                "Following": [
+                                                ],
+                                                "Name": "",
+                                                "Previous": [
+                                                ],
+                                                "Priorities": [
+                                                    1,
+                                                    2,
+                                                    0
+                                                ],
+                                                "Unit": "none"
+                                            },
+                                            "Metadata": {
+                                                "Color": "Base1",
+                                                "Comment": "",
+                                                "Label": "",
+                                                "ScriptingName": "State.end",
+                                                "Touched": true
+                                            },
+                                            "NextConstraint": null,
+                                            "ObjectName": "Scenario::StateModel",
+                                            "PreviousConstraint": 0,
+                                            "StateProcesses": [
+                                            ],
+                                            "id": 1
+                                        },
+                                        "EndTimeNode": {
+                                            "AutoTrigger": false,
+                                            "Components": [
+                                            ],
+                                            "Date": 5504.401118375146,
+                                            "Events": [
+                                                1
+                                            ],
+                                            "Extent": [
+                                                0.5,
+                                                1
+                                            ],
+                                            "Metadata": {
+                                                "Color": "Gray",
+                                                "Comment": "",
+                                                "Label": "",
+                                                "ScriptingName": "Sync.end",
+                                                "Touched": true
+                                            },
+                                            "ObjectName": "Scenario::TimeSyncModel",
+                                            "Trigger": {
+                                                "Active": true,
+                                                "Expression": {
+                                                    "Children": [
+                                                        {
+                                                            "Children": [
+                                                            ],
+                                                            "Relation": {
+                                                                "LHS": {
+                                                                    "Address": {
+                                                                        "Device": "peter",
+                                                                        "Path": "ledstripctl1/random_off"
+                                                                    }
+                                                                },
+                                                                "Op": 0,
+                                                                "RHS": {
+                                                                    "Value": {
+                                                                        "Int": 1
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    ],
+                                                    "RootNode": {
+                                                    }
+                                                }
+                                            },
+                                            "id": 1
+                                        },
+                                        "Height": 300,
+                                        "Inlet": {
+                                            "Address": {
+                                                "Accessors": [
+                                                ],
+                                                "Unit": "none",
+                                                "address": {
+                                                    "Device": "",
+                                                    "Path": ""
+                                                }
+                                            },
+                                            "Custom": "",
+                                            "Description": "",
+                                            "Exposed": "",
+                                            "Hidden": false,
+                                            "ObjectName": "Inlet",
+                                            "Type": 1,
+                                            "id": 0,
+                                            "uuid": "8884228a-d197-4b0a-b6ca-d1fb15291559"
+                                        },
+                                        "Metadata": {
+                                            "Color": "Transparent1",
+                                            "Comment": "",
+                                            "Label": "",
+                                            "ScriptingName": "Loop.2",
+                                            "Touched": false
+                                        },
+                                        "ObjectName": "Loop",
+                                        "Outlet": {
+                                            "Address": {
+                                                "Accessors": [
+                                                ],
+                                                "Unit": "none",
+                                                "address": {
+                                                    "Device": "",
+                                                    "Path": ""
+                                                }
+                                            },
+                                            "Custom": "",
+                                            "Description": "",
+                                            "Exposed": "",
+                                            "Hidden": false,
+                                            "ObjectName": "Outlet",
+                                            "Propagate": true,
+                                            "Type": 1,
+                                            "id": 0,
+                                            "uuid": "34e2c5a7-18c4-4759-b6cc-46feaeee06e2"
+                                        },
+                                        "StartEvent": {
+                                            "Components": [
+                                            ],
+                                            "Condition": {
+                                                "Children": [
+                                                    {
+                                                        "Children": [
+                                                        ],
+                                                        "Relation": {
+                                                            "LHS": {
+                                                                "Address": {
+                                                                    "Device": "peter",
+                                                                    "Path": "ledstripctl1/random_num"
+                                                                }
+                                                            },
+                                                            "Op": 0,
+                                                            "RHS": {
+                                                                "Value": {
+                                                                    "Int": 1
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                ],
+                                                "RootNode": {
+                                                }
+                                            },
+                                            "Date": 0,
+                                            "Metadata": {
+                                                "Color": "Emphasis4",
+                                                "Comment": "",
+                                                "Label": "",
+                                                "ScriptingName": "Event.start",
+                                                "Touched": true
+                                            },
+                                            "ObjectName": "Scenario::EventModel",
+                                            "Offset": 0,
+                                            "States": [
+                                                0
+                                            ],
+                                            "TimeNode": 0,
+                                            "id": 0
+                                        },
+                                        "StartState": {
+                                            "Components": [
+                                            ],
+                                            "Event": 0,
+                                            "HeightPercentage": 0.5,
+                                            "Messages": {
+                                                "Accessors": [
+                                                ],
+                                                "Children": [
+                                                ],
+                                                "Following": [
+                                                ],
+                                                "Name": "",
+                                                "Previous": [
+                                                ],
+                                                "Priorities": [
+                                                    1,
+                                                    2,
+                                                    0
+                                                ],
+                                                "Unit": "none"
+                                            },
+                                            "Metadata": {
+                                                "Color": "Base1",
+                                                "Comment": "",
+                                                "Label": "",
+                                                "ScriptingName": "State.start",
+                                                "Touched": true
+                                            },
+                                            "NextConstraint": 0,
+                                            "ObjectName": "Scenario::StateModel",
+                                            "PreviousConstraint": null,
+                                            "StateProcesses": [
+                                            ],
+                                            "id": 0
+                                        },
+                                        "StartTimeNode": {
+                                            "AutoTrigger": false,
+                                            "Components": [
+                                            ],
+                                            "Date": 0,
+                                            "Events": [
+                                                0
+                                            ],
+                                            "Extent": [
+                                                0.5,
+                                                1
+                                            ],
+                                            "Metadata": {
+                                                "Color": "Gray",
+                                                "Comment": "",
+                                                "Label": "",
+                                                "ScriptingName": "Sync.start",
+                                                "Touched": true
+                                            },
+                                            "ObjectName": "Scenario::TimeSyncModel",
+                                            "Trigger": {
+                                                "Active": false,
+                                                "Expression": {
+                                                    "Children": [
+                                                        {
+                                                            "Children": [
+                                                            ],
+                                                            "Relation": {
+                                                                "LHS": {
+                                                                    "Value": {
+                                                                        "Bool": true
+                                                                    }
+                                                                },
+                                                                "Op": 0,
+                                                                "RHS": {
+                                                                    "Value": {
+                                                                        "Bool": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    ],
+                                                    "RootNode": {
+                                                    }
+                                                }
+                                            },
+                                            "id": 0
+                                        },
+                                        "id": 2,
+                                        "uuid": "995d41a8-0f10-4152-971d-e4c033579a02"
+                                    },
+                                    {
+                                        "Components": [
+                                        ],
+                                        "Constraint": {
+                                            "Center": 2875.440020469733,
+                                            "Components": [
+                                            ],
+                                            "DefaultDuration": 5504.401118375146,
+                                            "EndState": 1,
+                                            "FullViewRack": [
+                                                {
+                                                    "Process": 2
+                                                }
+                                            ],
+                                            "GuiDuration": 6193.25542870404,
+                                            "HeightPercentage": 0.5,
+                                            "Inlet": {
+                                                "Address": {
+                                                    "Accessors": [
+                                                    ],
+                                                    "Unit": "none",
+                                                    "address": {
+                                                        "Device": "",
+                                                        "Path": ""
+                                                    }
+                                                },
+                                                "Custom": "",
+                                                "Description": "",
+                                                "Exposed": "",
+                                                "Hidden": false,
+                                                "ObjectName": "Inlet",
+                                                "Type": 1,
+                                                "id": 0,
+                                                "uuid": "8884228a-d197-4b0a-b6ca-d1fb15291559"
+                                            },
+                                            "MaxDuration": 5504,
+                                            "MaxInf": false,
+                                            "Metadata": {
+                                                "Color": "Transparent1",
+                                                "Comment": "",
+                                                "Label": "",
+                                                "ScriptingName": "pattern",
+                                                "Touched": true
+                                            },
+                                            "MinDuration": 5504.401118375146,
+                                            "MinNull": true,
+                                            "ObjectName": "Scenario::IntervalModel",
+                                            "Outlet": {
+                                                "Address": {
+                                                    "Accessors": [
+                                                    ],
+                                                    "Unit": "none",
+                                                    "address": {
+                                                        "Device": "",
+                                                        "Path": ""
+                                                    }
+                                                },
+                                                "Custom": "",
+                                                "Description": "",
+                                                "Exposed": "",
+                                                "Hidden": false,
+                                                "ObjectName": "Outlet",
+                                                "Propagate": true,
+                                                "Type": 1,
+                                                "id": 0,
+                                                "uuid": "34e2c5a7-18c4-4759-b6cc-46feaeee06e2"
+                                            },
+                                            "Processes": [
+                                                {
+                                                    "Components": [
+                                                    ],
+                                                    "Duration": 5504.401118375146,
+                                                    "Gradient": [
+                                                        0.025989543965734444,
+                                                        [
+                                                            0.6331120775158312,
+                                                            1,
+                                                            0.05392538338292516,
+                                                            1
+                                                        ],
+                                                        0.07737931034482759,
+                                                        [
+                                                            0.6331120775158312,
+                                                            1,
+                                                            0.05392538338292516,
+                                                            1
+                                                        ],
+                                                        0.08951724137931036,
+                                                        [
+                                                            0.6331120775158312,
+                                                            1,
+                                                            0.05392538338292516,
+                                                            1
+                                                        ],
+                                                        0.14084656084656086,
+                                                        [
+                                                            0.6585183489738308,
+                                                            0,
+                                                            1,
+                                                            1
+                                                        ],
+                                                        0.3351176377328578,
+                                                        [
+                                                            1,
+                                                            0,
+                                                            0.7869077592126345,
+                                                            1
+                                                        ],
+                                                        0.5004019024970275,
+                                                        [
+                                                            1,
+                                                            0,
+                                                            0.12933546959639888,
+                                                            1
+                                                        ],
+                                                        0.5322456599286566,
+                                                        [
+                                                            0.5156328679331655,
+                                                            0,
+                                                            1,
+                                                            1
+                                                        ],
+                                                        0.5777367419738408,
+                                                        [
+                                                            1,
+                                                            0,
+                                                            0.12933546959639888,
+                                                            1
+                                                        ],
+                                                        0.611096868806976,
+                                                        [
+                                                            1,
+                                                            0,
+                                                            0.9419089036392767,
+                                                            1
+                                                        ],
+                                                        0.843101387237416,
+                                                        [
+                                                            0.11828793774319066,
+                                                            0,
+                                                            0.9982146944380865,
+                                                            1
+                                                        ],
+                                                        0.94773087594134,
+                                                        [
+                                                            1,
+                                                            0,
+                                                            0,
+                                                            1
+                                                        ],
+                                                        0.979574633372969,
+                                                        [
+                                                            1,
+                                                            0,
+                                                            0.7111009384298467,
+                                                            1
+                                                        ],
+                                                        1.1251460959175588,
+                                                        [
+                                                            1,
+                                                            0,
+                                                            0,
+                                                            1
+                                                        ]
+                                                    ],
+                                                    "Height": 300,
+                                                    "Metadata": {
+                                                        "Color": "Transparent1",
+                                                        "Comment": "",
+                                                        "Label": "",
+                                                        "ScriptingName": "Automation (color).2",
+                                                        "Touched": false
+                                                    },
+                                                    "ObjectName": "Gradient",
+                                                    "Outlet": {
+                                                        "Address": {
+                                                            "Accessors": [
+                                                            ],
+                                                            "Unit": "color.argb",
+                                                            "address": {
+                                                                "Device": "peter",
+                                                                "Path": "ledstripctl1/rgb"
+                                                            }
+                                                        },
+                                                        "Custom": "Out",
+                                                        "Description": "",
+                                                        "Exposed": "",
+                                                        "Hidden": false,
+                                                        "ObjectName": "Outlet",
+                                                        "Propagate": false,
+                                                        "Type": 0,
+                                                        "id": 0,
+                                                        "uuid": "34e2c5a7-18c4-4759-b6cc-46feaeee06e2"
+                                                    },
+                                                    "Tween": false,
+                                                    "id": 2,
+                                                    "uuid": "b5da735b-a76d-4314-8853-3e8a96486fb9"
+                                                }
+                                            ],
+                                            "Rigidity": false,
+                                            "SmallViewRack": [
+                                                {
+                                                    "Height": 28,
+                                                    "Process": 2,
+                                                    "Processes": [
+                                                        2
+                                                    ]
+                                                }
+                                            ],
+                                            "SmallViewShown": true,
+                                            "StartDate": 0,
+                                            "StartState": 0,
+                                            "Zoom": 8.34670542952027,
+                                            "id": 0
+                                        },
+                                        "Duration": 5504.401118375144,
+                                        "EndEvent": {
+                                            "Components": [
+                                            ],
+                                            "Condition": {
+                                                "Children": [
+                                                ],
+                                                "RootNode": {
+                                                }
+                                            },
+                                            "Date": 5504.401118375146,
+                                            "Metadata": {
+                                                "Color": "Emphasis4",
+                                                "Comment": "",
+                                                "Label": "",
+                                                "ScriptingName": "Event.end",
+                                                "Touched": true
+                                            },
+                                            "ObjectName": "Scenario::EventModel",
+                                            "Offset": 0,
+                                            "States": [
+                                                1
+                                            ],
+                                            "TimeNode": 1,
+                                            "id": 1
+                                        },
+                                        "EndState": {
+                                            "Components": [
+                                            ],
+                                            "Event": 1,
+                                            "HeightPercentage": 0.5,
+                                            "Messages": {
+                                                "Accessors": [
+                                                ],
+                                                "Children": [
+                                                ],
+                                                "Following": [
+                                                ],
+                                                "Name": "",
+                                                "Previous": [
+                                                ],
+                                                "Priorities": [
+                                                    1,
+                                                    2,
+                                                    0
+                                                ],
+                                                "Unit": "none"
+                                            },
+                                            "Metadata": {
+                                                "Color": "Base1",
+                                                "Comment": "",
+                                                "Label": "",
+                                                "ScriptingName": "State.end",
+                                                "Touched": true
+                                            },
+                                            "NextConstraint": null,
+                                            "ObjectName": "Scenario::StateModel",
+                                            "PreviousConstraint": 0,
+                                            "StateProcesses": [
+                                            ],
+                                            "id": 1
+                                        },
+                                        "EndTimeNode": {
+                                            "AutoTrigger": false,
+                                            "Components": [
+                                            ],
+                                            "Date": 5504.401118375146,
+                                            "Events": [
+                                                1
+                                            ],
+                                            "Extent": [
+                                                0.5,
+                                                1
+                                            ],
+                                            "Metadata": {
+                                                "Color": "Gray",
+                                                "Comment": "",
+                                                "Label": "",
+                                                "ScriptingName": "Sync.end",
+                                                "Touched": true
+                                            },
+                                            "ObjectName": "Scenario::TimeSyncModel",
+                                            "Trigger": {
+                                                "Active": true,
+                                                "Expression": {
+                                                    "Children": [
+                                                        {
+                                                            "Children": [
+                                                            ],
+                                                            "Relation": {
+                                                                "LHS": {
+                                                                    "Address": {
+                                                                        "Device": "peter",
+                                                                        "Path": "ledstripctl1/random_off"
+                                                                    }
+                                                                },
+                                                                "Op": 0,
+                                                                "RHS": {
+                                                                    "Value": {
+                                                                        "Int": 2
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    ],
+                                                    "RootNode": {
+                                                    }
+                                                }
+                                            },
+                                            "id": 1
+                                        },
+                                        "Height": 300,
+                                        "Inlet": {
+                                            "Address": {
+                                                "Accessors": [
+                                                ],
+                                                "Unit": "none",
+                                                "address": {
+                                                    "Device": "",
+                                                    "Path": ""
+                                                }
+                                            },
+                                            "Custom": "",
+                                            "Description": "",
+                                            "Exposed": "",
+                                            "Hidden": false,
+                                            "ObjectName": "Inlet",
+                                            "Type": 1,
+                                            "id": 0,
+                                            "uuid": "8884228a-d197-4b0a-b6ca-d1fb15291559"
+                                        },
+                                        "Metadata": {
+                                            "Color": "Transparent1",
+                                            "Comment": "",
+                                            "Label": "",
+                                            "ScriptingName": "Loop.3",
+                                            "Touched": false
+                                        },
+                                        "ObjectName": "Loop",
+                                        "Outlet": {
+                                            "Address": {
+                                                "Accessors": [
+                                                ],
+                                                "Unit": "none",
+                                                "address": {
+                                                    "Device": "",
+                                                    "Path": ""
+                                                }
+                                            },
+                                            "Custom": "",
+                                            "Description": "",
+                                            "Exposed": "",
+                                            "Hidden": false,
+                                            "ObjectName": "Outlet",
+                                            "Propagate": true,
+                                            "Type": 1,
+                                            "id": 0,
+                                            "uuid": "34e2c5a7-18c4-4759-b6cc-46feaeee06e2"
+                                        },
+                                        "StartEvent": {
+                                            "Components": [
+                                            ],
+                                            "Condition": {
+                                                "Children": [
+                                                    {
+                                                        "Children": [
+                                                        ],
+                                                        "Relation": {
+                                                            "LHS": {
+                                                                "Address": {
+                                                                    "Device": "peter",
+                                                                    "Path": "ledstripctl1/random_num"
+                                                                }
+                                                            },
+                                                            "Op": 0,
+                                                            "RHS": {
+                                                                "Value": {
+                                                                    "Int": 2
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                ],
+                                                "RootNode": {
+                                                }
+                                            },
+                                            "Date": 0,
+                                            "Metadata": {
+                                                "Color": "Emphasis4",
+                                                "Comment": "",
+                                                "Label": "",
+                                                "ScriptingName": "Event.start",
+                                                "Touched": true
+                                            },
+                                            "ObjectName": "Scenario::EventModel",
+                                            "Offset": 0,
+                                            "States": [
+                                                0
+                                            ],
+                                            "TimeNode": 0,
+                                            "id": 0
+                                        },
+                                        "StartState": {
+                                            "Components": [
+                                            ],
+                                            "Event": 0,
+                                            "HeightPercentage": 0.5,
+                                            "Messages": {
+                                                "Accessors": [
+                                                ],
+                                                "Children": [
+                                                ],
+                                                "Following": [
+                                                ],
+                                                "Name": "",
+                                                "Previous": [
+                                                ],
+                                                "Priorities": [
+                                                    1,
+                                                    2,
+                                                    0
+                                                ],
+                                                "Unit": "none"
+                                            },
+                                            "Metadata": {
+                                                "Color": "Base1",
+                                                "Comment": "",
+                                                "Label": "",
+                                                "ScriptingName": "State.start",
+                                                "Touched": true
+                                            },
+                                            "NextConstraint": 0,
+                                            "ObjectName": "Scenario::StateModel",
+                                            "PreviousConstraint": null,
+                                            "StateProcesses": [
+                                            ],
+                                            "id": 0
+                                        },
+                                        "StartTimeNode": {
+                                            "AutoTrigger": false,
+                                            "Components": [
+                                            ],
+                                            "Date": 0,
+                                            "Events": [
+                                                0
+                                            ],
+                                            "Extent": [
+                                                0.5,
+                                                1
+                                            ],
+                                            "Metadata": {
+                                                "Color": "Gray",
+                                                "Comment": "",
+                                                "Label": "",
+                                                "ScriptingName": "Sync.start",
+                                                "Touched": true
+                                            },
+                                            "ObjectName": "Scenario::TimeSyncModel",
+                                            "Trigger": {
+                                                "Active": false,
+                                                "Expression": {
+                                                    "Children": [
+                                                        {
+                                                            "Children": [
+                                                            ],
+                                                            "Relation": {
+                                                                "LHS": {
+                                                                    "Value": {
+                                                                        "Bool": true
+                                                                    }
+                                                                },
+                                                                "Op": 0,
+                                                                "RHS": {
+                                                                    "Value": {
+                                                                        "Bool": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    ],
+                                                    "RootNode": {
+                                                    }
+                                                }
+                                            },
+                                            "id": 0
+                                        },
+                                        "id": 3,
+                                        "uuid": "995d41a8-0f10-4152-971d-e4c033579a02"
                                     }
                                 ],
                                 "Rigidity": false,
@@ -686,12 +1693,26 @@
                                         "Processes": [
                                             1
                                         ]
+                                    },
+                                    {
+                                        "Height": 72,
+                                        "Process": 2,
+                                        "Processes": [
+                                            2
+                                        ]
+                                    },
+                                    {
+                                        "Height": 79,
+                                        "Process": 3,
+                                        "Processes": [
+                                            3
+                                        ]
                                     }
                                 ],
                                 "SmallViewShown": true,
                                 "StartDate": 7888.830113371502,
                                 "StartState": 13,
-                                "Zoom": 4.614737899066086,
+                                "Zoom": 7.1608001882059975,
                                 "id": 7
                             },
                             {
@@ -703,6 +1724,12 @@
                                 "FullViewRack": [
                                     {
                                         "Process": 1
+                                    },
+                                    {
+                                        "Process": 2
+                                    },
+                                    {
+                                        "Process": 3
                                     }
                                 ],
                                 "GuiDuration": 7654.8954011922115,
@@ -1023,7 +2050,7 @@
                                             "id": 1
                                         },
                                         "EndTimeNode": {
-                                            "AutoTrigger": false,
+                                            "AutoTrigger": true,
                                             "Components": [
                                             ],
                                             "Date": 5504.401118375146,
@@ -1270,6 +2297,945 @@
                                         },
                                         "id": 1,
                                         "uuid": "995d41a8-0f10-4152-971d-e4c033579a02"
+                                    },
+                                    {
+                                        "Components": [
+                                        ],
+                                        "Constraint": {
+                                            "Center": 3628.7289855550366,
+                                            "Components": [
+                                            ],
+                                            "DefaultDuration": 5504.401118375146,
+                                            "EndState": 1,
+                                            "FullViewRack": [
+                                                {
+                                                    "Process": 1
+                                                }
+                                            ],
+                                            "GuiDuration": 7265.809476255194,
+                                            "HeightPercentage": 0.5,
+                                            "Inlet": {
+                                                "Address": {
+                                                    "Accessors": [
+                                                    ],
+                                                    "Unit": "none",
+                                                    "address": {
+                                                        "Device": "",
+                                                        "Path": ""
+                                                    }
+                                                },
+                                                "Custom": "",
+                                                "Description": "",
+                                                "Exposed": "",
+                                                "Hidden": false,
+                                                "ObjectName": "Inlet",
+                                                "Type": 1,
+                                                "id": 0,
+                                                "uuid": "8884228a-d197-4b0a-b6ca-d1fb15291559"
+                                            },
+                                            "MaxDuration": 5504,
+                                            "MaxInf": false,
+                                            "Metadata": {
+                                                "Color": "Transparent1",
+                                                "Comment": "",
+                                                "Label": "",
+                                                "ScriptingName": "pattern",
+                                                "Touched": true
+                                            },
+                                            "MinDuration": 5504.401118375146,
+                                            "MinNull": true,
+                                            "ObjectName": "Scenario::IntervalModel",
+                                            "Outlet": {
+                                                "Address": {
+                                                    "Accessors": [
+                                                    ],
+                                                    "Unit": "none",
+                                                    "address": {
+                                                        "Device": "",
+                                                        "Path": ""
+                                                    }
+                                                },
+                                                "Custom": "",
+                                                "Description": "",
+                                                "Exposed": "",
+                                                "Hidden": false,
+                                                "ObjectName": "Outlet",
+                                                "Propagate": true,
+                                                "Type": 1,
+                                                "id": 0,
+                                                "uuid": "34e2c5a7-18c4-4759-b6cc-46feaeee06e2"
+                                            },
+                                            "Processes": [
+                                                {
+                                                    "Components": [
+                                                    ],
+                                                    "Duration": 5504.401118375146,
+                                                    "Gradient": [
+                                                        0.025793103448275866,
+                                                        [
+                                                            0.9852903028915847,
+                                                            0,
+                                                            0.8234988937209125,
+                                                            1
+                                                        ],
+                                                        0.930557293215088,
+                                                        [
+                                                            0.8299534599832151,
+                                                            1,
+                                                            0,
+                                                            1
+                                                        ]
+                                                    ],
+                                                    "Height": 300,
+                                                    "Metadata": {
+                                                        "Color": "Transparent1",
+                                                        "Comment": "",
+                                                        "Label": "",
+                                                        "ScriptingName": "Automation (color).1",
+                                                        "Touched": false
+                                                    },
+                                                    "ObjectName": "Gradient",
+                                                    "Outlet": {
+                                                        "Address": {
+                                                            "Accessors": [
+                                                            ],
+                                                            "Unit": "color.argb",
+                                                            "address": {
+                                                                "Device": "peter",
+                                                                "Path": "ledstripctl1/rgb"
+                                                            }
+                                                        },
+                                                        "Custom": "Out",
+                                                        "Description": "",
+                                                        "Exposed": "",
+                                                        "Hidden": false,
+                                                        "ObjectName": "Outlet",
+                                                        "Propagate": false,
+                                                        "Type": 0,
+                                                        "id": 0,
+                                                        "uuid": "34e2c5a7-18c4-4759-b6cc-46feaeee06e2"
+                                                    },
+                                                    "Tween": false,
+                                                    "id": 1,
+                                                    "uuid": "b5da735b-a76d-4314-8853-3e8a96486fb9"
+                                                }
+                                            ],
+                                            "Rigidity": false,
+                                            "SmallViewRack": [
+                                                {
+                                                    "Height": 21,
+                                                    "Process": 1,
+                                                    "Processes": [
+                                                        1
+                                                    ]
+                                                }
+                                            ],
+                                            "SmallViewShown": true,
+                                            "StartDate": 0,
+                                            "StartState": 0,
+                                            "Zoom": 8.351505145120912,
+                                            "id": 0
+                                        },
+                                        "Duration": 5504.401118375146,
+                                        "EndEvent": {
+                                            "Components": [
+                                            ],
+                                            "Condition": {
+                                                "Children": [
+                                                ],
+                                                "RootNode": {
+                                                }
+                                            },
+                                            "Date": 5504.401118375146,
+                                            "Metadata": {
+                                                "Color": "Emphasis4",
+                                                "Comment": "",
+                                                "Label": "",
+                                                "ScriptingName": "Event.end",
+                                                "Touched": true
+                                            },
+                                            "ObjectName": "Scenario::EventModel",
+                                            "Offset": 0,
+                                            "States": [
+                                                1
+                                            ],
+                                            "TimeNode": 1,
+                                            "id": 1
+                                        },
+                                        "EndState": {
+                                            "Components": [
+                                            ],
+                                            "Event": 1,
+                                            "HeightPercentage": 0.5,
+                                            "Messages": {
+                                                "Accessors": [
+                                                ],
+                                                "Children": [
+                                                ],
+                                                "Following": [
+                                                ],
+                                                "Name": "",
+                                                "Previous": [
+                                                ],
+                                                "Priorities": [
+                                                    1,
+                                                    2,
+                                                    0
+                                                ],
+                                                "Unit": "none"
+                                            },
+                                            "Metadata": {
+                                                "Color": "Base1",
+                                                "Comment": "",
+                                                "Label": "",
+                                                "ScriptingName": "State.end",
+                                                "Touched": true
+                                            },
+                                            "NextConstraint": null,
+                                            "ObjectName": "Scenario::StateModel",
+                                            "PreviousConstraint": 0,
+                                            "StateProcesses": [
+                                            ],
+                                            "id": 1
+                                        },
+                                        "EndTimeNode": {
+                                            "AutoTrigger": true,
+                                            "Components": [
+                                            ],
+                                            "Date": 5504.401118375146,
+                                            "Events": [
+                                                1
+                                            ],
+                                            "Extent": [
+                                                0.5,
+                                                1
+                                            ],
+                                            "Metadata": {
+                                                "Color": "Gray",
+                                                "Comment": "",
+                                                "Label": "",
+                                                "ScriptingName": "Sync.end",
+                                                "Touched": true
+                                            },
+                                            "ObjectName": "Scenario::TimeSyncModel",
+                                            "Trigger": {
+                                                "Active": true,
+                                                "Expression": {
+                                                    "Children": [
+                                                        {
+                                                            "Children": [
+                                                            ],
+                                                            "Relation": {
+                                                                "LHS": {
+                                                                    "Address": {
+                                                                        "Device": "peter",
+                                                                        "Path": "ledstripctl1/random_off"
+                                                                    }
+                                                                },
+                                                                "Op": 0,
+                                                                "RHS": {
+                                                                    "Value": {
+                                                                        "Int": 1
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    ],
+                                                    "RootNode": {
+                                                    }
+                                                }
+                                            },
+                                            "id": 1
+                                        },
+                                        "Height": 300,
+                                        "Inlet": {
+                                            "Address": {
+                                                "Accessors": [
+                                                ],
+                                                "Unit": "none",
+                                                "address": {
+                                                    "Device": "",
+                                                    "Path": ""
+                                                }
+                                            },
+                                            "Custom": "",
+                                            "Description": "",
+                                            "Exposed": "",
+                                            "Hidden": false,
+                                            "ObjectName": "Inlet",
+                                            "Type": 1,
+                                            "id": 0,
+                                            "uuid": "8884228a-d197-4b0a-b6ca-d1fb15291559"
+                                        },
+                                        "Metadata": {
+                                            "Color": "Transparent1",
+                                            "Comment": "",
+                                            "Label": "",
+                                            "ScriptingName": "Loop.2",
+                                            "Touched": false
+                                        },
+                                        "ObjectName": "Loop",
+                                        "Outlet": {
+                                            "Address": {
+                                                "Accessors": [
+                                                ],
+                                                "Unit": "none",
+                                                "address": {
+                                                    "Device": "",
+                                                    "Path": ""
+                                                }
+                                            },
+                                            "Custom": "",
+                                            "Description": "",
+                                            "Exposed": "",
+                                            "Hidden": false,
+                                            "ObjectName": "Outlet",
+                                            "Propagate": true,
+                                            "Type": 1,
+                                            "id": 0,
+                                            "uuid": "34e2c5a7-18c4-4759-b6cc-46feaeee06e2"
+                                        },
+                                        "StartEvent": {
+                                            "Components": [
+                                            ],
+                                            "Condition": {
+                                                "Children": [
+                                                    {
+                                                        "Children": [
+                                                        ],
+                                                        "Relation": {
+                                                            "LHS": {
+                                                                "Address": {
+                                                                    "Device": "peter",
+                                                                    "Path": "ledstripctl1/random_num"
+                                                                }
+                                                            },
+                                                            "Op": 0,
+                                                            "RHS": {
+                                                                "Value": {
+                                                                    "Int": 1
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                ],
+                                                "RootNode": {
+                                                }
+                                            },
+                                            "Date": 0,
+                                            "Metadata": {
+                                                "Color": "Emphasis4",
+                                                "Comment": "",
+                                                "Label": "",
+                                                "ScriptingName": "Event.start",
+                                                "Touched": true
+                                            },
+                                            "ObjectName": "Scenario::EventModel",
+                                            "Offset": 0,
+                                            "States": [
+                                                0
+                                            ],
+                                            "TimeNode": 0,
+                                            "id": 0
+                                        },
+                                        "StartState": {
+                                            "Components": [
+                                            ],
+                                            "Event": 0,
+                                            "HeightPercentage": 0.5,
+                                            "Messages": {
+                                                "Accessors": [
+                                                ],
+                                                "Children": [
+                                                ],
+                                                "Following": [
+                                                ],
+                                                "Name": "",
+                                                "Previous": [
+                                                ],
+                                                "Priorities": [
+                                                    1,
+                                                    2,
+                                                    0
+                                                ],
+                                                "Unit": "none"
+                                            },
+                                            "Metadata": {
+                                                "Color": "Base1",
+                                                "Comment": "",
+                                                "Label": "",
+                                                "ScriptingName": "State.start",
+                                                "Touched": true
+                                            },
+                                            "NextConstraint": 0,
+                                            "ObjectName": "Scenario::StateModel",
+                                            "PreviousConstraint": null,
+                                            "StateProcesses": [
+                                            ],
+                                            "id": 0
+                                        },
+                                        "StartTimeNode": {
+                                            "AutoTrigger": false,
+                                            "Components": [
+                                            ],
+                                            "Date": 0,
+                                            "Events": [
+                                                0
+                                            ],
+                                            "Extent": [
+                                                0.5,
+                                                1
+                                            ],
+                                            "Metadata": {
+                                                "Color": "Gray",
+                                                "Comment": "",
+                                                "Label": "",
+                                                "ScriptingName": "Sync.start",
+                                                "Touched": true
+                                            },
+                                            "ObjectName": "Scenario::TimeSyncModel",
+                                            "Trigger": {
+                                                "Active": false,
+                                                "Expression": {
+                                                    "Children": [
+                                                        {
+                                                            "Children": [
+                                                            ],
+                                                            "Relation": {
+                                                                "LHS": {
+                                                                    "Value": {
+                                                                        "Bool": true
+                                                                    }
+                                                                },
+                                                                "Op": 0,
+                                                                "RHS": {
+                                                                    "Value": {
+                                                                        "Bool": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    ],
+                                                    "RootNode": {
+                                                    }
+                                                }
+                                            },
+                                            "id": 0
+                                        },
+                                        "id": 2,
+                                        "uuid": "995d41a8-0f10-4152-971d-e4c033579a02"
+                                    },
+                                    {
+                                        "Components": [
+                                        ],
+                                        "Constraint": {
+                                            "Center": 0,
+                                            "Components": [
+                                            ],
+                                            "DefaultDuration": 5504.401118375146,
+                                            "EndState": 1,
+                                            "FullViewRack": [
+                                                {
+                                                    "Process": 1
+                                                },
+                                                {
+                                                    "Process": 2
+                                                }
+                                            ],
+                                            "GuiDuration": 7265.809476255194,
+                                            "HeightPercentage": 0.5,
+                                            "Inlet": {
+                                                "Address": {
+                                                    "Accessors": [
+                                                    ],
+                                                    "Unit": "none",
+                                                    "address": {
+                                                        "Device": "",
+                                                        "Path": ""
+                                                    }
+                                                },
+                                                "Custom": "",
+                                                "Description": "",
+                                                "Exposed": "",
+                                                "Hidden": false,
+                                                "ObjectName": "Inlet",
+                                                "Type": 1,
+                                                "id": 0,
+                                                "uuid": "8884228a-d197-4b0a-b6ca-d1fb15291559"
+                                            },
+                                            "MaxDuration": 5504,
+                                            "MaxInf": false,
+                                            "Metadata": {
+                                                "Color": "Transparent1",
+                                                "Comment": "",
+                                                "Label": "",
+                                                "ScriptingName": "pattern",
+                                                "Touched": true
+                                            },
+                                            "MinDuration": 5504.401118375146,
+                                            "MinNull": true,
+                                            "ObjectName": "Scenario::IntervalModel",
+                                            "Outlet": {
+                                                "Address": {
+                                                    "Accessors": [
+                                                    ],
+                                                    "Unit": "none",
+                                                    "address": {
+                                                        "Device": "",
+                                                        "Path": ""
+                                                    }
+                                                },
+                                                "Custom": "",
+                                                "Description": "",
+                                                "Exposed": "",
+                                                "Hidden": false,
+                                                "ObjectName": "Outlet",
+                                                "Propagate": true,
+                                                "Type": 1,
+                                                "id": 0,
+                                                "uuid": "34e2c5a7-18c4-4759-b6cc-46feaeee06e2"
+                                            },
+                                            "Processes": [
+                                                {
+                                                    "Components": [
+                                                    ],
+                                                    "Duration": 5504.401118375146,
+                                                    "Gradient": [
+                                                        0.2,
+                                                        [
+                                                            0,
+                                                            0,
+                                                            0,
+                                                            1
+                                                        ],
+                                                        0.8,
+                                                        [
+                                                            1,
+                                                            1,
+                                                            1,
+                                                            1
+                                                        ]
+                                                    ],
+                                                    "Height": 300,
+                                                    "Metadata": {
+                                                        "Color": "Transparent1",
+                                                        "Comment": "",
+                                                        "Label": "",
+                                                        "ScriptingName": "Automation (color).1",
+                                                        "Touched": false
+                                                    },
+                                                    "ObjectName": "Gradient",
+                                                    "Outlet": {
+                                                        "Address": {
+                                                            "Accessors": [
+                                                            ],
+                                                            "Unit": "color.argb",
+                                                            "address": {
+                                                                "Device": "",
+                                                                "Path": ""
+                                                            }
+                                                        },
+                                                        "Custom": "Out",
+                                                        "Description": "",
+                                                        "Exposed": "",
+                                                        "Hidden": false,
+                                                        "ObjectName": "Outlet",
+                                                        "Propagate": false,
+                                                        "Type": 0,
+                                                        "id": 0,
+                                                        "uuid": "34e2c5a7-18c4-4759-b6cc-46feaeee06e2"
+                                                    },
+                                                    "Tween": false,
+                                                    "id": 1,
+                                                    "uuid": "b5da735b-a76d-4314-8853-3e8a96486fb9"
+                                                },
+                                                {
+                                                    "Components": [
+                                                    ],
+                                                    "Duration": 5504.401118375146,
+                                                    "Gradient": [
+                                                        0.05473084517153603,
+                                                        [
+                                                            1,
+                                                            0,
+                                                            0.9266498817425803,
+                                                            1
+                                                        ],
+                                                        0.21147500488629903,
+                                                        [
+                                                            0.47881284809643704,
+                                                            0,
+                                                            1,
+                                                            1
+                                                        ],
+                                                        0.3615079475421193,
+                                                        [
+                                                            1,
+                                                            0,
+                                                            0.42977035172045475,
+                                                            1
+                                                        ],
+                                                        0.6630027180219105,
+                                                        [
+                                                            0.15115587090867474,
+                                                            0.16198977645532922,
+                                                            1,
+                                                            1
+                                                        ],
+                                                        0.8,
+                                                        [
+                                                            1,
+                                                            0,
+                                                            0.11677729457541772,
+                                                            1
+                                                        ],
+                                                        0.8516155602177987,
+                                                        [
+                                                            1,
+                                                            0,
+                                                            0.9266498817425803,
+                                                            1
+                                                        ]
+                                                    ],
+                                                    "Height": 300,
+                                                    "Metadata": {
+                                                        "Color": "Transparent1",
+                                                        "Comment": "",
+                                                        "Label": "",
+                                                        "ScriptingName": "Automation (color).2",
+                                                        "Touched": false
+                                                    },
+                                                    "ObjectName": "Gradient",
+                                                    "Outlet": {
+                                                        "Address": {
+                                                            "Accessors": [
+                                                            ],
+                                                            "Unit": "color.argb",
+                                                            "address": {
+                                                                "Device": "peter",
+                                                                "Path": "ledstripctl1/rgb"
+                                                            }
+                                                        },
+                                                        "Custom": "Out",
+                                                        "Description": "",
+                                                        "Exposed": "",
+                                                        "Hidden": false,
+                                                        "ObjectName": "Outlet",
+                                                        "Propagate": false,
+                                                        "Type": 0,
+                                                        "id": 0,
+                                                        "uuid": "34e2c5a7-18c4-4759-b6cc-46feaeee06e2"
+                                                    },
+                                                    "Tween": false,
+                                                    "id": 2,
+                                                    "uuid": "b5da735b-a76d-4314-8853-3e8a96486fb9"
+                                                }
+                                            ],
+                                            "Rigidity": false,
+                                            "SmallViewRack": [
+                                                {
+                                                    "Height": 28,
+                                                    "Process": 2,
+                                                    "Processes": [
+                                                        1,
+                                                        2
+                                                    ]
+                                                }
+                                            ],
+                                            "SmallViewShown": true,
+                                            "StartDate": 0,
+                                            "StartState": 0,
+                                            "Zoom": -1,
+                                            "id": 0
+                                        },
+                                        "Duration": 5504.401118375146,
+                                        "EndEvent": {
+                                            "Components": [
+                                            ],
+                                            "Condition": {
+                                                "Children": [
+                                                ],
+                                                "RootNode": {
+                                                }
+                                            },
+                                            "Date": 5504.401118375146,
+                                            "Metadata": {
+                                                "Color": "Emphasis4",
+                                                "Comment": "",
+                                                "Label": "",
+                                                "ScriptingName": "Event.end",
+                                                "Touched": true
+                                            },
+                                            "ObjectName": "Scenario::EventModel",
+                                            "Offset": 0,
+                                            "States": [
+                                                1
+                                            ],
+                                            "TimeNode": 1,
+                                            "id": 1
+                                        },
+                                        "EndState": {
+                                            "Components": [
+                                            ],
+                                            "Event": 1,
+                                            "HeightPercentage": 0.5,
+                                            "Messages": {
+                                                "Accessors": [
+                                                ],
+                                                "Children": [
+                                                ],
+                                                "Following": [
+                                                ],
+                                                "Name": "",
+                                                "Previous": [
+                                                ],
+                                                "Priorities": [
+                                                    1,
+                                                    2,
+                                                    0
+                                                ],
+                                                "Unit": "none"
+                                            },
+                                            "Metadata": {
+                                                "Color": "Base1",
+                                                "Comment": "",
+                                                "Label": "",
+                                                "ScriptingName": "State.end",
+                                                "Touched": true
+                                            },
+                                            "NextConstraint": null,
+                                            "ObjectName": "Scenario::StateModel",
+                                            "PreviousConstraint": 0,
+                                            "StateProcesses": [
+                                            ],
+                                            "id": 1
+                                        },
+                                        "EndTimeNode": {
+                                            "AutoTrigger": true,
+                                            "Components": [
+                                            ],
+                                            "Date": 5504.401118375146,
+                                            "Events": [
+                                                1
+                                            ],
+                                            "Extent": [
+                                                0.5,
+                                                1
+                                            ],
+                                            "Metadata": {
+                                                "Color": "Gray",
+                                                "Comment": "",
+                                                "Label": "",
+                                                "ScriptingName": "Sync.end",
+                                                "Touched": true
+                                            },
+                                            "ObjectName": "Scenario::TimeSyncModel",
+                                            "Trigger": {
+                                                "Active": true,
+                                                "Expression": {
+                                                    "Children": [
+                                                        {
+                                                            "Children": [
+                                                            ],
+                                                            "Relation": {
+                                                                "LHS": {
+                                                                    "Address": {
+                                                                        "Device": "peter",
+                                                                        "Path": "ledstripctl1/random_off"
+                                                                    }
+                                                                },
+                                                                "Op": 0,
+                                                                "RHS": {
+                                                                    "Value": {
+                                                                        "Int": 2
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    ],
+                                                    "RootNode": {
+                                                    }
+                                                }
+                                            },
+                                            "id": 1
+                                        },
+                                        "Height": 300,
+                                        "Inlet": {
+                                            "Address": {
+                                                "Accessors": [
+                                                ],
+                                                "Unit": "none",
+                                                "address": {
+                                                    "Device": "",
+                                                    "Path": ""
+                                                }
+                                            },
+                                            "Custom": "",
+                                            "Description": "",
+                                            "Exposed": "",
+                                            "Hidden": false,
+                                            "ObjectName": "Inlet",
+                                            "Type": 1,
+                                            "id": 0,
+                                            "uuid": "8884228a-d197-4b0a-b6ca-d1fb15291559"
+                                        },
+                                        "Metadata": {
+                                            "Color": "Transparent1",
+                                            "Comment": "",
+                                            "Label": "",
+                                            "ScriptingName": "Loop.3",
+                                            "Touched": false
+                                        },
+                                        "ObjectName": "Loop",
+                                        "Outlet": {
+                                            "Address": {
+                                                "Accessors": [
+                                                ],
+                                                "Unit": "none",
+                                                "address": {
+                                                    "Device": "",
+                                                    "Path": ""
+                                                }
+                                            },
+                                            "Custom": "",
+                                            "Description": "",
+                                            "Exposed": "",
+                                            "Hidden": false,
+                                            "ObjectName": "Outlet",
+                                            "Propagate": true,
+                                            "Type": 1,
+                                            "id": 0,
+                                            "uuid": "34e2c5a7-18c4-4759-b6cc-46feaeee06e2"
+                                        },
+                                        "StartEvent": {
+                                            "Components": [
+                                            ],
+                                            "Condition": {
+                                                "Children": [
+                                                    {
+                                                        "Children": [
+                                                        ],
+                                                        "Relation": {
+                                                            "LHS": {
+                                                                "Address": {
+                                                                    "Device": "peter",
+                                                                    "Path": "ledstripctl1/random_num"
+                                                                }
+                                                            },
+                                                            "Op": 0,
+                                                            "RHS": {
+                                                                "Value": {
+                                                                    "Int": 2
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                ],
+                                                "RootNode": {
+                                                }
+                                            },
+                                            "Date": 0,
+                                            "Metadata": {
+                                                "Color": "Emphasis4",
+                                                "Comment": "",
+                                                "Label": "",
+                                                "ScriptingName": "Event.start",
+                                                "Touched": true
+                                            },
+                                            "ObjectName": "Scenario::EventModel",
+                                            "Offset": 0,
+                                            "States": [
+                                                0
+                                            ],
+                                            "TimeNode": 0,
+                                            "id": 0
+                                        },
+                                        "StartState": {
+                                            "Components": [
+                                            ],
+                                            "Event": 0,
+                                            "HeightPercentage": 0.5,
+                                            "Messages": {
+                                                "Accessors": [
+                                                ],
+                                                "Children": [
+                                                ],
+                                                "Following": [
+                                                ],
+                                                "Name": "",
+                                                "Previous": [
+                                                ],
+                                                "Priorities": [
+                                                    1,
+                                                    2,
+                                                    0
+                                                ],
+                                                "Unit": "none"
+                                            },
+                                            "Metadata": {
+                                                "Color": "Base1",
+                                                "Comment": "",
+                                                "Label": "",
+                                                "ScriptingName": "State.start",
+                                                "Touched": true
+                                            },
+                                            "NextConstraint": 0,
+                                            "ObjectName": "Scenario::StateModel",
+                                            "PreviousConstraint": null,
+                                            "StateProcesses": [
+                                            ],
+                                            "id": 0
+                                        },
+                                        "StartTimeNode": {
+                                            "AutoTrigger": false,
+                                            "Components": [
+                                            ],
+                                            "Date": 0,
+                                            "Events": [
+                                                0
+                                            ],
+                                            "Extent": [
+                                                0.5,
+                                                1
+                                            ],
+                                            "Metadata": {
+                                                "Color": "Gray",
+                                                "Comment": "",
+                                                "Label": "",
+                                                "ScriptingName": "Sync.start",
+                                                "Touched": true
+                                            },
+                                            "ObjectName": "Scenario::TimeSyncModel",
+                                            "Trigger": {
+                                                "Active": false,
+                                                "Expression": {
+                                                    "Children": [
+                                                        {
+                                                            "Children": [
+                                                            ],
+                                                            "Relation": {
+                                                                "LHS": {
+                                                                    "Value": {
+                                                                        "Bool": true
+                                                                    }
+                                                                },
+                                                                "Op": 0,
+                                                                "RHS": {
+                                                                    "Value": {
+                                                                        "Bool": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    ],
+                                                    "RootNode": {
+                                                    }
+                                                }
+                                            },
+                                            "id": 0
+                                        },
+                                        "id": 3,
+                                        "uuid": "995d41a8-0f10-4152-971d-e4c033579a02"
                                     }
                                 ],
                                 "Rigidity": false,
@@ -1279,6 +3245,20 @@
                                         "Process": 1,
                                         "Processes": [
                                             1
+                                        ]
+                                    },
+                                    {
+                                        "Height": 72,
+                                        "Process": 2,
+                                        "Processes": [
+                                            2
+                                        ]
+                                    },
+                                    {
+                                        "Height": 79,
+                                        "Process": 3,
+                                        "Processes": [
+                                            3
                                         ]
                                     }
                                 ],
@@ -1689,7 +3669,7 @@
                         ],
                         "TimeNodes": [
                             {
-                                "AutoTrigger": false,
+                                "AutoTrigger": true,
                                 "Components": [
                                 ],
                                 "Date": 13393.231231746646,
@@ -1698,7 +3678,7 @@
                                 ],
                                 "Extent": [
                                     0.020666666666666576,
-                                    0.09333333333333324
+                                    0.23266666666666658
                                 ],
                                 "Metadata": {
                                     "Color": "Gray",
@@ -1730,7 +3710,7 @@
                                 "id": 11
                             },
                             {
-                                "AutoTrigger": false,
+                                "AutoTrigger": true,
                                 "Components": [
                                 ],
                                 "Date": 7888.830113371502,
@@ -1739,7 +3719,7 @@
                                 ],
                                 "Extent": [
                                     0.020666666666666576,
-                                    0.09333333333333324
+                                    0.23266666666666658
                                 ],
                                 "Metadata": {
                                     "Color": "Gray",
@@ -1819,7 +3799,7 @@
                                 "id": 0
                             },
                             {
-                                "AutoTrigger": false,
+                                "AutoTrigger": true,
                                 "Components": [
                                 ],
                                 "Date": 1159.815652462542,
@@ -1828,7 +3808,7 @@
                                 ],
                                 "Extent": [
                                     0.024000000000000007,
-                                    0.09666666666666668
+                                    0.236
                                 ],
                                 "Metadata": {
                                     "Color": "Gray",
@@ -1860,7 +3840,7 @@
                                 "id": 8
                             },
                             {
-                                "AutoTrigger": false,
+                                "AutoTrigger": true,
                                 "Components": [
                                 ],
                                 "Date": 6664.216770837688,
@@ -1869,7 +3849,7 @@
                                 ],
                                 "Extent": [
                                     0.024000000000000007,
-                                    0.09666666666666668
+                                    0.236
                                 ],
                                 "Metadata": {
                                     "Color": "Gray",
@@ -1911,7 +3891,7 @@
                 "SmallViewShown": false,
                 "StartDate": 0,
                 "StartState": 0,
-                "Zoom": 23.19449694339251,
+                "Zoom": 23.238529097103875,
                 "id": 0
             },
             "EndEvent": {
@@ -2161,8 +4141,7 @@
                                 },
                                 "Name": "ledstripctl1",
                                 "RepetitionFilter": false,
-                                "Unit": "none",
-                                "ioType": "<->"
+                                "Unit": "none"
                             },
                             "Children": [
                                 {
@@ -2178,7 +4157,7 @@
                                             "priority": 0,
                                             "refreshRate": 10
                                         },
-                                        "Int": 0,
+                                        "Int": 1,
                                         "Name": "random_num",
                                         "RepetitionFilter": false,
                                         "Unit": "none",
@@ -2200,7 +4179,7 @@
                                             "priority": 0,
                                             "refreshRate": 10
                                         },
-                                        "Int": 0,
+                                        "Int": 2,
                                         "Name": "random_off",
                                         "RepetitionFilter": false,
                                         "Unit": "none",
@@ -2218,8 +4197,7 @@
                                         },
                                         "Name": "onhook",
                                         "RepetitionFilter": false,
-                                        "Unit": "none",
-                                        "ioType": "<->"
+                                        "Unit": "none"
                                     },
                                     "Children": [
                                         {
@@ -2269,8 +4247,7 @@
                                         },
                                         "Name": "offhook",
                                         "RepetitionFilter": false,
-                                        "Unit": "none",
-                                        "ioType": "<->"
+                                        "Unit": "none"
                                     },
                                     "Children": [
                                         {
@@ -4384,37 +6361,15 @@
                                                 "Float": 1
                                             },
                                             {
-                                                "Float": 0.999996542930603
+                                                "Float": 0.5180361270904541
                                             },
                                             {
-                                                "Float": 0.00027814190252684057
+                                                "Float": 0.5376561284065247
                                             },
                                             {
-                                                "Float": 0.13155029714107513
+                                                "Float": 1
                                             }
                                         ],
-                                        "Unit": "none",
-                                        "ioType": "<->"
-                                    },
-                                    "Children": [
-                                    ]
-                                },
-                                {
-                                    "AddressSettings": {
-                                        "ClipMode": "Free",
-                                        "Domain": {
-                                            "Float": {
-                                                "Max": 1,
-                                                "Min": 0
-                                            }
-                                        },
-                                        "Extended": {
-                                            "priority": 0,
-                                            "refreshRate": 10
-                                        },
-                                        "Float": 0,
-                                        "Name": "test",
-                                        "RepetitionFilter": false,
                                         "Unit": "none",
                                         "ioType": "<->"
                                     },

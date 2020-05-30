@@ -52,24 +52,26 @@ Require(~srcdir +/+ "/scenes/scene1/TL_localcfg_scene1.scd");
 		~globalscenectl.play;
 		"ready for incoming call".postln;
 	});
-	(msg[1] == 1).if({
-		// /timeline/scene 1
-		"/timeline/scene 1 << run scene 1 >>".postln;
+	(msg[1] == 0).if({
+		// /timeline/scene 0
+		"/timeline/scene 0 << run scene 1 >>".postln;
 		Require(~srcdir +/+ "/scenes/scene1/TL_callflow_scene1.scd");
-		"loaded scene 1".postln;
+		"loaded scene 0".postln;
 		~callflow.reset;
 		~callflow.play;
 	});
-	(msg[1] == 2).if({
-		// /timeline/scene/2
+	(msg[1] == 1).if({
+		// /timeline/scene/1
 		Require(~srcdir +/+ "/scenes/scene1/TL_callflow_scene1.scd");
-		"/timeline/scene 2".postln;
+		"/timeline/scene 1".postln;
 		~playscore.reset;
 		~playscore.play;
 	});
-	(msg[1] == 3).if({
-		// /timeline/scene/3
-		"/timeline/scene 3".postln;
+	(msg[1] == 2).if({
+		// /timeline/scene/2
+		"/timeline/scene 2".postln;
+		~playscore.reset;
+		~playscore.play;
 	});
 }, '/timeline/scene')
 }.play;

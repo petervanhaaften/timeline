@@ -54,7 +54,7 @@ Require(~srcdir +/+ "/scenes/scene1/TL_localcfg_scene1.scd");
 	});
 	(msg[1] == 0).if({
 		// /timeline/scene 0
-		"/timeline/scene 0 << run scene 1 >>".postln;
+		"/timeline/scene 0 << run scene 0s >>".postln;
 		Require(~srcdir +/+ "/scenes/scene1/TL_callflow_scene1.scd");
 		"loaded scene 0".postln;
 		~callflow.reset;
@@ -62,16 +62,19 @@ Require(~srcdir +/+ "/scenes/scene1/TL_localcfg_scene1.scd");
 	});
 	(msg[1] == 1).if({
 		// /timeline/scene/1
+		"/timeline/scene 1 << run scene 1 >>".postln;
 		Require(~srcdir +/+ "/scenes/scene1/TL_callflow_scene1.scd");
-		"/timeline/scene 1".postln;
-		~playscore.reset;
-		~playscore.play;
+		"loaded scene 1".postln;
+		~callflow.reset;
+		~callflow.play;
 	});
 	(msg[1] == 2).if({
 		// /timeline/scene/2
-		"/timeline/scene 2".postln;
-		~playscore.reset;
-		~playscore.play;
+		"/timeline/scene 2 << run scene 2 >>".postln;
+		Require(~srcdir +/+ "/scenes/scene1/TL_callflow_scene1.scd");
+		"loaded scene2".postln;
+		~callflow.reset;
+		~callflow.play;
 	});
 }, '/timeline/scene')
 }.play;

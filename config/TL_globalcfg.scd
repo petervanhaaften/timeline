@@ -6,7 +6,7 @@
 // # flag for timeline operator error msg
 ~operatorerrorwav = ~srcdir +/+ "audio/sorry.wav";
 // # flag for simplelogic location
-~simplelogic = ~srcdir +/+ "/synths/TL_recorder_logic2.scd";
+~simplelogic = ~srcdir +/+ "/synths/TL_recorder_logic.scd";
 // # flag for simplerec location
 ~simplerec = ~srcdir +/+ "/synths/TL_recorder.scd";
 // # flag for gransyn1 location

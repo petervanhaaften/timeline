@@ -4,15 +4,33 @@
 (
 ~wavprocess = Routine {
 	//normalise recorded wave w/sox
-	//formerly /usr/local/bin/sox, from osx, NEED to automate switch
-	//a = "/usr/bin/sox" + ~srcdir +/+ "audio/bufferrec1.wav" + ~srcdir +/+ "audio/bufferrec1_normalised.wav" + "gain -n -3";
-	a = "/usr/local/bin/sox" + ~srcdir +/+ "audio/bufferrec1.wav" + ~srcdir +/+ "audio/bufferrec1_normalised.wav" + "gain -n -3";
+	// set SOX binary directory, for osx & linux
+	Platform.case(
+    \osx,   {
+			"OSX".postln;
+			a = "/usr/local/bin/sox" + ~srcdir +/+ "audio/bufferrec1.wav" + ~srcdir +/+ "audio/bufferrec1_normalised.wav" + "gain -n -3";
+		},
+    \linux, {
+			"Linux".postln;
+			a = "/usr/bin/sox" + ~srcdir +/+ "audio/bufferrec1.wav" + ~srcdir +/+ "audio/bufferrec1_normalised.wav" + "gain -n -3";
+		},
+	);
 	a.unixCmd("done : normalise".postln, false);
 	0.1.wait;
 	//compress recorded file
 	//compand 0.02,0.2 5:-60,-40,-20 -5 -80 0.1
 	// same deal with /usr/bin/sox
-	c = "/usr/local/bin/sox" + ~srcdir +/+ "audio/bufferrec1_normalised.wav" + ~srcdir +/+ "audio/bufferrec1_compressed.wav" + "compand 0.02,0.2 5:-60,-40,-20 -5 -80 0.1";
+		Platform.case(
+    \osx,   {
+			"OSX".postln;
+			c = "/usr/local/bin/sox" + ~srcdir +/+ "audio/bufferrec1_normalised.wav" + ~srcdir +/+ "audio/bufferrec1_compressed.wav" + "compand 0.02,0.2 5:-60,-40,-20 -5 -80 0.1";
+		},
+    \linux, {
+			"Linux".postln;
+			c = "/usr/bin/sox" + ~srcdir +/+ "audio/bufferrec1_normalised.wav" + ~srcdir +/+ "audio/bufferrec1_compressed.wav" + "compand 0.02,0.2 5:-60,-40,-20 -5 -80 0.1";
+		},
+	);
+
 	c.unixCmd("done : compression".postln, false);
 	0.1.wait;
 	//switch buffer
@@ -36,6 +54,7 @@
 	~trigger.free;
 	//print buffer as .wav
 	b.write(path: ~srcdir +/+ "audio/bufferrec1.wav";, headerFormat: "wav", sampleFormat: "int24", numFrames: ~position, startFrame: 0, leaveOpen: false, completionMessage: "finished".postln;);
+	1.wait;
 	//compress and normalize
 	~wavprocess.play;
 	//trigger oscdef in main score file, for second beep and music score !

@@ -20,7 +20,7 @@ Platform.case(
     \linux,     {  },
     );
 s = Server.default;
-s.options.sampleRate = 44100;
+s.options.sampleRate = 48000;
 s.boot;
 );
 
@@ -28,9 +28,7 @@ s.boot;
 // TL_recorder_logic:
 // - modify sox location in both compressor and normalize processes
 
-
 (
-
 ~globalscenectl = Routine {
 // MASTER HOST CONFIG
 // # flag for timeline src directory
@@ -38,15 +36,24 @@ s.boot;
 
 // call external config files
 Require(~srcdir +/+ "/config/TL_globalcfg.scd");
-Require(~srcdir +/+ "/scenes/scene1/TL_localcfg_scene1.scd");
+
+//n = NetAddr.new("127.0.0.1", NetAddr.langPort;)
+//receiving chan name from asterisk
+~channel_receive = OSCFunc({
+	arg msg, time, addr, recvPort;
+	~callerChan =  "asterisk -x 'channel request hangup"+msg[1]+"'";
+	~callerChan.postln;
+}, '/timeline/channel');
 
 //calling scenes, on receipt of OSC message
 ~globalosc_scene = OSCFunc({
 	arg msg, time, addr, recvPort; [msg, time, addr, recvPort].postln;
 	(msg[1] == 9999).if({
 		// HANGUP, KILL running audio
-		"/timeline/scene 9999 << kill audio >>".postln;
 		CmdPeriod.run;
+		"/timeline/scene 9999 << kill audio >>".postln;
+		//terminate caller channel via asterisk unixCmd
+		//~callerChan.unixCmd;
 		"hangup command complete, cleaning up routine".postln;
 		~globalscenectl.reset;
 		~globalscenectl.play;
@@ -55,14 +62,16 @@ Require(~srcdir +/+ "/scenes/scene1/TL_localcfg_scene1.scd");
 	(msg[1] == 0).if({
 		// /timeline/scene 0
 		"/timeline/scene 0 << run scene 0s >>".postln;
-		Require(~srcdir +/+ "/scenes/scene1/TL_callflow_scene1.scd");
-		"loaded scene 0".postln;
+		Require(~srcdir +/+ "/scenes/scene0/TL_localcfg_scene0.scd");
+		Require(~srcdir +/+ "/scenes/scene0/TL_callflow_scene0.scd");
+		//"loaded scene 0".postln;
 		~callflow.reset;
 		~callflow.play;
 	});
 	(msg[1] == 1).if({
 		// /timeline/scene/1
 		"/timeline/scene 1 << run scene 1 >>".postln;
+		//Require(~srcdir +/+ "/scenes/scene1/TL_localcfg_scene1.scd");
 		Require(~srcdir +/+ "/scenes/scene1/TL_callflow_scene1.scd");
 		"loaded scene 1".postln;
 		~callflow.reset;
@@ -71,7 +80,8 @@ Require(~srcdir +/+ "/scenes/scene1/TL_localcfg_scene1.scd");
 	(msg[1] == 2).if({
 		// /timeline/scene/2
 		"/timeline/scene 2 << run scene 2 >>".postln;
-		Require(~srcdir +/+ "/scenes/scene1/TL_callflow_scene1.scd");
+		//	Require(~srcdir +/+ "/scenes/scene1/TL_localcfg_scene1.scd");
+		Require(~srcdir +/+ "/scenes/scene2/TL_callflow_scene2.scd");
 		"loaded scene2".postln;
 		~callflow.reset;
 		~callflow.play;
@@ -83,4 +93,3 @@ Require(~srcdir +/+ "/scenes/scene1/TL_localcfg_scene1.scd");
 //b.play;
 //~playscore.reset;
 //~playscore.play;
-

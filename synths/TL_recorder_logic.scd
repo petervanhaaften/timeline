@@ -63,7 +63,7 @@
 	////free OSCdef
 	////OSCdef.freeAll;
 	~voiceplayback_pt2.play;
-	"done".postln;
+	//"done".postln;
 }
 );
 

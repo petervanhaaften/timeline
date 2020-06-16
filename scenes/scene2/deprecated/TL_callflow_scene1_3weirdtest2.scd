@@ -2,10 +2,16 @@
 //first working voice2music composition for 'the timeline' project
 //peter van haaften, january 2020
 //
-//~callflow.reset
-//~callflow.play
-//CmdPeriod.run
-~playscore.play;
+~callflow.reset;
+~callflow.play;
+~callflow.stop;
+s.freeAll;
+(
+z.stop;
+a.stop;
+~errorplayback.stop;
+~voiceplayback_pt2.stop;
+)
 (
 ~callflow = Routine {
 
@@ -80,6 +86,7 @@
 			1.wait;
 			~trigger.set(\micGate, 1);
 			~recordvoice.play;
+			//u.play;
 			k = 0;
 			d = 0;
 		};);
@@ -102,7 +109,7 @@
 			//start global score
 			1.wait;
 			"crappppp".postln;
-			~playscore.play;
+			u.play;
 			//~recordvoice.play;
 		};);
 	);
@@ -110,20 +117,18 @@
 	///////////////////////
 	// THE GLOBAL SCORE
 	///////////////////////
-(	(
-		~playscore = Routine {
+	(
+		u = Routine {
 			Require(~timescore);
 			//play master score
 			p = Pdef(\part, Pdef(\main,
 				Pseq([
 					//start score
-					Pfindur(12, Pdef(\part1)),
-					Pfindur(18, Pdef(\part2)),
-					Pfindur(71, Pdef(\part3)),
+					Pfindur(100, Pdef(\part3)),
 				],1),
 			)).play;
 		};
-));
+	);
 
 	///////////////////////
 	// MASTER SCORE PLAYER
@@ -144,8 +149,7 @@
 			//
 			//DEAL ALLOWS AUDIO TO BOOT
 			//
-			//wait for ringing to complete
-			1.wait;
+			0.wait;
 			"// operator speaks".postln;
 			a = Pmono(\bufferplay, \bufnum, e.bufnum, \dur, 1).play;
 			//wait until audio file is finished (speakoneword, 5.9sec)
@@ -165,6 +169,7 @@
 //r.play;
 //b.play
 //b.plot;
+//u.play;
 
 //~recordvoice.reset
 //~recordvoice.play

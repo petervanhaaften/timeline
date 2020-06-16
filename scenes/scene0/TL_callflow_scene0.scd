@@ -43,6 +43,20 @@
 			o = Buffer.read(s, ~operatorerrorwav);
 		);
 
+		/////////////////////////
+		// GOODBYE SYNTHDEF
+		/////////////////////////
+
+		(
+			SynthDef("bufferplay",{ arg out = 0, bufnum;
+				Out.ar( out,
+					PlayBuf.ar(1, bufnum, BufRateScale.kr(bufnum))
+				)
+			}
+			).add;
+			g = Buffer.read(s, ~goodbyewav);
+		);
+
 		///////////////////////
 		//    SINE TONE BEEP
 		///////////////////////
@@ -64,7 +78,7 @@
 			//var k set to 1 to indicate currently going through sorry process
 			k = 1;
 			//clear buffer!!
-			"kVALUEbegrec : ".post; k.postln;
+			//"kVALUEbegrec : ".post; k.postln;
 			//b.free;
 			//b = Buffer.alloc(s, 100 * s.sampleRate);
 			o.play;
@@ -101,7 +115,6 @@
 			//Require(~timescore);
 			//start global score
 			1.wait;
-			"crappppp".postln;
 			~playscore.play;
 			//~recordvoice.play;
 		};);
@@ -110,20 +123,26 @@
 	///////////////////////
 	// THE GLOBAL SCORE
 	///////////////////////
-(	(
+	(
 		~playscore = Routine {
-			Require(~timescore);
+			//Require(~timescore);
 			//play master score
 			p = Pdef(\part, Pdef(\main,
 				Pseq([
 					//start score
-					Pfindur(12, Pdef(\part1)),
-					Pfindur(18, Pdef(\part2)),
-					Pfindur(71, Pdef(\part3)),
+					Pfindur(30, Pdef(\part1)),
+					Pfindur(24, Pdef(\part2)),
+					//PLAY GOODBYE
+					Pfindur(8,Pmono(\bufferplay, \bufnum, g.bufnum, \dur, 1)),
+					//Pfindur(1,n.sendMsg("/timeline/scene", "9999"));,
 				],1),
-			)).play;
+				)).play;
+			"SCORE FINISHED".postln;
+			//n = NetAddr.new("127.0.0.1", NetAddr.langPort);
+			//n.sendMsg("/timeline/scene", "9999");
 		};
-));
+	);
+//  "asterisk -x 'channel request hangup"+~callerChan+"'".unixCmd("SEND HANGUP TO ASTERISK CHAN".postln, true);
 
 	///////////////////////
 	// MASTER SCORE PLAYER
@@ -136,7 +155,8 @@
 			Require(~simplerec);
 			//voice rec logic, interacts with synthdef
 			Require(~simplelogic);
-
+			//score for scene
+			Require(~timescore);
 
 			//reset crap
 			b.free;
@@ -165,8 +185,4 @@
 //r.play;
 //b.play
 //b.plot;
-
-//~recordvoice.reset
-//~recordvoice.play
-
-
+//g.play

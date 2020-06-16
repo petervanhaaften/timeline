@@ -1,9 +1,9 @@
-#N canvas 830 110 186 114 12;
+#N canvas 1080 110 186 114 12;
 #X msg 71 27 1;
 #X msg 71 53 9999;
 #X text 12 27 scene 1;
 #X text 33 54 kill;
-#N canvas 1 80 673 427 osc_output 1;
+#N canvas 1 80 673 427 osc_output 0;
 #X msg 257 149 connect localhost 57120;
 #X obj 257 177 netsend -u -b;
 #X obj 92 80 oscformat /timeline/scene;

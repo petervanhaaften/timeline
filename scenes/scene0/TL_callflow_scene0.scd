@@ -7,6 +7,7 @@
 //CmdPeriod.run
 ~playscore.play;
 (
+
 ~callflow = Routine {
 
 
@@ -125,7 +126,7 @@
 	///////////////////////
 	(
 		~playscore = Routine {
-			//Require(~timescore);
+			Require(~timescore);
 			//play master score
 			p = Pdef(\part, Pdef(\main,
 				Pseq([
@@ -133,16 +134,14 @@
 					Pfindur(30, Pdef(\part1)),
 					Pfindur(24, Pdef(\part2)),
 					//PLAY GOODBYE
-					Pfindur(8,Pmono(\bufferplay, \bufnum, g.bufnum, \dur, 1)),
-					//Pfindur(1,n.sendMsg("/timeline/scene", "9999"));,
+					//Pfindur(6,Pmono(\bufferplay, \bufnum, g.bufnum, \dur, 1)),
+					//Pfindur(1, Pdef(\part3)),
 				],1),
-				)).play;
+			)).play;
 			"SCORE FINISHED".postln;
-			//n = NetAddr.new("127.0.0.1", NetAddr.langPort);
-			//n.sendMsg("/timeline/scene", "9999");
 		};
 	);
-//  "asterisk -x 'channel request hangup"+~callerChan+"'".unixCmd("SEND HANGUP TO ASTERISK CHAN".postln, true);
+
 
 	///////////////////////
 	// MASTER SCORE PLAYER

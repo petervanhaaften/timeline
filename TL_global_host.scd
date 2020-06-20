@@ -4,14 +4,17 @@
 //building telephone filter
 //{SinOsc.ar(440,0,0.5).round(2**(-8))}.scope //bit reduction to 8 bit signal
 
-/*
-Platform.case(
-    \osx,       { "OSX".postln },
-    \linux,     { "Linux".postln },
-);
-*/
-
 (
+////////////////////////////
+// GLOBAL VARIABLES SETUP //
+////////////////////////////
+
+//fill callerChan with something to avoid crash
+~callerChan = "blank";
+
+//if called during scene, it will trigger 9999 hangup, so do before
+Require(~timescore);
+
 (
 Platform.case(
     \osx,       {
@@ -37,12 +40,12 @@ s.boot;
 // call external config files
 Require(~srcdir +/+ "/config/TL_globalcfg.scd");
 
-//n = NetAddr.new("127.0.0.1", NetAddr.langPort;)
+n = NetAddr.new("127.0.0.1", NetAddr.langPort);
 //receiving chan name from asterisk
 ~channel_receive = OSCFunc({
 	arg msg, time, addr, recvPort;
 	~callerChan =  "asterisk -x 'channel request hangup"+msg[1]+"'";
-	~callerChan.postln;
+	"This is the caller channel: ".post; ~callerChan.postln;
 }, '/timeline/channel');
 
 //calling scenes, on receipt of OSC message
@@ -53,7 +56,7 @@ Require(~srcdir +/+ "/config/TL_globalcfg.scd");
 		CmdPeriod.run;
 		"/timeline/scene 9999 << kill audio >>".postln;
 		//terminate caller channel via asterisk unixCmd
-		//~callerChan.unixCmd;
+		~callerChan.unixCmd;
 		"hangup command complete, cleaning up routine".postln;
 		~globalscenectl.reset;
 		~globalscenectl.play;
@@ -74,7 +77,7 @@ Require(~srcdir +/+ "/config/TL_globalcfg.scd");
 		//Require(~srcdir +/+ "/scenes/scene1/TL_localcfg_scene1.scd");
 		Require(~srcdir +/+ "/scenes/scene1/TL_callflow_scene1.scd");
 		"loaded scene 1".postln;
-		~callflow.reset;
+		//~callflow.reset;
 		~callflow.play;
 	});
 	(msg[1] == 2).if({
@@ -83,7 +86,7 @@ Require(~srcdir +/+ "/config/TL_globalcfg.scd");
 		//	Require(~srcdir +/+ "/scenes/scene1/TL_localcfg_scene1.scd");
 		Require(~srcdir +/+ "/scenes/scene2/TL_callflow_scene2.scd");
 		"loaded scene2".postln;
-		~callflow.reset;
+		//~callflow.reset;
 		~callflow.play;
 	});
 }, '/timeline/scene')
@@ -93,3 +96,8 @@ Require(~srcdir +/+ "/config/TL_globalcfg.scd");
 //b.play;
 //~playscore.reset;
 //~playscore.play;
+
+~callerChan.postln
+//~callerChan.unixCmd;
+//crashing because callerChan is being called as command, before a value is assigned to it
+// what ou need is to figure iout why scene 9999 is being called at beginning of call??

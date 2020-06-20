@@ -116,8 +116,16 @@ Pdef(\part, Pdef(\part2,
 		)
 	])
 )).play;
-);
 
+
+(
+Pdef(\part, Pdef(\part3,
+		n = NetAddr.new("127.0.0.1", NetAddr.langPort);
+		n.sendMsg("/timeline/scene", "9999");
+    ));
+);//.play;
+
+);
 
 // Pdef(\part, Pdef(\main,
 // 	Pseq([
@@ -127,7 +135,12 @@ Pdef(\part, Pdef(\part2,
 // 	],1),
 // )).play;
 
-
+/*(
+Pdef(\part, Pdef(\part3,
+		n = NetAddr.new("127.0.0.1", NetAddr.langPort);
+		n.sendMsg("/timeline/scene", "9999");
+    ));
+);*/
 //b.play
 
 /*

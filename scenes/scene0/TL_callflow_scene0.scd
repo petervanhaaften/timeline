@@ -126,7 +126,7 @@
 	///////////////////////
 	(
 		~playscore = Routine {
-			Require(~timescore);
+			//Require(~timescore);
 			//play master score
 			p = Pdef(\part, Pdef(\main,
 				Pseq([
@@ -155,12 +155,12 @@
 			//voice rec logic, interacts with synthdef
 			Require(~simplelogic);
 			//score for scene
-			Require(~timescore);
+			//Require();
 
 			//reset crap
 			b.free;
 			b = Buffer.alloc(s, 100 * s.sampleRate);
-			//
+			//part
 			//DEAL ALLOWS AUDIO TO BOOT
 			//
 			//wait for ringing to complete
@@ -185,3 +185,7 @@
 //b.play
 //b.plot;
 //g.play
+
+//b.play
+//~playscore.play
+//~playscore.reset

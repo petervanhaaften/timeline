@@ -1,8 +1,8 @@
 ///////////////////////
 //    SCENE 0
 ///////////////////////
-
 (
+
 Pdef(\part, Pdef(\part1,
 	Ppar([
 			Pmono(
@@ -40,10 +40,8 @@ Pdef(\part, Pdef(\part1,
 				\ampCurve, Pseq([0.5, 0, 1, 1, 1, 0.5, 0.5], 1),
 			)
 	])
-)).play;
-);
+));
 
-(
 Pdef(\part, Pdef(\part2,
 	Ppar([
 		Pmono(
@@ -115,34 +113,19 @@ Pdef(\part, Pdef(\part2,
 			\ampCurve, Pseq([0,0.5,0.5,0.5], 1),
 		)
 	])
-)).play;
-
-
-(
-Pdef(\part, Pdef(\part3,
-		n = NetAddr.new("127.0.0.1", NetAddr.langPort);
-		n.sendMsg("/timeline/scene", "9999");
-    ));
-);//.play;
-
+))
 );
 
-// Pdef(\part, Pdef(\main,
-// 	Pseq([
-// 		//start scores
-// 		Pfindur(30, Pdef(\part1)),
-// 		Pfindur(24, Pdef(\part2)),
-// 	],1),
-// )).play;
+// (
+// Pdef(\part, Pdef(\part3,
+// 	d = NetAddr("127.0.0.1", NetAddr.langPort);
+// 	d.sendMsg("/timeline/scene", 9999);
+// 	d.free;
+// ));
+// );
 
-/*(
-Pdef(\part, Pdef(\part3,
-		n = NetAddr.new("127.0.0.1", NetAddr.langPort);
-		n.sendMsg("/timeline/scene", "9999");
-    ));
-);*/
-//b.play
 
+//Pfindur(30, Pdef(\part1)).play;
 /*
 ///////////////////////
 //    SCORE INIT

@@ -4,6 +4,10 @@
 //building telephone filter
 //{SinOsc.ar(440,0,0.5).round(2**(-8))}.scope //bit reduction to 8 bit signal
 
+
+
+(
+
 (
 ////////////////////////////
 // GLOBAL VARIABLES SETUP //
@@ -12,9 +16,15 @@
 //fill callerChan with something to avoid crash
 ~callerChan = "blank";
 
-//if called during scene, it will trigger 9999 hangup, so do before
-Require(~timescore);
+//
+//things to do on platform switch
+// TL_recorder_logic:
+// - modify sox location in both compressor and normalize processes
 
+(
+~globalscenectl = Routine {
+
+//boot server first
 (
 Platform.case(
     \osx,       {
@@ -27,12 +37,8 @@ s.options.sampleRate = 48000;
 s.boot;
 );
 
-//things to do on platform switch
-// TL_recorder_logic:
-// - modify sox location in both compressor and normalize processes
+2.wait;
 
-(
-~globalscenectl = Routine {
 // MASTER HOST CONFIG
 // # flag for timeline src directory
 ~srcdir = Platform.userHomeDir +/+ "src/timeline/";
@@ -40,7 +46,26 @@ s.boot;
 // call external config files
 Require(~srcdir +/+ "/config/TL_globalcfg.scd");
 
-n = NetAddr.new("127.0.0.1", NetAddr.langPort);
+//GLOBAL REQUIREMENTS
+//note: with this in place can I cut requires from elsewhere??
+//the synthesizer for this score
+Require(~gransyn1);
+
+//local cfg
+Require(~srcdir +/+ "/scenes/scene0/TL_localcfg_scene0.scd");
+//voice rec synthdef -- needs buffer preloaded!!
+Require(~simplerec);
+//voice rec logic, interacts with synthdef
+Require(~simplelogic);
+//if called during scene, it will trigger 9999 hangup, so do before
+3.wait;
+Require(~timescore);
+Require(~killscore);
+//gotta wait or the 9999 orutine in timescore will create a feedback loop with the code that follows
+3.wait;
+
+
+//n = NetAddr.new("127.0.0.1", NetAddr.langPort);
 //receiving chan name from asterisk
 ~channel_receive = OSCFunc({
 	arg msg, time, addr, recvPort;
@@ -56,7 +81,7 @@ n = NetAddr.new("127.0.0.1", NetAddr.langPort);
 		CmdPeriod.run;
 		"/timeline/scene 9999 << kill audio >>".postln;
 		//terminate caller channel via asterisk unixCmd
-		~callerChan.unixCmd;
+		//~callerChan.unixCmd;
 		"hangup command complete, cleaning up routine".postln;
 		~globalscenectl.reset;
 		~globalscenectl.play;
@@ -93,11 +118,17 @@ n = NetAddr.new("127.0.0.1", NetAddr.langPort);
 }.play;
 )
 )
+)
 //b.play;
 //~playscore.reset;
 //~playscore.play;
 
-~callerChan.postln
+//~callerChan.postln
 //~callerChan.unixCmd;
 //crashing because callerChan is being called as command, before a value is assigned to it
 // what ou need is to figure iout why scene 9999 is being called at beginning of call??
+//9999 triggered by score, part 3
+//u gotta preload all scores and have them ready to go, so 9999 does not trigger on scene select
+//uy
+
+//first, return to score and get 9999 to work from score!!

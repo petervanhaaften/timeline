@@ -1,7 +1,10 @@
 
 (
 b.free;
+//if server not started before loading. . .
+//gives "ERROR: binary operator '*' failed."
 b = Buffer.alloc(s, 100 * s.sampleRate);
+
 // # flag for telephone mic gate [ non-positive value opens gate ]
 ~micGate = 1;
 (

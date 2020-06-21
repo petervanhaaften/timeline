@@ -63,7 +63,8 @@ Require(~timescore);
 Require(~killscore);
 //gotta wait or the 9999 orutine in timescore will create a feedback loop with the code that follows
 3.wait;
-
+//setup net address
+~net = NetAddr.new("127.0.0.1", 57120);
 
 //n = NetAddr.new("127.0.0.1", NetAddr.langPort);
 //receiving chan name from asterisk

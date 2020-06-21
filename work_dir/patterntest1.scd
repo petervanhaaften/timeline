@@ -1,3 +1,4 @@
+(
 ~t = 155/4/60; TempoClock.default.tempo = ~t;
 
 (
@@ -69,7 +70,7 @@ SynthDef(\phyhat3, { arg out=0, amp=0.1, gate=1, pan=0, freq=200;
 	sig = Pan2.ar(sig, pan, amp).sum;
 	Out.ar(out, sig);
 }).add;
-)
+);
 
 ~rest = Pfunc({ arg ev; if(ev[\isRest]) { Rest(0) } { 1 } });
 
@@ -123,7 +124,7 @@ Pdef(\part, Pdef(\part1,
 		),
 	])
 )).play;
-)
+);
 
 (
 Pdef(\part, Pdef(\part2,
@@ -176,13 +177,31 @@ Pdef(\part, Pdef(\part2,
 		),
 	])
 )).play;
+);
 )
 
 (
 Pdef(\part, Pdef(\main,
 	Pseq([
-		Pfindur(8, Pdef(\part1)),
-		Pfindur(8, Pdef(\part2)),
+		Pfindur(1, Pdef(\part1)),
+		Pfindur(2, Pdef(\part2)),
+		(
+			d = NetAddr("127.0.0.1", NetAddr.langPort);
+			d.sendMsg("/timeline/scene", 9999);
+			d.free;
+		).collect;
+	],1),
+)).play;
+)
+
+~net = NetAddr.new("127.0.0.1", 57120);
+OSCFunc.newMatching({|msg, time, addr, recvPort| \matching9999.postln}, '/timeline/scene', n); // path matching
+(
+Pdef(\part, Pdef(\main,
+	Pseq([
+		Pfindur(1, Pdef(\part1)),
+		Pfindur(2, Pdef(\part2)),
+		Pfunc({~net.sendMsg("/timeline/scene", 9999)}).collect;,
 	],1),
 )).play;
 )

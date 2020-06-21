@@ -134,10 +134,10 @@
 					//start score
 					Pfindur(30, Pdef(\part1)),
 					Pfindur(24, Pdef(\part2)),
+					Pfunc({~net.sendMsg("/timeline/scene", 9999)}).collect;
 					//PLAY GOODBYE
 					//Pfindur(6,Pmono(\bufferplay, \bufnum, g.bufnum, \dur, 1)),
-					Pfindur(1, Pdef(\part3)),
-				],1),
+					],1),
 			)).play;
 			"SCORE FINISHED".postln;
 		};

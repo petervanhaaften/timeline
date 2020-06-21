@@ -81,7 +81,7 @@ Require(~killscore);
 		CmdPeriod.run;
 		"/timeline/scene 9999 << kill audio >>".postln;
 		//terminate caller channel via asterisk unixCmd
-		//~callerChan.unixCmd;
+		~callerChan.unixCmd;
 		"hangup command complete, cleaning up routine".postln;
 		~globalscenectl.reset;
 		~globalscenectl.play;

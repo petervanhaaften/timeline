@@ -115,6 +115,7 @@
 			f.stop;
 			//Require(~timescore);
 			//start global score
+			~playscore.reset;
 			1.wait;
 			~playscore.play;
 			//~recordvoice.play;
@@ -126,7 +127,7 @@
 	///////////////////////
 	(
 		~playscore = Routine {
-			//Require(~timescore);
+			Require(~timescore);
 			//play master score
 			p = Pdef(\part, Pdef(\main,
 				Pseq([
@@ -135,7 +136,7 @@
 					Pfindur(24, Pdef(\part2)),
 					//PLAY GOODBYE
 					//Pfindur(6,Pmono(\bufferplay, \bufnum, g.bufnum, \dur, 1)),
-					//Pfindur(1, Pdef(\part3)),
+					Pfindur(1, Pdef(\part3)),
 				],1),
 			)).play;
 			"SCORE FINISHED".postln;

@@ -20,10 +20,12 @@
 
 // # flag for timeline operator speech
 ~operatorwav = ~srcdir +/+ "audio/speakoneword.wav";
+~operatorclosewav = ~srcdir +/+ "audio/08_thankyouforcalling.wav";
 // # flag for timeline operator error msg
 ~operatorerrorwav = ~srcdir +/+ "audio/sorry.wav";
 // # flag for timeline goodbye msg
-~goodbyewav = ~srcdir +/+ "audio/goodbye.wav";
+//~goodbyewav = ~srcdir +/+ "audio/goodbye.wav";
+~goodbyewav = ~srcdir +/+ "audio/08_thankyouforcalling.wav";
 // # flag for simplelogic location
 ~simplelogic = ~srcdir +/+ "/synths/TL_recorder_logic.scd";
 // # flag for simplerec location

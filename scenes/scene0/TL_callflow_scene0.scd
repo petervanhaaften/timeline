@@ -31,6 +31,20 @@
 		);
 
 		/////////////////////////
+		// VOICE outro SYNTHDEF
+		/////////////////////////
+
+		(
+			SynthDef("bufferplay",{ arg out = 0, bufnum;
+				Out.ar( out,
+					PlayBuf.ar(1, bufnum, BufRateScale.kr(bufnum))
+				)
+			}
+			).add;
+			z = Buffer.read(s, ~operatorclosewav);
+		);
+
+		/////////////////////////
 		// VOICE ERROR SYNTHDEF
 		/////////////////////////
 
@@ -134,9 +148,9 @@
 					//start score
 					Pfindur(30, Pdef(\part1)),
 					Pfindur(24, Pdef(\part2)),
-					Pfunc({~net.sendMsg("/timeline/scene", 9999)}).collect;
 					//PLAY GOODBYE
-					//Pfindur(6,Pmono(\bufferplay, \bufnum, g.bufnum, \dur, 1)),
+					Pfindur(2,Pmono(\bufferplay, \bufnum, g.bufnum, \dur, 1)),
+					Pfunc({~net.sendMsg("/timeline/scene", 9999)}).collect;
 					],1),
 			)).play;
 			"SCORE FINISHED".postln;

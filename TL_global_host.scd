@@ -58,15 +58,14 @@ Require(~simplerec);
 //voice rec logic, interacts with synthdef
 Require(~simplelogic);
 //if called during scene, it will trigger 9999 hangup, so do before
-3.wait;
+0.5.wait;
 Require(~timescore);
 Require(~killscore);
 //gotta wait or the 9999 orutine in timescore will create a feedback loop with the code that follows
-3.wait;
+0.5.wait;
 //setup net address
 ~net = NetAddr.new("127.0.0.1", 57120);
 
-//n = NetAddr.new("127.0.0.1", NetAddr.langPort);
 //receiving chan name from asterisk
 ~channel_receive = OSCFunc({
 	arg msg, time, addr, recvPort;
@@ -93,7 +92,7 @@ Require(~killscore);
 		"/timeline/scene 0 << run scene 0s >>".postln;
 		Require(~srcdir +/+ "/scenes/scene0/TL_localcfg_scene0.scd");
 		Require(~srcdir +/+ "/scenes/scene0/TL_callflow_scene0.scd");
-		//"loaded scene 0".postln;
+		"loaded scene 0".postln;
 		~callflow.reset;
 		~callflow.play;
 	});

@@ -1,18 +1,7 @@
-/*#include <FastLED.h>
-
-#define LED_PIN     2
-#define COLOR_ORDER RGB
-#define CHIPSET     WS2812B
-#define NUM_LEDS    30
-#define BRIGHTNESS  200
-
-//CRGB leds[NUM_LEDS];
-*/
 #include <FastLED.h>
-#define NUM_LEDS_PER_STRIP 22
-#define NUM_STRIPS 1
+#define NUM_LEDS
 
-CRGB leds[NUM_LEDS_PER_STRIP * NUM_STRIPS];
+CRGB leds[NUM_LEDS];
 
 int pixel = 0;            // pixel number that you're changing
 int red = 0;              // red value 
@@ -21,9 +10,9 @@ int blue = 12;            // blue value
 
 
 void setup() {
-    //Serial.begin(57600);     // initialize serial communication
-    //Serial.setTimeout(10);  // set serial timeout
-    FastLED.addLeds<NUM_STRIPS, WS2812B, 19, GRB>(leds, NUM_LEDS_PER_STRIP);
+    Serial.begin(57600);     // initialize serial communication
+    Serial.setTimeout(10);  // set serial timeout
+    FastLED.addLeds<WS2812B, 2, GRB>(leds, NUM_LEDS);
 }
 
 void loop() { 

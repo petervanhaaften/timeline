@@ -1,4 +1,4 @@
-#N canvas 370 483 472 264 12;
+#N canvas 664 683 534 325 12;
 #X msg 71 27 1;
 #X msg 71 53 9999;
 #X text 12 27 scene 1;
@@ -11,7 +11,7 @@
 #X text 301 94 kill;
 #X msg 384 67 2;
 #X msg 290 46 0;
-#N canvas 1 80 673 427 osc_output_port5963 1;
+#N canvas 1 80 673 427 osc_output_port5963 0;
 #X obj 257 177 netsend -u -b;
 #X obj 92 80 oscformat /timeline/scene;
 #X obj 92 119 list prepend send;
@@ -41,6 +41,13 @@
 #X connect 5 0 0 0;
 #X connect 6 0 2 0;
 #X restore 72 83 pd osc_output_port57120;
+#X obj 102 251 oscparse;
+#X obj 78 227 netreceive -u -b;
+#X msg 78 172 listen 5000;
+#X msg 90 200 listen 0;
+#X text 217 227 UDP packets \, binary output, f 13;
+#X text 158 201 stop;
+#X obj 117 309 print;
 #X connect 0 0 13 0;
 #X connect 1 0 13 0;
 #X connect 4 0 13 0;
@@ -49,3 +56,7 @@
 #X connect 7 0 12 0;
 #X connect 10 0 12 0;
 #X connect 11 0 12 0;
+#X connect 14 0 20 0;
+#X connect 15 0 14 0;
+#X connect 16 0 15 0;
+#X connect 17 0 15 0;

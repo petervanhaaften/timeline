@@ -5,7 +5,14 @@
 //~callflow.reset
 //~callflow.play
 //CmdPeriod.run
-~playscore.play;
+
+//~playscore.play;
+//~callflow[1].play;
+
+//var supercolliderChanVar = "1";
+//~callflow = "~callflow" + supercolliderChanVar.asString
+//~callflow.postln
+
 (
 
 ~callflow = Routine {
@@ -181,10 +188,10 @@
 			//wait for ringing to complete
 			1.wait;
 			"// operator speaks".postln;
-			a = Pmono(\bufferplay, \bufnum, e.bufnum, \dur, 1).play;
+			//a = Pmono(\bufferplay, \bufnum, e.bufnum, \dur, 1).play;
 			//wait until audio file is finished (speakoneword, 5.9sec)
 			//should programatically determine the audio file length
-			6.5.wait;
+			//6.5.wait;
 			"// beep1".postln;
 			f = Pmono(\sinbeep, \dur, 1, \amp, 0.8, \attack, 0, \sustain, 1, \release, 0, \freq, 440).play;
 			//wait until beep is finished
@@ -204,3 +211,4 @@
 //b.play
 //~playscore.play
 //~playscore.reset
+//~net.sendMsg("/timeline/scene", 9999)

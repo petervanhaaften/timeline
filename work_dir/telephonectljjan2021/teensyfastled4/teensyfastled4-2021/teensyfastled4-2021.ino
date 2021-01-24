@@ -1,7 +1,7 @@
 #include "FastLED.h"
 
 #define NUM_LEDS 233
-#define DATA_PIN 2
+#define DATA_PIN 1
 
 CRGB leds[NUM_LEDS];
 
@@ -12,7 +12,7 @@ int blue = 0;            // blue value
 void setup() {
     Serial.begin(115200);     // initialize serial communication
     Serial.setTimeout(10);  // set serial timeout
-    FastLED.addLeds<WS2812B, DATA_PIN, GRB>(leds, NUM_LEDS);
+    FastLED.addLeds<WS2812, DATA_PIN, GRB>(leds, NUM_LEDS);
 }
 
 void loop() { 

@@ -15,7 +15,7 @@
 CRGB leds[NUM_LEDS_PER_STRIP * NUM_STRIPS];
 
 void setup() {
-    FastLED.addLeds<NUM_STRIPS, WS2812B, 2, GRB>(leds, NUM_LEDS_PER_STRIP);
+    FastLED.addLeds<NUM_STRIPS, WS2812B, 19, GRB>(leds, NUM_LEDS_PER_STRIP);
 }
 
 void loop() { 

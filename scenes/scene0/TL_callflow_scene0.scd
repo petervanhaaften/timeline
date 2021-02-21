@@ -1,17 +1,3 @@
-//
-//first working voice2music composition for 'the timeline' project
-//peter van haaften, january 2020
-//
-//~callflow.reset
-//~callflow.play
-//CmdPeriod.run
-
-//~playscore.play;
-//~callflow[1].play;
-
-//var supercolliderChanVar = "1";
-//~callflow = "~callflow" + supercolliderChanVar.asString
-//~callflow.postln
 
 (
 
@@ -203,12 +189,3 @@
 	).play;
 };
 )
-//r.play;
-//b.play
-//b.plot;
-//g.play
-
-//b.play
-//~playscore.play
-//~playscore.reset
-//~net.sendMsg("/timeline/scene", 9999)

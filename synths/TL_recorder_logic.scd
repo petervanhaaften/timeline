@@ -72,7 +72,10 @@
 ///////////////////////
 (
 //netaddress re: trigger for second beep and music perform
-n = NetAddr("127.0.0.1", 57120);
+
+//n = NetAddr("127.0.0.1", 57120);
+//n = ~net;
+
 ~recordvoice = Routine {
 
 //~position = 0;

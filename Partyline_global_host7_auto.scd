@@ -27,14 +27,6 @@
 }, '/timeline/channel');
 
 
-//~channel_connect = OSCFunc({
-//	arg msg, time, addr, recvPort;
-//	// ~callerChan =  "asterisk -x 'channel request connect"+msg[1]+"'";
-//	~callerChan =  "asterisk -x 'channel request connect"+msg[1]+"'";
-//	//"Caller requests connection on channel 2: ".post;
-//	~callerChan.postln;
-//}, '/timeline/scene');
-
 //calling scenes, on receipt of OSC message
 ~globalosc_scene = OSCFunc({
 	arg msg, time, addr, recvPort; [msg, time, addr, recvPort].postln;

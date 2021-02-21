@@ -38,8 +38,11 @@ s.options.sampleRate = 48000;
 s.boot;
 );
 */
-2.wait;
 
+/*
+
+2.wait;
+"loaded global host auto".postln;
 // MASTER HOST CONFIG
 // # flag for timeline src directory
 ~srcdir = Platform.userHomeDir +/+ "src/timeline/";
@@ -69,6 +72,8 @@ Require(~killscore);
 ~net = NetAddr.new("127.0.0.1", 57120);
 ~asterisk = NetAddr.new("127.0.0.1", 59663);
 	*/
+
+*/
 
 //receiving chan name from asterisk
 ~callerChanreceive = OSCFunc({

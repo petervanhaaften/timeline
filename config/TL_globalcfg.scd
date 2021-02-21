@@ -1,19 +1,3 @@
-//this needs to run before anything else!! why is it not???
-
-//
-// (
-// Platform.case(
-// 	\osx,       {
-// 		Server.default.options.inDevice_("JackRouter");
-// 	Server.default.options.outDevice_("JackRouter"); },
-// 	\linux,     {  },
-// );
-// s = Server.default;
-// s.options.sampleRate = 48000;
-// s.boot;
-// );
-//
-
 //TIMELINE GLOBAL SCLANG CONFIG
 // # flag for timeline src directory
 ~srcdir = Platform.userHomeDir +/+ "src/timeline/";

@@ -37,13 +37,12 @@
 		"received asterisk message is:".postln;
 		~callerChan.postln;
 		//"Caller requests hangup on channel : ".post; ~callerChan.postln;
-	}, '/timeline/channel');
+	}, '/timeline/scene');
 
 
 	//calling scenes, on receipt of OSC message
 	~globalosc_scene = OSCFunc({
 		arg msg, time, addr, recvPort; [msg, time, addr, recvPort].postln;
-		"peter test receive".postln;
 		"received message #0, address:".postln;
 		msg[0].postln;
 		"received message #1, scene:".postln;
@@ -54,6 +53,7 @@
 		msg[3].postln;
 		"received message #4, ranmdomString".postln;
 		msg[4].postln;
+
 		(msg[1] == 9999).if({
 			// HANGUP, KILL running audio
 			CmdPeriod.run;

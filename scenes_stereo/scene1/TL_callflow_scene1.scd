@@ -1,6 +1,12 @@
-
+//
+//first working voice2music composition for 'the timeline' project
+//peter van haaften, january 2020
+//
+//~callflow.reset
+//~callflow.play
+//CmdPeriod.run
+~playscore.play;
 (
-
 ~callflow = Routine {
 
 
@@ -24,20 +30,6 @@
 		);
 
 		/////////////////////////
-		// VOICE outro SYNTHDEF
-		/////////////////////////
-
-		(
-			SynthDef("bufferplay",{ arg out = 0, bufnum;
-				Out.ar( out,
-					PlayBuf.ar(1, bufnum, BufRateScale.kr(bufnum))
-				)
-			}
-			).add;
-			z = Buffer.read(s, ~operatorclosewav);
-		);
-
-		/////////////////////////
 		// VOICE ERROR SYNTHDEF
 		/////////////////////////
 
@@ -49,20 +41,6 @@
 			}
 			).add;
 			o = Buffer.read(s, ~operatorerrorwav);
-		);
-
-		/////////////////////////
-		// GOODBYE SYNTHDEF
-		/////////////////////////
-
-		(
-			SynthDef("bufferplay",{ arg out = 0, bufnum;
-				Out.ar( out,
-					PlayBuf.ar(1, bufnum, BufRateScale.kr(bufnum))
-				)
-			}
-			).add;
-			g = Buffer.read(s, ~goodbyewav);
 		);
 
 		///////////////////////
@@ -86,7 +64,7 @@
 			//var k set to 1 to indicate currently going through sorry process
 			k = 1;
 			//clear buffer!!
-			//"kVALUEbegrec : ".post; k.postln;
+			"kVALUEbegrec : ".post; k.postln;
 			//b.free;
 			//b = Buffer.alloc(s, 100 * s.sampleRate);
 			o.play;
@@ -122,8 +100,8 @@
 			f.stop;
 			//Require(~timescore);
 			//start global score
-			~playscore.reset;
 			1.wait;
+			"crappppp".postln;
 			~playscore.play;
 			//~recordvoice.play;
 		};);
@@ -132,30 +110,20 @@
 	///////////////////////
 	// THE GLOBAL SCORE
 	///////////////////////
-	(
+(	(
 		~playscore = Routine {
 			Require(~timescore);
 			//play master score
-			p = Pdef(\scene0, Pdef(\main,
+			p = Pdef(\part, Pdef(\main,
 				Pseq([
 					//start score
-					//Pfindur(30, Pdef(\part1)),
-					//Pfindur(24, Pdef(\part2)),
-
-					Pfindur(17, Pdef(\part1)),
-					Pfindur(20, Pdef(\part2)),
-					Pfindur(22, Pdef(\part3)),
-
-					//PLAY GOODBYE
-					//Pfindur(2,Pmono(\bufferplay, \bufnum, g.bufnum, \dur, 1)),
-					//Pfunc({~net.sendMsg("/timeline/scene", 9999)}).collect;
-					Pfunc({~net.sendMsg('/timeline/scene',9999, ~telephoneNum, ~asteriskChannel, ~wavPin)}).collect;
-					],1),
+					Pfindur(12, Pdef(\part1)),
+					Pfindur(18, Pdef(\part2)),
+					Pfindur(71, Pdef(\part3)),
+				],1),
 			)).play;
-			"SCORE FINISHED".postln;
 		};
-	);
-
+));
 
 	///////////////////////
 	// MASTER SCORE PLAYER
@@ -168,22 +136,21 @@
 			Require(~simplerec);
 			//voice rec logic, interacts with synthdef
 			Require(~simplelogic);
-			//score for scene
-			//Require();
+
 
 			//reset crap
 			b.free;
 			b = Buffer.alloc(s, 100 * s.sampleRate);
-			//part
+			//
 			//DEAL ALLOWS AUDIO TO BOOT
 			//
 			//wait for ringing to complete
 			1.wait;
 			"// operator speaks".postln;
-			//a = Pmono(\bufferplay, \bufnum, e.bufnum, \dur, 1).play;
+			a = Pmono(\bufferplay, \bufnum, e.bufnum, \dur, 1).play;
 			//wait until audio file is finished (speakoneword, 5.9sec)
 			//should programatically determine the audio file length
-			//6.5.wait;
+			6.5.wait;
 			"// beep1".postln;
 			f = Pmono(\sinbeep, \dur, 1, \amp, 0.8, \attack, 0, \sustain, 1, \release, 0, \freq, 440).play;
 			//wait until beep is finished
@@ -195,3 +162,11 @@
 	).play;
 };
 )
+//r.play;
+//b.play
+//b.plot;
+
+//~recordvoice.reset
+//~recordvoice.play
+
+

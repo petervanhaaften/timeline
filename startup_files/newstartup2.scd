@@ -33,40 +33,28 @@ s.doWhenBooted{
 ~boot = Routine {
 		//osc stuff
 		// supercollider osc receive port  from asterisk
-		//~net = NetAddr.new("127.0.0.1", 57121);
-		~net = NetAddr.langPort;
+		//~net = NetAddr.new("127.0.0.1", 57120);
+		//~net = NetAddr.langPort;
+
+		~net = NetAddr("localhost", NetAddr.langPort);
 		// set osc output port to asterisk
 		~asterisk = NetAddr.new("127.0.0.1", 59663);
 
-		//2.wait;
-		"loaded global host auto".postln;
+	    // define instance number, used for buffer file naming etc
+	    ~instancenum = "2_";
+
+	    "INSTANCE".post;
+	    ~instancenum.post;
+	    "booted".postln;
+	  
 		// MASTER HOST CONFIG
 		// # flag for timeline src directory
 		~srcdir = Platform.userHomeDir +/+ "src/timeline/";
-
 		// call external config files
 		Require(~srcdir +/+ "/config/TL_globalcfg.scd");
 
-		//GLOBAL REQUIREMENTS
-		//note: with this in place can I cut requires from elsewhere??
-		//the synthesizer for this score
-		Require(~gransyn1);
+		Require(~srcdir +/+ "/Partyline_global_host8.scd/");
 
-		//local cfg
-		Require(~srcdir +/+ "/scenes/scene0/TL_localcfg_scene0.scd");
-		//voice rec synthdef -- needs buffer preloaded!!
-		Require(~simplerec);
-		//voice rec logic, interacts with synthdef
-		Require(~simplelogic);
-		//if called during scene, it will trigger 9999 hangup, so do before
-		//0.5.wait;
-		Require(~timescore);
-		Require(~killscore);
-
-
-		Require(~srcdir +/+ "/Partyline_global_host7_auto.scd/");
-
-		"INSTANCE 2 : booted".postln;
 		"LangPort = ".post;
 		NetAddr.langPort.postln;
 	}.play;

@@ -8,11 +8,11 @@
 	Platform.case(
     \osx,   {
 			"OSX".postln;
-			a = "/usr/local/bin/sox" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1.wav" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1_normalised.wav" + "gain -n -3";
+			a = "/usr/local/bin/sox" + ~srcdir +/+ "audio/bufferrec1.wav" + ~srcdir +/+ "audio/bufferrec1_normalised.wav" + "gain -n -3";
 		},
     \linux, {
 			"Linux".postln;
-			a = "/usr/bin/sox" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1.wav" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1_normalised.wav" + "gain -n -3";
+			a = "/usr/bin/sox" + ~srcdir +/+ "audio/bufferrec1.wav" + ~srcdir +/+ "audio/bufferrec1_normalised.wav" + "gain -n -3";
 		},
 	);
 	a.unixCmd("done : normalise".postln, false);
@@ -23,18 +23,18 @@
 		Platform.case(
     \osx,   {
 			"OSX".postln;
-			c = "/usr/local/bin/sox" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1_normalised.wav" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1_compressed.wav" + "compand 0.02,0.2 5:-60,-40,-20 -5 -80 0.1";
+			c = "/usr/local/bin/sox" + ~srcdir +/+ "audio/bufferrec1_normalised.wav" + ~srcdir +/+ "audio/bufferrec1_compressed.wav" + "compand 0.02,0.2 5:-60,-40,-20 -5 -80 0.1";
 		},
     \linux, {
 			"Linux".postln;
-			c = "/usr/bin/sox" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1_normalised.wav" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1_compressed.wav" + "compand 0.02,0.2 5:-60,-40,-20 -5 -80 0.1";
+			c = "/usr/bin/sox" + ~srcdir +/+ "audio/bufferrec1_normalised.wav" + ~srcdir +/+ "audio/bufferrec1_compressed.wav" + "compand 0.02,0.2 5:-60,-40,-20 -5 -80 0.1";
 		},
 	);
 
 	c.unixCmd("done : compression".postln, false);
 	0.1.wait;
 	//switch buffer
-	b = Buffer.read(s, ~srcdir +/+ "/audio/" ++ ~instancenum ++ "bufferrec1_compressed.wav");
+	b = Buffer.read(s, ~srcdir +/+ "/audio/bufferrec1_compressed.wav");
 };
 );
 
@@ -53,11 +53,7 @@
 	~rec.free;
 	~trigger.free;
 	//print buffer as .wav
-	b.write(path: ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1.wav";, headerFormat: "wav", sampleFormat: "int24", numFrames: ~position, startFrame: 0, leaveOpen: false, completionMessage: "finished".postln;);
-
-	//also print out wave with ~wavPin, for processing/download
-	//b.write(path: "~/partyline-recordings/" ++ ~wavPin ++ ".wav";, headerFormat: "wav", sampleFormat: "int24", numFrames: ~position, startFrame: 0, leaveOpen: false, completionMessage: "finished".postln;);
-	b.write(path: "/home/asterisk/partyline-recordings/" ++ ~wavPin ++ "_bufferrec1.wav";, headerFormat: "wav", sampleFormat: "int24", numFrames: ~position, startFrame: 0, leaveOpen: false, completionMessage: "finished".postln;);
+	b.write(path: ~srcdir +/+ "audio/bufferrec1.wav";, headerFormat: "wav", sampleFormat: "int24", numFrames: ~position, startFrame: 0, leaveOpen: false, completionMessage: "finished".postln;);
 	1.wait;
 	//compress and normalize
 	~wavprocess.play;

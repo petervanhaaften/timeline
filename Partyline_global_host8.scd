@@ -19,47 +19,67 @@
 (
 ~globalscenectl = Routine {
 
-	//receiving chan name from asterisk
-	~callerChanreceive = OSCFunc({
-		arg msg, time, addr, recvPort;
-		~callerChan =  "asterisk -x 'channel request hangup"+msg[1]+"'";
+	// //receiving chan name from asterisk
+	// ~callerChanreceive = OSCFunc({
+	// 	arg msg, time, addr, recvPort;
+	// 	//~callerChan =  "asterisk -x 'channel request hangup"+msg[1]+"'";
+	//
+	// 	//retry for redirect current jack channel back to asterisk dialplan
+	//
+	// 	//asterisk manual channel redirect usage:
+	// 	//channel redirect <channel> <[[context,]exten,]priority>
+	// 	//~callerChan = "asterisk -x 'channel redirect Local/1@scenes-00000004;2 scenes-outro,1,1'";
+	//
+	// 	//so end start osc message with AsteriskChannel as an argument, and
+	// 	//scene as an argument, and feed those into ~callerChan, which will play at end of scene
+	// 	//message arrives in format: msg0_/timeline/scene msg1_scene msg2_telephoneNum msg3_AsteriskChan msg4_randomString
+	//
+	// 	//for future, when multi scene scenes-outro exists
+	// 	//~callerChan = "asterisk -x 'channel redirect"+msg[3]+"scenes-outro,"+msg[1]+",1'";
+	// 	~callerChan = "asterisk -x 'channel redirect"+msg[3]+"scenes-outro,1,1'";
+	// 	"received asterisk message is:".postln;
+	// 	~callerChan.postln;
+	// 	//"Caller requests hangup on channel : ".post; ~callerChan.postln;
+	// }, '/timeline/scene');
+	//
 
-		//retry for redirect current jack channel back to asterisk dialplan
+	//~redirectChannel.postln;
 
-		//asterisk manual channel redirect usage:
-		//channel redirect <channel> <[[context,]exten,]priority>
-		//~callerChan = "asterisk -x 'channel redirect Local/1@scenes-00000004;2 scenes-outro,1,1'";
-
-		//so end start osc message with AsteriskChannel as an argument, and
-		//scene as an argument, and feed those into ~callerChan, which will play at end of scene
-		//message arrives in format: msg0_/timeline/scene msg1_scene msg2_telephoneNum msg3_AsteriskChan msg4_randomString
-		~callerChan = "asterisk -x 'channel redirect"+msg[3]+"scenes-outro,"+msg[1]+",1'";
-		"received asterisk message is:".postln;
-		~callerChan.postln;
-		//"Caller requests hangup on channel : ".post; ~callerChan.postln;
-	}, '/timeline/channel');
-
+	~redirectChannel = {
+	//"asterisk -x 'channel redirect"+~asteriskChannel+"scenes-outro,1,1'".return;
+	arg asteriskChan = "LOCAL/hey";
+	var return = "asterisk -x 'channel redirect"+asteriskChan+"scenes-outro,1,1'";
+	return;
+	//~asteriskChannel.postln;
+	};
 
 	//calling scenes, on receipt of OSC message
 	~globalosc_scene = OSCFunc({
 		arg msg, time, addr, recvPort; [msg, time, addr, recvPort].postln;
-		"peter test receive".postln;
-		"received message #0, address:".postln;
-		msg[0].postln;
-		"received message #1, scene:".postln;
-		msg[1].postln;
-		"received message #2, telephoneNum".postln;
-		msg[2].postln;
-		"received message #3 AsteriskChan".postln;
-		msg[3].postln;
-		"received message #4, ranmdomString".postln;
-		msg[4].postln;
+		//"received message #0, address:".postln;
+		//msg[0].postln;
+		"received message #1, scene: ".post;
+		~sceneChoice = msg[1];
+		~sceneChoice.postln;
+		"received message #2, telephoneNum: ".post;
+		~telephoneNum = msg[2];
+		~telephoneNum.postln;
+		"received message #3 asteriskChannel: ".post;
+		~asteriskChannel = msg[3];
+		~asteriskChannel.postln;
+		"received message #4, wavPin: ".post;
+		~wavPin = msg[4];
+		~wavPin.postln;
+
 		(msg[1] == 9999).if({
 			// HANGUP, KILL running audio
-			CmdPeriod.run;
 			"/timeline/scene 9999 << kill audio >>".postln;
+			CmdPeriod.run;
 			//terminate caller channel via asterisk unixCmd
-			~callerChan.unixCmd;
+			//~callerChan.unixCmd;
+			//need to call function to fill variable, first
+			~returnDialplan = ~redirectChannel.value(~asteriskChannel);
+			~returnDialplan.unixCmd;
 			"hangup command complete, cleaning up routine".postln;
 			~globalscenectl.reset;
 			~globalscenectl.play;
@@ -158,3 +178,15 @@
 )
 )
 )
+//
+// (
+// f = {
+// 	//"asterisk -x 'channel redirect"+~asteriskChannel+"scenes-outro,1,1'".return;
+// 	arg asteriskChan = "LOCAL/hey";
+// 	var return = "asterisk -x 'channel redirect"+asteriskChan+"scenes-outro,1,1'";
+// 	return;
+// 	//~asteriskChannel.postln;
+// }
+// )
+// f.value(a = "who");
+//

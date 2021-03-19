@@ -1,6 +1,6 @@
 //TIMELINE GLOBAL SCLANG CONFIG
 // # flag for timeline src directory
-~srcdir = Platform.userHomeDir +/+ "src/timeline/";
+//~srcdir = Platform.userHomeDir +/+ "src/timeline/";
 
 // # flag for timeline operator speech
 ~operatorwav = ~srcdir +/+ "audio/speakoneword.wav";
@@ -15,11 +15,33 @@
 // # flag for simplerec location
 ~simplerec = ~srcdir +/+ "/synths/TL_recorder.scd";
 // # flag for gransyn1 location
-~gransyn1 = ~srcdir +/+ "/synths/pvh.gransyn1_4.scd";
+~gransyn1 = ~srcdir +/+ "/synths/pvh.gransyn1_9_mono.scd";
 // # flag for killscore location. --killscore really needed??
 ~killscore = ~srcdir +/+ "/scenes/TL_kill_score.scd";
 // # flag for timescore location.
 //~timescore = ~srcdir +/+ "TL_score_scene1.scd";
 
+//
+//CALLIONG VARIOUS NEEDED SYNTHS AND LOGIC
+//
 
+// call external config files
+//Require(~srcdir +/+ "/config/TL_globalcfg.scd");
 
+//GLOBAL REQUIREMENTS
+//note: with this in place can I cut requires from elsewhere??
+//the synthesizer for this score
+Require(~gransyn1);
+
+//local cfg
+Require(~srcdir +/+ "/scenes/scene0/TL_localcfg_scene0.scd");
+//voice rec synthdef -- needs buffer preloaded!!
+Require(~simplerec);
+//voice rec logic, interacts with synthdef
+Require(~simplelogic);
+//if called during scene, it will trigger 9999 hangup, so do before
+//0.5.wait;
+Require(~timescore);
+Require(~killscore);
+
+Require(~srcdir +/+ "/Partyline_global_host8.scd/");

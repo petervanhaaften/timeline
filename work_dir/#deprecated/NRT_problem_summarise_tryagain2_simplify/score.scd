@@ -1,0 +1,40 @@
+//~music = CtkScore.new(
+~music = (
+	Pdef(\scene0, Pdef(\part1,
+	Ppar([
+			Pmono(
+				\gransyn,
+			// how to specify buffer on NRT server?
+			    //\soundBuf, b.bufnum,
+				\dur, Pseq([1, 5, 4,5], 1),
+				\attack, Pseq([0, 0, 0, 1], 1),
+				\release, Pseq([0, 0, 0, 1], 1),
+				\posLo, Pseq([0, 0, 0, 1], 1),
+				\posHi, Pseq([1, 1, 1, 1], 1),
+				\posRateE, Pseq([0, 0, 0, 0], 1),
+				\posRateM, Pseq([1, 0.5, 1, 1], 1),
+				\posRateMLag, Pseq([0, 0, 0, 0], 1),
+				\posRateMCurve, Pseq([0, 0, 0, 0], 1),
+			    \overlap, Pseq([1, 2, 1, 1], 1),
+				\overlapLag, Pseq([0, 2, 1, 1], 1),
+				\overlapCurve, Pseq([0, 0, 0, 0], 1),
+				\trigRate, Pseq([0, 10, 2, 2], 1),
+				\trigRateLag, Pseq([0, 0, 3, 3], 1),
+				\trigRateCurve, Pseq([0, 0, 0, 0], 1),
+				\rate, Pseq([1, 3, 1, 1], 1),
+			    \rateLag, Pseq([0, 3, 2, 0], 1),
+				\rateCurve, Pseq([0, 0, 0, 0], 1),
+				\lpFreq, Pseq([20000,20000, 20000, 20000], 1),
+				\lpLag, Pseq([0, 0, 0, 0], 1),
+				\lpCurve, Pseq([0, 0, 0, 0], 1),
+				\hpFreq,Pseq([10, 10, 10, 10], 1),
+				\hpLag, Pseq([0, 0, 0, 0], 1),
+				\hpCurve, Pseq([0, 0, 0, 0], 1),
+				\panMax, Pseq([0, 0.2, 0, 0], 1),
+			    \amp, Pseq([0, 1, 0, 0], 1),
+			    \ampLag, Pseq([3, 1, 1/2, 4], 1),
+			    \ampCurve, Pseq([0, 0, 0, 0], 1),
+			),
+	])
+));
+)

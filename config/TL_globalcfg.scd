@@ -1,7 +1,7 @@
 //TIMELINE GLOBAL SCLANG CONFIG
 // # flag for timeline src directory
 //~srcdir = Platform.userHomeDir +/+ "src/timeline/";
-
+~srcdir = Platform.userHomeDir +/+ "src/timeline/";
 // # flag for timeline operator speech
 ~operatorwav = ~srcdir +/+ "audio/speakoneword.wav";
 ~operatorclosewav = ~srcdir +/+ "audio/08_thankyouforcalling.wav";
@@ -15,7 +15,7 @@
 // # flag for simplerec location
 ~simplerec = ~srcdir +/+ "/synths/TL_recorder.scd";
 // # flag for gransyn1 location
-~gransyn1 = ~srcdir +/+ "/synths/pvh.gransyn1_9_mono.scd";
+~gransyn1 = ~srcdir +/+ "/synths/pvh.gransyn1_10_offline.scd";
 // # flag for killscore location. --killscore really needed??
 ~killscore = ~srcdir +/+ "/scenes/TL_kill_score.scd";
 // # flag for timescore location.

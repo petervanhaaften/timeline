@@ -6,11 +6,11 @@
 	//normalise recorded wave w/sox
 	// set SOX binary directory, for osx & linux
 	Platform.case(
-    \osx,   {
+		\osx,   {
 			"OSX".postln;
 			a = "/usr/local/bin/sox" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1.wav" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1_normalised.wav" + "gain -n -3";
 		},
-    \linux, {
+		\linux, {
 			"Linux".postln;
 			a = "/usr/bin/sox" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1.wav" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1_normalised.wav" + "gain -n -3";
 		},
@@ -20,12 +20,12 @@
 	//compress recorded file
 	//compand 0.02,0.2 5:-60,-40,-20 -5 -80 0.1
 	// same deal with /usr/bin/sox
-		Platform.case(
-    \osx,   {
+	Platform.case(
+		\osx,   {
 			"OSX".postln;
 			c = "/usr/local/bin/sox" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1_normalised.wav" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1_compressed.wav" + "compand 0.02,0.2 5:-60,-40,-20 -5 -80 0.1";
 		},
-    \linux, {
+		\linux, {
 			"Linux".postln;
 			c = "/usr/bin/sox" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1_normalised.wav" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1_compressed.wav" + "compand 0.02,0.2 5:-60,-40,-20 -5 -80 0.1";
 		},
@@ -35,6 +35,18 @@
 	0.1.wait;
 	//switch buffer
 	b = Buffer.read(s, ~srcdir +/+ "/audio/" ++ ~instancenum ++ "bufferrec1_compressed.wav");
+
+	Platform.case(
+		\osx,   {
+			"OSX".postln;
+			d = "cp " + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1_compressed.wav" + "/home/asterisk/partyline-voicerec/" ++ ~wavPin ++ ".wav";
+		},
+		\linux, {
+			"Linux".postln;
+			d = "cp " + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1_compressed.wav" + "/home/asterisk/partyline-voicerec/" ++ ~wavPin ++ ".wav";
+		},
+	);
+	d.unixCmd("done : copy waveform" + "/home/asterisk/partyline-voicerec/" ++ ~wavPin.postln ++ ".wav", false);
 };
 );
 

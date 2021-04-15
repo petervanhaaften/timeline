@@ -20,6 +20,8 @@
 ~killscore = ~srcdir +/+ "/scenes/TL_kill_score.scd";
 // # flag for timescore location.
 //~timescore = ~srcdir +/+ "TL_score_scene1.scd";
+// # flag for TL_playback [ formerlly 'main.scd' ]
+~tlplayback = ~srcdir +/+ "/scenes/TL_playback.scd";
 
 //
 //CALLIONG VARIOUS NEEDED SYNTHS AND LOGIC

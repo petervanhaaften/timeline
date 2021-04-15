@@ -134,6 +134,7 @@
 	///////////////////////
 	(
 		~playscore = Routine {
+			Require(~tlplayback);
 			Require(~timescore);
 			//play master score
 			p = Pdef(\scene0, Pdef(\main,

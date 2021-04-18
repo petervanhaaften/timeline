@@ -5,48 +5,48 @@
 ~wavprocess = Routine {
 	//normalise recorded wave w/sox
 	// set SOX binary directory, for osx & linux
-	Platform.case(
-		\osx,   {
-			"OSX".postln;
-			a = "/usr/local/bin/sox" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1.wav" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1_normalised.wav" + "gain -n -3";
-		},
-		\linux, {
-			"Linux".postln;
-			a = "/usr/bin/sox" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1.wav" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1_normalised.wav" + "gain -n -3";
-		},
-	);
-	a.unixCmd("done : normalise".postln, false);
-	0.1.wait;
-	//compress recorded file
-	//compand 0.02,0.2 5:-60,-40,-20 -5 -80 0.1
-	// same deal with /usr/bin/sox
-	Platform.case(
-		\osx,   {
-			"OSX".postln;
-			c = "/usr/local/bin/sox" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1_normalised.wav" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1_compressed.wav" + "compand 0.02,0.2 5:-60,-40,-20 -5 -80 0.1";
-		},
-		\linux, {
-			"Linux".postln;
-			c = "/usr/bin/sox" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1_normalised.wav" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1_compressed.wav" + "compand 0.02,0.2 5:-60,-40,-20 -5 -80 0.1";
-		},
-	);
+	//5.wait;
 
-	c.unixCmd("done : compression".postln, false);
+	a = "sox" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1.wav" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1_normalised.wav --norm=-3";
+
+	//function: compress recorded file
+	//compand 0.02,0.2 5:-60,-40,-20 -5 -80 0.1
+	c = "sox" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1_normalised.wav" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1_compressed.wav" + "compand 0.02,0.2 5:-60,-40,-20 -5 -80 0.1";
+
+	// function: copy buffer to new file
+	d = "cp" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1_compressed.wav" + "/home/asterisk/partyline-voicerec/" ++ ~wavPin ++ ".wav";
+	// function: convert recorded buffer to stereo file
+	e = "sox" + "/home/asterisk/partyline-voicerec/" ++ ~wavPin ++ ".wav" + "/home/asterisk/partyline-voicerec/" ++ ~wavPin ++ "_stereo.wav channels 2";
+
+	// run waveform normalizations
 	0.1.wait;
+	a.unixCmd("done : normalise".postln;, false);
+	// run compression
+	0.1.wait;
+	c.unixCmd("done : compression".postln;, false);
+	// run copy waveform
+	0.1.wait;
+	d.unixCmd("done : copy waveform" + "/home/asterisk/partyline-voicerec/".postln;, false);
+	// run convert to stereo
+	0.1.wait;
+	e.unixCmd("done : convert waveform to stereo".postln, false);
+
+	/*
+	// run compression
+	c.unixCmd(
+	"done : compression".postln;
+	// run copy waveform
+	d.unixCmd(
+	"done : copy waveform" + "/home/asterisk/partyline-voicerec/".postln;
+	// run convert to stereo
+	e.unixCmd("done : convert waveform to stereo".postln, false);
+	, false);
+	, false)
+
+	*/
+	//0.1.wait;
 	//switch buffer
 	b = Buffer.read(s, ~srcdir +/+ "/audio/" ++ ~instancenum ++ "bufferrec1_compressed.wav");
-
-	Platform.case(
-		\osx,   {
-			"OSX".postln;
-			d = "cp " + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1_compressed.wav" + "/home/asterisk/partyline-voicerec/" ++ ~wavPin ++ ".wav";
-		},
-		\linux, {
-			"Linux".postln;
-			d = "cp " + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1_compressed.wav" + "/home/asterisk/partyline-voicerec/" ++ ~wavPin ++ ".wav";
-		},
-	);
-	d.unixCmd("done : copy waveform" + "/home/asterisk/partyline-voicerec/" ++ ~wavPin.postln ++ ".wav", false);
 };
 );
 
@@ -94,119 +94,119 @@
 
 ~recordvoice = Routine {
 
-//~position = 0;
-//create voicerecorder
-~rec = Synth(\voiceRecorder, [\bufnum, b.bufnum, \pos, 0, \t_trig, 0]);
-//trigger is always running
+	//~position = 0;
+	//create voicerecorder
+	~rec = Synth(\voiceRecorder, [\bufnum, b.bufnum, \pos, 0, \t_trig, 0]);
+	//trigger is always running
 	~trigger = Synth(\trigger, [\micGate, 1]);
-~recpause = 0;
+	~recpause = 0;
 
-//sorry.wav var trig
-k = 0;
-//clock1 time, record time
-d = 0;
-//clock2 time, paused time
-q = 0;
-//clock3 time, paused time
-r = 0;
-//clock1, record
-t = Task({ { d = d + 1; 1.wait;}.loop });
-//clock2, pause
-v = Task({ { q = q + 1; "$ pause klok : ".post; q.postln; 1.wait; }.loop });
-//clock3, pause time before error message
-w = Task({ { r = r + 1; "$ ERROR klok : ".post; r.postln; 1.wait; }.loop });
-//trig for min record time pause length
-h = 1;
-//trig for pause sorry
-m = 0;
+	//sorry.wav var trig
+	k = 0;
+	//clock1 time, record time
+	d = 0;
+	//clock2 time, paused time
+	q = 0;
+	//clock3 time, paused time
+	r = 0;
+	//clock1, record
+	t = Task({ { d = d + 1; 1.wait;}.loop });
+	//clock2, pause
+	v = Task({ { q = q + 1; "$ pause klok : ".post; q.postln; 1.wait; }.loop });
+	//clock3, pause time before error message
+	w = Task({ { r = r + 1; "$ ERROR klok : ".post; r.postln; 1.wait; }.loop });
+	//trig for min record time pause length
+	h = 1;
+	//trig for pause sorry
+	m = 0;
 
-OSCdef(\trigger, {
-	arg msg;
-	//constantly triggered on id 9998 once per-second during recording
-	(msg[2] == 9998).if({
-		//if < min record play sorry.wav
-		//if paused or no record for more than 8 seconds then
+	OSCdef(\trigger, {
+		arg msg;
+		//constantly triggered on id 9998 once per-second during recording
+		(msg[2] == 9998).if({
+			//if < min record play sorry.wav
+			//if paused or no record for more than 8 seconds then
 			if((((d <= ~minrecordtime)&&(~recpause == 0;))&&(r >= ~errortime))&&(h == 1)&&(k == 0),
 				{
-				//close microphone gate [ positive int closes gate ]
-				~micGate = 0;
-				~trigger.set(\micGate, 0);
-				//"minrecordtime".post; ~minrecordtime.postln;
-				//pause recorder, send time position
-				//~rec.set(\t_sendTime, 1);
-				~errorplayback.reset;
-				//"rVal : ".post; r.postln;
-				//"hVal : ".post; h.postln;
-				//"kVal : ".post; k.postln;
-				w.stop;
-				~errorplayback.play;
-				h = 0;
-				d = 0;
-				q = 0;
-				r = 0;
-				//"dval".post; d.postln;
-				//~recpause == 1;
-				"LoopEnd".postln;
-				//~telephoneAmp = 1;
-			};
-		);
-		//if current time >= ~maxrecordtime, then stop & run ~finalprocess
+					//close microphone gate [ positive int closes gate ]
+					~micGate = 0;
+					~trigger.set(\micGate, 0);
+					//"minrecordtime".post; ~minrecordtime.postln;
+					//pause recorder, send time position
+					//~rec.set(\t_sendTime, 1);
+					~errorplayback.reset;
+					//"rVal : ".post; r.postln;
+					//"hVal : ".post; h.postln;
+					//"kVal : ".post; k.postln;
+					w.stop;
+					~errorplayback.play;
+					h = 0;
+					d = 0;
+					q = 0;
+					r = 0;
+					//"dval".post; d.postln;
+					//~recpause == 1;
+					"LoopEnd".postln;
+					//~telephoneAmp = 1;
+				};
+			);
+			//if current time >= ~maxrecordtime, then stop & run ~finalprocess
 
-		(d >= ~maxrecordtime).if({
-			t.play;
-			"// ~maxrecordtime threshold reached".postln;
-			~finalprocess.play;
-		});
-		//if (t > ~minrecordtime) && (~minrecordtimeBreak < 5) then STILL ALLOW RECORDING POTENTIAL
+			(d >= ~maxrecordtime).if({
+				t.play;
+				"// ~maxrecordtime threshold reached".postln;
+				~finalprocess.play;
+			});
+			//if (t > ~minrecordtime) && (~minrecordtimeBreak < 5) then STILL ALLOW RECORDING POTENTIAL
 			if((d >= ~minrecordtime)&&(~recpause == 0;)&&(k == 0),
 				//minimum recording time reached
 				//only v.play if recording is paused.....
 				{ v.start; "kVALUEblaa : ".post; k.postln; }
-		);
-		//record pause longer than ~minrecordtimeBreak, then process recorded audio
-		if(((q >= ~minrecordtimeBreak)&&(~recpause == 0;))&&(d >= ~minrecordtime),
+			);
+			//record pause longer than ~minrecordtimeBreak, then process recorded audio
+			if(((q >= ~minrecordtimeBreak)&&(~recpause == 0;))&&(d >= ~minrecordtime),
 				{ "// ~minrecordtimeBreak threshold reached".postln; v.stop; ~finalprocess.play; };
-		);
-	});
-	//if signal > threshold (id1000), trigger record
-	(msg[2] == 1000).if({
-				~recpause = 1;
-				k = 0;
-				h = 1;
-				r = 0;
-				q =0;
-				//start < minrecordtime pause counter before error
-				w.play;
-				v.stop;
-				//start recording clock, on begin record
-				t.start;
-				//start recorder
-				"RECORDING RECORDING RECORDING".postln;
-				~rec.set(\pos, ~position, \t_trig, 1);
+			);
+		});
+		//if signal > threshold (id1000), trigger record
+		(msg[2] == 1000).if({
+			~recpause = 1;
+			k = 0;
+			h = 1;
+			r = 0;
+			q =0;
+			//start < minrecordtime pause counter before error
+			w.play;
+			v.stop;
+			//start recording clock, on begin record
+			t.start;
+			//start recorder
+			"RECORDING RECORDING RECORDING".postln;
+			~rec.set(\pos, ~position, \t_trig, 1);
 			~trigger.set(\micGate, 1);
-	});
-	//if signal < threshold (id1001), ask synth to send position in buffer, pause record
-	(msg[2] == 1001).if({
-					~recpause = 0;
-					k = 0;
-					h = 1;
-					r = 0;
-					q =0;
-					v.stop;
-					//pause recording clock, on pause record
-					t.pause;
-					"rec-dval".post; d.postln;
-					//pause recorder, send time position
-					"PAUSE PAUSE PAUSE".postln;
-					~rec.set(\t_sendTime, 1);
+		});
+		//if signal < threshold (id1001), ask synth to send position in buffer, pause record
+		(msg[2] == 1001).if({
+			~recpause = 0;
+			k = 0;
+			h = 1;
+			r = 0;
+			q =0;
+			v.stop;
+			//pause recording clock, on pause record
+			t.pause;
+			"rec-dval".post; d.postln;
+			//pause recorder, send time position
+			"PAUSE PAUSE PAUSE".postln;
+			~rec.set(\t_sendTime, 1);
 			~trigger.set(\micGate, 1);
-	});
-	//receive position from buffer
-	(msg[2] == 9999).if({
+		});
 		//receive position from buffer
-		~position = msg[3];
-	});
-}, '/tr', s.addr)
+		(msg[2] == 9999).if({
+			//receive position from buffer
+			~position = msg[3];
+		});
+	}, '/tr', s.addr)
 };
 );
 

@@ -22,6 +22,8 @@
 //~timescore = ~srcdir +/+ "TL_score_scene1.scd";
 // # flag for TL_playback [ formerlly 'main.scd' ]
 ~tlplayback = ~srcdir +/+ "/scenes/TL_playback.scd";
+// # flag for TL_callflow_global
+~tlcallflowglobal = ~srcdir +/+ "/scenes/TL_callflow_global.scd";
 
 //
 //CALLIONG VARIOUS NEEDED SYNTHS AND LOGIC

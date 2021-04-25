@@ -46,7 +46,7 @@ s.doWhenBooted{
 	    "INSTANCE".post;
 	    ~instancenum.post;
 	    "booted".postln;
-	
+
 		// MASTER HOST CONFIG
 		// # flag for timeline src directory
 		~srcdir = Platform.userHomeDir +/+ "src/timeline/";
@@ -54,6 +54,8 @@ s.doWhenBooted{
 		Require(~srcdir +/+ "/config/TL_globalcfg.scd");
 
 		Require(~srcdir +/+ "/Partyline_global_host8.scd/");
+
+		Require(~tlcallflowglobal);
 
 		"LangPort = ".post;
 		NetAddr.langPort.postln;

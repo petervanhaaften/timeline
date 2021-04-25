@@ -1,3 +1,12 @@
+/*
+A global scene offline recording script.
+Uses .recordNRT to offline bounce the recorded audience buffer.
+
+I need to make sure that this is actually playing the same scene as TL_callflow_sceneX.scd
+
+I think some part of this needs to be moved from TL_callfow_scene0, or I need to somehow
+feed variables out of TL_callflow_sceneX into this script !
+*/
 
 (
 var options;
@@ -18,18 +27,18 @@ var options;
 Require("gransyn.scd");
 
 // call external score
-Require(thisProcess.nowExecutingPath.dirname +/+ "newscore/score9.scd");
-~pattern2 = ~pattern;
+Require(thisProcess.nowExecutingPath.dirname +/+ "nrtscore/score" ++ ~sceneChoice ++ ".scd");
+//~pattern2 = ~pattern;
 ~pattern = ~pattern.asScore(33);
 
 // ~score.add(~pattern);
 ~pattern.score.do{|e| ~score.add(e)};
 
 // setup concat
-a = "sox" + "/home/asterisk/partyline-snd/scene0_stereo.wav" + "/home/asterisk/partyline-snd/holdbeep.wav" + "/home/asterisk/partyline-voicerec/" ++ ~wavPin ++ "_stereo.wav" +"/home/asterisk/partyline-snd/holdbeep2.wav" + "/home/asterisk/partyline-screc/" ++ ~wavPin ++ "_normalised.wav" + "/home/asterisk/partyline-concat/" ++ ~wavPin ++ "_concat.wav";
+a = "sox" + "/home/asterisk/partyline-snd/scene0_stereo.wav" + "/home/asterisk/partyline-snd/holdbeep.wav" + "/home/asterisk/partyline-voicerec/" ++ ~wavPin ++ "_stereo.wav" +"/home/asterisk/partyline-snd/holdbeep2.wav" + "/home/asterisk/partyline-screc/" ++ ~wavPin ++ "_normalised.wav" + "/home/asterisk/partyline-snd/goodbye0.wav" + "/home/asterisk/partyline-concat/" ++ ~wavPin ++ "_concat.wav";
 
 // setup screc output normalization
-f = "sox" + "/home/asterisk/partyline-screc/" ++ ~wavPin ++ ".wav" + "/home/asterisk/partyline-screc/" ++ ~wavPin ++ "_normalised.wav --norm=-3";
+f = "sox" + "/home/asterisk/partyline-screc/" ++ ~wavPin ++ ".wav" + "/home/asterisk/partyline-screc/" ++ ~wavPin ++ "_normalised.wav --norm=-5";
 
 //setup normalize and concat routine.
 g = Routine {
@@ -57,7 +66,9 @@ options = ServerOptions.new.numOutputBusChannels_(2);
 //~sndbuf = b;
 //~sndbuf = Buffer.read(s, thisProcess.nowExecutingPath.dirname +/+ "voice4.wav");
 ~sndbuf = Buffer.read(s, ~srcdir +/+ "/audio/" ++ ~instancenum ++ "bufferrec1_compressed.wav");
-Require(thisProcess.nowExecutingPath.dirname +/+ "newscore/score9.scd");
+//Require(thisProcess.nowExecutingPath.dirname +/+ "newscore/score" ++ ~currentScene ++ ".scd");
+Require(thisProcess.nowExecutingPath.dirname +/+ "nrtscore/score" ++ ~sceneChoice ++ ".scd");
+
 
 
 //5.wait;

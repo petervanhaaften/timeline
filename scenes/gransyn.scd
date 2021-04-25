@@ -4,7 +4,7 @@
 
 SynthDef(\gransyn, { |out = 0, soundBuf, gate = 1, attack = 0.01, release = 0.5, posLo = 0.1, posHi = 0.9, posRateE = 0, posRateM= 1, posRateMLag = 0, posRateMCurve = 0, rate= 1, rateLag = 0, rateCurve = 0, panMax = 0, bpRQ = 0.1, bpRQLag = 0, bpRQCurve = 0, bpLo = 50, bpLoLag = 0, bpLoCurve = 0, bpHi = 5000, bpHiLag = 0, bpHiCurve = 0, amp = 1, ampLag = 0, ampCurve = 0 overlap = 2, overlapLag = 0, overlapCurve = 0, trigRate = 1, trigRateLag = 0, trigRateCurve = 0, interp = 2, posRate = 0, lpFreq = 20000, lpLag = 3, lpCurve = 0, hpFreq = 20, hpLag = 0, hpCurve = 0, rateRandomness = 0, rateRandomnessLag = 0, rateRandomnessCurve = 0, overlapRandomness = 0, overlapRandomnessLag = 0, overlapRandomnessCurve = 0, verbMix = 0, verbMixLag = 0, verbMixCurve = 0, verbRoom = 0, verbDamp =0|
 
-	var sig, sigL, sigR, sigOut, sigLimiter, sigCompressor, env, bpFreq, chan, dUgen, trig, trigs, bufDur, pos, lpfSig, rateNoiseSig, overlapNoiseSig, verbSig;
+	var sig, sigL, sigR, sigOut, sigLimiterL, sigLimiterR, sigCompressorL, sigCompressorR, env, bpFreq, chan, dUgen, trig, trigs, bufDur, pos, lpfSig, rateNoiseSig, overlapNoiseSig, verbSig;
 
 	//trigger for grains
 	trig = Impulse.ar(trigRate);
@@ -56,12 +56,45 @@ SynthDef(\gransyn, { |out = 0, soundBuf, gate = 1, attack = 0.01, release = 0.5,
 		HPF.ar(in: lpfSig, freq: hpFreq, mul: 1, add: 0);
 	};
 
+
     // routing to two channels ...
     sigL = Mix(((0..(~m-1)) * 2).collect(sig[_]));
     sigR = Mix(((0..(~m-1)) * 2 + 1).collect(sig[_]));
 
+
+	///////////
+	/////////// comp add begin
+	///////////
+	// apply compression
+	sigCompressorL = Compander.ar(sigL, sigL,
+        thresh: 0.4,
+        slopeBelow: 0.5,
+        slopeAbove: 0.1,
+        clampTime:  0.01,
+        relaxTime:  0.01,
+		mul: 1,
+		add: 0,
+    );
+
+	sigCompressorR = Compander.ar(sigR, sigR,
+        thresh: 0.4,
+        slopeBelow: 0.5,
+        slopeAbove: 0.1,
+        clampTime:  0.01,
+        relaxTime:  0.01,
+		mul: 1,
+		add: 0,
+    );
+
+	sigLimiterL = Limiter.ar(in: sigCompressorL, level: 0.7, dur: 0.5);
+	sigLimiterR = Limiter.ar(in: sigCompressorR, level: 0.7, dur: 0.5);
+
+	///////////
+	/////////// comp add end
+	///////////
+
 	//route stereo sig thru cheap verb
-	verbSig = FreeVerb2.ar(sigL, sigR, mix: Demand.ar(trig, 0, verbMix, inf), room: verbRoom, damp: verbDamp);
+	verbSig = FreeVerb2.ar(sigLimiterL, sigLimiterR, mix: Demand.ar(trig, 0, verbMix, inf), room: verbRoom, damp: verbDamp);
 
 	//output
 	Out.ar(out, Pan2.ar(verbSig[0], panMax.neg) + Pan2.ar(verbSig[1], panMax) * env);

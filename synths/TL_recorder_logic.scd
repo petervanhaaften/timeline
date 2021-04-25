@@ -3,27 +3,26 @@
 ///////////////////////
 (
 ~wavprocess = Routine {
-	//normalise recorded wave w/sox
-	// set SOX binary directory, for osx & linux
-	//5.wait;
 
-	a = "sox" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1.wav" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1_normalised.wav --norm=-3";
 
 	//function: compress recorded file
 	//compand 0.02,0.2 5:-60,-40,-20 -5 -80 0.1
-	c = "sox" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1_normalised.wav" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1_compressed.wav" + "compand 0.02,0.2 5:-60,-40,-20 -5 -80 0.1";
+	c = "sox" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1.wav" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1_compressed.wav" + "compand 0.02,0.2 5:-60,-40,-20 -5 -80 0.1";
+
+	//normalise recorded wave w/sox
+	a = "sox" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1_compressed.wav" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1_normalised.wav --norm=-5";
 
 	// function: copy buffer to new file
-	d = "cp" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1_compressed.wav" + "/home/asterisk/partyline-voicerec/" ++ ~wavPin ++ ".wav";
+	d = "cp" + ~srcdir +/+ "audio/" ++ ~instancenum ++ "bufferrec1_normalised.wav" + "/home/asterisk/partyline-voicerec/" ++ ~wavPin ++ ".wav";
 	// function: convert recorded buffer to stereo file
 	e = "sox" + "/home/asterisk/partyline-voicerec/" ++ ~wavPin ++ ".wav" + "/home/asterisk/partyline-voicerec/" ++ ~wavPin ++ "_stereo.wav channels 2";
 
-	// run waveform normalizations
-	0.1.wait;
-	a.unixCmd("done : normalise".postln;, false);
 	// run compression
 	0.1.wait;
 	c.unixCmd("done : compression".postln;, false);
+	// run waveform normalizations
+	0.1.wait;
+	a.unixCmd("done : normalise".postln;, false);
 	// run copy waveform
 	0.1.wait;
 	d.unixCmd("done : copy waveform" + "/home/asterisk/partyline-voicerec/".postln;, false);

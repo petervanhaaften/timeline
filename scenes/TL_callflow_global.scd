@@ -121,9 +121,10 @@ calling of ~recordvoice function.
 	///////////////////////
 	(
 		~voiceplayback_pt2 = Routine.new( {
+			~playscore.reset;
 			//reset crap
-			//b.free;
-			//b = Buffer.alloc(s, 100 * s.sampleRate);
+			b.free;
+			b = Buffer.alloc(s, 100 * s.sampleRate);
 			"// beep2".postln;
 			f = Pmono(\sinbeep, \dur, 1, \amp, 0.8, \attack, 0, \sustain, 1, \release, 0, \freq, 440).play;
 			//wait until beep is finished
@@ -131,7 +132,7 @@ calling of ~recordvoice function.
 			f.stop;
 			//Require(~timescore);
 			//start global score
-			~playscore.reset;
+
 			1.wait;
 			~playscore.play;
 			//~recordvoice.play;

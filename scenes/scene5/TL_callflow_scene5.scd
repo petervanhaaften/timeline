@@ -11,12 +11,11 @@ Require(~timescore);
 ///////////////////////
 
 ~playscore = Routine {
-	Pdef(\scene1, Pdef(\main,
+	Pdef(\scene5, Pdef(\main,
 	Pseq([
 		//start score
-		Pfindur(33, Pdef(\part1)),
-		Pfindur(29, Pdef(\part2)),
-		//Pfindur(3, Pdef(\part3)),
+		Pfindur(25, Pdef(\part1)),
+		Pfindur(35, Pdef(\part2)),
 	],1),
 )).play;
 

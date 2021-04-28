@@ -110,8 +110,8 @@
 			~callerJackChan.postln;
 			"received asterisk message is:".postln;
 
-			Require(~srcdir +/+ "/scenes/scene0/TL_localcfg_scene0.scd");
-			Require(~srcdir +/+ "/scenes/scene0/TL_callflow_scene0.scd");
+			Require(~srcdir +/+ "/scenes/scene1/TL_localcfg_scene1.scd");
+			Require(~srcdir +/+ "/scenes/scene1/TL_callflow_scene1.scd");
 			"loaded scene 1".postln;
 			//~callflow.reset;
 			~callflow.play;
@@ -124,8 +124,8 @@
 			~callerJackChan = msg[2];
 			~callerJackChan.postln;
 
-			Require(~srcdir +/+ "/scenes/scene0/TL_localcfg_scene0.scd");
-			Require(~srcdir +/+ "/scenes/scene0/TL_callflow_scene0.scd");
+			Require(~srcdir +/+ "/scenes/scene2/TL_localcfg_scene2.scd");
+			Require(~srcdir +/+ "/scenes/scene2/TL_callflow_scene2.scd");
 			"loaded scene2".postln;
 			~callflow.reset;
 			~callflow.play;
@@ -138,8 +138,8 @@
 			~callerJackChan = msg[2];
 			~callerJackChan.postln;
 
-			Require(~srcdir +/+ "/scenes/scene0/TL_localcfg_scene0.scd");
-			Require(~srcdir +/+ "/scenes/scene0/TL_callflow_scene0.scd");
+			Require(~srcdir +/+ "/scenes/scene3/TL_localcfg_scene3.scd");
+			Require(~srcdir +/+ "/scenes/scene3/TL_callflow_scene3.scd");
 			"loaded scene3".postln;
 			~callflow.reset;
 			~callflow.play;
@@ -153,8 +153,8 @@
 			~callerJackChan = msg[2];
 			~callerJackChan.postln;
 
-			Require(~srcdir +/+ "/scenes/scene0/TL_localcfg_scene0.scd");
-			Require(~srcdir +/+ "/scenes/scene0/TL_callflow_scene0.scd");
+			Require(~srcdir +/+ "/scenes/scene4/TL_localcfg_scene4.scd");
+			Require(~srcdir +/+ "/scenes/scene4/TL_callflow_scene4.scd");
 			"loaded scene4".postln;
 			~callflow.reset;
 			~callflow.play;
@@ -167,8 +167,8 @@
 			~callerJackChan = msg[2];
 			~callerJackChan.postln;
 
-			Require(~srcdir +/+ "/scenes/scene0/TL_localcfg_scene0.scd");
-			Require(~srcdir +/+ "/scenes/scene0/TL_callflow_scene0.scd");
+			Require(~srcdir +/+ "/scenes/scene5/TL_localcfg_scene5.scd");
+			Require(~srcdir +/+ "/scenes/scene5/TL_callflow_scene5.scd");
 			"loaded scene5".postln;
 			~callflow.reset;
 			~callflow.play;

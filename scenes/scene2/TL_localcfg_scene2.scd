@@ -1,13 +1,16 @@
 
 //TIMELINE LOCAL SCLANG CONFIG
+// # flag for timeline src directory
+~srcdir = Platform.userHomeDir +/+ "src/timeline/";
+
 // # flag for timescore location.
-~timescore = ~srcdir +/+ "/scenes/scene1/TL_score_scene1.scd";
+~timescore = ~srcdir +/+ "scenes/scene2/TL_score_scene2.scd";
 // # flag for min recording length
-~minrecordtime = 0.5;
+~minrecordtime = 1;
 // # flag for time (in seconds) before min recording breaks, function stops waiting for ~maxrecordtime to pass, and prints wav
 ~minrecordtimeBreak = 2;
 // # flag for max recording length
-~maxrecordtime = 4;
+~maxrecordtime = 7;
 // # time to wait on pause (below ~minrecordtime) before triggering error message
 ~errortime = 2;
 // # flags for recording input lvl

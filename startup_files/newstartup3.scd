@@ -55,6 +55,7 @@ s.doWhenBooted{
 
 		Require(~srcdir +/+ "/Partyline_global_host8.scd/");
 
+	    Require(~tlcallflowglobal);
 		"LangPort = ".post;
 		NetAddr.langPort.postln;
 	}.play;

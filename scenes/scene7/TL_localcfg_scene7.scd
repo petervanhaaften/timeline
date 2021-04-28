@@ -4,7 +4,7 @@
 ~srcdir = Platform.userHomeDir +/+ "src/timeline/";
 
 // # flag for timescore location.
-~timescore = ~srcdir +/+ "scenes/scene0/TL_score_scene0.scd";
+~timescore = ~srcdir +/+ "scenes/scene7/TL_score_scene7.scd";
 // # flag for min recording length
 ~minrecordtime = 1;
 // # flag for time (in seconds) before min recording breaks, function stops waiting for ~maxrecordtime to pass, and prints wav

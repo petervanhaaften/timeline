@@ -1,19 +1,3 @@
-///////////////////////
-//    SCORE PLAYER
-///////////////////////
-
-
-
-~pattern = Pdef(\scene1, Pdef(\main,
-	Pseq([
-		//start score
-		Pfindur(33, Pdef(\part1)),
-		Pfindur(29, Pdef(\part2)),
-		Pfindur(3, Pdef(\part3)),
-	],1),
-));
-
-
 
 ///////////////////////
 //  SCENE 1 / PART 1
@@ -164,6 +148,21 @@ Pdef(\scene1, Pdef(\part2,
 	])
 ));
 );
+
+
+///////////////////////
+//    SCORE PLAYER
+///////////////////////
+(
+~pattern = Pdef(\scene1, Pdef(\main,
+	Pseq([
+		//start score
+		Pfindur(33, Pdef(\part1)),
+		Pfindur(29, Pdef(\part2)),
+		//Pfindur(3, Pdef(\part3)),
+	],1),
+));
+);
 /*
 ///////////////////////
 //    SCORE INIT
@@ -265,3 +264,4 @@ Pdef(\part, Pdef(\part1,
 );
 
 */
+

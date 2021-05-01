@@ -1,7 +1,7 @@
 (
 var options;
-~scoreFile = thisProcess.nowExecutingPath.dirname +/+ "newscore/score8.scd";
-~bufferFile = thisProcess.nowExecutingPath.dirname +/+ "5H84XBV.wav";
+~scoreFile = thisProcess.nowExecutingPath.dirname +/+ "newscore/score1.scd";
+~bufferFile = thisProcess.nowExecutingPath.dirname +/+ "VM56HKF.wav";
 // create new score
 ~score = Score.new;
 
@@ -17,20 +17,21 @@ Require("gransyn.scd");
 // call external score
 Require(~scoreFile);
 //~pattern2 = ~pattern;
-~pattern = ~pattern.asScore(60);
+~pattern = ~pattern.asScore(65);
 
 // ~score.add(~pattern);
 ~pattern.score.do{|e| ~score.add(e)};
 
 // the ServerOptions for rendering the soundfile
-options = ServerOptions.new.numOutputBusChannels_(2);
+//options = ServerOptions.new.numOutputBusChannels_(2);
+options = Server.default.options;
 
 ~score.recordNRT(
-    outputFilePath: thisProcess.nowExecutingPath.dirname +/+ "test9.wav".standardizePath,
+    outputFilePath: thisProcess.nowExecutingPath.dirname +/+ "test10.wav".standardizePath,
     headerFormat: "wav",
     sampleFormat: "int24",
     options: options,
-    duration: 60,
+    duration: 65,
     action: { "done".postln }
 );
 
@@ -40,3 +41,4 @@ Require(~scoreFile);
 ~pattern.play;
 )
 //~pattern.play
+//~peterClock = TempoClock.new(1, 0)

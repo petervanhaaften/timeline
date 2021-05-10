@@ -28,8 +28,9 @@ Require("gransyn.scd");
 
 // call external score
 Require(thisProcess.nowExecutingPath.dirname +/+ "nrtscore/score" ++ ~sceneChoice ++ ".scd");
+
 //~pattern2 = ~pattern;
-~pattern = ~pattern.asScore(33);
+~pattern = ~pattern.asScore(~sceneDuration);
 
 // ~score.add(~pattern);
 ~pattern.score.do{|e| ~score.add(e)};
@@ -50,6 +51,9 @@ g = Routine {
 // the ServerOptions for rendering the soundfile
 options = ServerOptions.new.numOutputBusChannels_(2);
 
+n = "SCENE DURATION VALUE = " + ~sceneDuration;
+n.postln;
+
 ~score.recordNRT(
     // outputFilePath: thisProcess.nowExecutingPath.dirname +/+ "testnew3.wav".standardizePath,
 	outputFilePath: "/home/asterisk/partyline-screc/" ++ ~wavPin ++ ".wav".standardizePath,
@@ -57,7 +61,7 @@ options = ServerOptions.new.numOutputBusChannels_(2);
     sampleFormat: "int24",
 	sampleRate: 48000,
     options: options,
-    duration: 33,
+    duration: ~sceneDuration,
     action: {
 		g.play;
 	};
@@ -67,7 +71,7 @@ options = ServerOptions.new.numOutputBusChannels_(2);
 //~sndbuf = Buffer.read(s, thisProcess.nowExecutingPath.dirname +/+ "voice4.wav");
 ~sndbuf = Buffer.read(s, ~srcdir +/+ "/audio/" ++ ~instancenum ++ "bufferrec1_compressed.wav");
 //Require(thisProcess.nowExecutingPath.dirname +/+ "newscore/score" ++ ~currentScene ++ ".scd");
-Require(thisProcess.nowExecutingPath.dirname +/+ "nrtscore/score" ++ ~sceneChoice ++ ".scd");
+//Require(thisProcess.nowExecutingPath.dirname +/+ "nrtscore/score" ++ ~sceneChoice ++ ".scd");
 
 
 

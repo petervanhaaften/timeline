@@ -6,19 +6,7 @@ Scene score playback
 //~currentScene = 0;
 Require(~timescore);
 
-///////////////////////
-//    SCORE PLAYER
-///////////////////////
-
-~playscore = Routine {
-	Pdef(\scene1, Pdef(\main,
-	Pseq([
-		//start score
-		Pfindur(33, Pdef(\part1)),
-		Pfindur(29, Pdef(\part2)),
-		//Pfindur(3, Pdef(\part3)),
-	],1),
-)).play;
+~playscore.play;
 
 	// run non-realtime offline score bounce
 	Require(~tlplayback);

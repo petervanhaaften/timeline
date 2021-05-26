@@ -95,7 +95,7 @@ Pdef(\scene4, Pdef(\part1,
 			\verbDamp, Pseq([0, 0, 0, 0, 0, 0, 0], 1),
 			\out,0,
 		),
-				Pmono(
+		Pmono(
 			\gransyn,
 			\soundBuf,~sndbuf,
 			\dur, Pseq([5, 5, 5, 3, 12, 9, 12], 1),
@@ -143,7 +143,20 @@ Pdef(\scene4, Pdef(\part1,
 	])
 ));
 );
-/*
+
+///////////////////////
+//    SCORE PLAYER
+///////////////////////
+
+~myscore = Pdef(\scene4, Pdef(\main,
+	Pseq([
+		//start score
+		Pfindur(40, Pdef(\part1)),
+		Pfunc({~net.sendMsg('/timeline/scene',9999, ~telephoneNum, ~asteriskChannel, ~wavPin)}).collect;
+	],1),
+));
+
+
 
 
 /*

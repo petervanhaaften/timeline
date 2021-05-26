@@ -11,15 +11,10 @@ Require(~timescore);
 ///////////////////////
 
 ~playscore = Routine {
-	Pdef(\scene9, Pdef(\main,
-	Pseq([
-		//start score
-		Pfindur(34, Pdef(\part1)),
-		Pfindur(45, Pdef(\part2)),
-	],1),
-)).play;
+	~myscore.play;
 
 	// run non-realtime offline score bounce
 	Require(~tlplayback);
 	"SCORE FINISHED".postln;
-}
+};
+~playscore.reset;

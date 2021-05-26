@@ -108,12 +108,11 @@
 			"caller jack channel is:".postln;
 			~callerJackChan = msg[2];
 			~callerJackChan.postln;
-			"received asterisk message is:".postln;
 
-			Require(~srcdir +/+ "/scenes/scene1/TL_localcfg_scene1.scd");
-			Require(~srcdir +/+ "/scenes/scene1/TL_callflow_scene1.scd");
+			Require(~srcdir +/+ "/scenes/scene2/TL_localcfg_scene2.scd");
+			Require(~srcdir +/+ "/scenes/scene2/TL_callflow_scene2.scd");
 			"loaded scene 1".postln;
-			//~callflow.reset;
+			~callflow.reset;
 			~callflow.play;
 		});
 		(msg[1] == 2).if({

@@ -2,6 +2,7 @@
 //TIMELINE LOCAL SCLANG CONFIG
 // # flag for timeline src directory
 ~srcdir = Platform.userHomeDir +/+ "src/timeline/";
+~sceneDuration = 40;
 
 // # flag for timescore location.
 ~timescore = ~srcdir +/+ "scenes/scene4/TL_score_scene4.scd";
@@ -27,4 +28,4 @@
 ~recorderRecordTrigHi = 0.15;
 // # flag for record pause sensitivity //trigger pause, id 1001
 ~recorderPauseTrigLo = 0.85;
-~recorderPauseTrigHi = 0.93;
+~recorderPauseTrigHi = 0.93;   

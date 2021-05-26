@@ -301,6 +301,20 @@ Pdef(\scene3, Pdef(\part3,
 ));
 );
 
+///////////////////////
+//    SCORE PLAYER
+///////////////////////
+
+~myscore = Pdef(\scene3, Pdef(\main,
+	Pseq([
+		//start score
+		Pfindur(19, Pdef(\part1)),
+		Pfindur(22, Pdef(\part2)),
+		Pfindur(12, Pdef(\part3)),
+		Pfunc({~net.sendMsg('/timeline/scene',9999, ~telephoneNum, ~asteriskChannel, ~wavPin)}).collect;
+	],1),
+));
+
 /*
 ///////////////////////
 //    SCORE INIT

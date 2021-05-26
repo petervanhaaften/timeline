@@ -1,19 +1,4 @@
 ///////////////////////
-//    SCORE PLAYER
-///////////////////////
-
-
-
-~pattern = Pdef(\scene4, Pdef(\main,
-	Pseq([
-		//start score
-		Pfindur(19, Pdef(\part1)),
-	],1),
-));
-
-
-
-///////////////////////
 //    SCENE4 PART1
 ///////////////////////
 
@@ -158,7 +143,17 @@ Pdef(\scene4, Pdef(\part1,
 	])
 ));
 );
-/*
+
+///////////////////////
+//    SCORE PLAYER
+///////////////////////
+
+~pattern = Pdef(\scene4, Pdef(\main,
+	Pseq([
+		//start score
+		Pfindur(19, Pdef(\part1)),
+	],1),
+));
 
 
 /*

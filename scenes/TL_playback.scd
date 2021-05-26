@@ -28,8 +28,11 @@ Require("gransyn.scd");
 
 // call external score
 Require(thisProcess.nowExecutingPath.dirname +/+ "nrtscore/score" ++ ~sceneChoice ++ ".scd");
+c = "THE SELECTED NRTscore" ++ ~sceneChoice ++ ".scd";
+c.postln;
+
 //~pattern2 = ~pattern;
-~pattern = ~pattern.asScore(33);
+~pattern = ~pattern.asScore(~sceneDuration);
 
 // ~score.add(~pattern);
 ~pattern.score.do{|e| ~score.add(e)};
@@ -57,7 +60,7 @@ options = ServerOptions.new.numOutputBusChannels_(2);
     sampleFormat: "int24",
 	sampleRate: 48000,
     options: options,
-    duration: 33,
+    duration: ~sceneDuration,
     action: {
 		g.play;
 	};
@@ -68,6 +71,7 @@ options = ServerOptions.new.numOutputBusChannels_(2);
 ~sndbuf = Buffer.read(s, ~srcdir +/+ "/audio/" ++ ~instancenum ++ "bufferrec1_compressed.wav");
 //Require(thisProcess.nowExecutingPath.dirname +/+ "newscore/score" ++ ~currentScene ++ ".scd");
 Require(thisProcess.nowExecutingPath.dirname +/+ "nrtscore/score" ++ ~sceneChoice ++ ".scd");
+
 
 
 

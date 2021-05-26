@@ -291,6 +291,19 @@ Pdef(\scene2, Pdef(\part2,
 ));
 );
 
+///////////////////////
+//    SCORE PLAYER
+///////////////////////
+
+~myscore = Pdef(\scene2, Pdef(\main,
+	Pseq([
+		//start score
+		Pfindur(31, Pdef(\part1)),
+		Pfindur(16, Pdef(\part2)),
+		Pfunc({~net.sendMsg('/timeline/scene',9999, ~telephoneNum, ~asteriskChannel, ~wavPin)}).collect;
+	],1),
+));
+
 
 /*TEST FOR RAMPING
 ///////////////////////

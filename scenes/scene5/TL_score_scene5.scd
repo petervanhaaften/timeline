@@ -296,9 +296,13 @@ Pdef(\scene5, Pdef(\part2,
 ~myscore = Pdef(\scene5, Pdef(\main,
 	Pseq([
 		//start score
+		Pfunc({ "THIS IS THE START OF THE SCORE NOW".postln;}).collect,
 		Pfindur(25, Pdef(\part1)),
 		Pfindur(35, Pdef(\part2)),
-		Pfunc({~net.sendMsg('/timeline/scene',9999, ~telephoneNum, ~asteriskChannel, ~wavPin)}).collect;
+		//Pfuncn({~net.sendMsg('/timeline/scene',9999, ~telephoneNum, ~asteriskChannel, ~wavPin)}, repeats: 1);
+		//Pfunc{ ~net.sendMsg('/timeline/scene',9999, ~telephoneNum, ~asteriskChannel, ~wavPin) },
+		Pfunc({ "THIS IS THE END OF THE SCORE NOW".postln;}).collect,
+		//Pfunc({~net.sendMsg('/timeline/scene',9999, ~telephoneNum, ~asteriskChannel, ~wavPin)}).collect;
 	],1),
 ));
 

@@ -37,6 +37,7 @@ s.doWhenBooted{
 		//~net = NetAddr.langPort;
 
 		~net = NetAddr("localhost", NetAddr.langPort);
+		//~net = NetAddr("localhost", 57110);
 		// set osc output port to asterisk
 		~asterisk = NetAddr.new("127.0.0.1", 59663);
 

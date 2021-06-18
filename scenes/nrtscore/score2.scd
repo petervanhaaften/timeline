@@ -301,8 +301,10 @@ Pdef(\scene2, Pdef(\part2,
 ~pattern = Pdef(\scene2, Pdef(\main,
 	Pseq([
 		//start score
+		//Pfunc({ "THIS IS THE START OF THE SCORE NOW".postln;}).collect,
 		Pfindur(31, Pdef(\part1)),
 		Pfindur(30, Pdef(\part2)),
+		//Pfunc({~net.sendMsg('/timeline/scene',9999, ~telephoneNum, ~asteriskChannel, ~wavPin)}),
 	],1),
 ));
 

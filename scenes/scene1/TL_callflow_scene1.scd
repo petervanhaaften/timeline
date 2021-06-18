@@ -11,10 +11,10 @@ Require(~timescore);
 ///////////////////////
 
 ~playscore = Routine {
-	~myscore.play;
 
 	// run non-realtime offline score bounce
 	Require(~tlplayback);
+	//~myscore.play;
 	"SCORE FINISHED".postln;
 };
 ~playscore.reset;

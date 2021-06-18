@@ -80,6 +80,8 @@
 			//need to call function to fill variable, first
 			~returnDialplan = ~redirectChannel.value(~asteriskChannel);
 			~returnDialplan.unixCmd;
+			"this is the return dialplan variable value!!!! : ".postln;
+			~returnDialplan.postln;
 			"hangup command complete, cleaning up routine".postln;
 			~globalscenectl.reset;
 			~globalscenectl.play;

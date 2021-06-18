@@ -43,12 +43,39 @@ a = "sox" + "/home/asterisk/partyline-snd/scene0_stereo.wav" + "/home/asterisk/p
 // setup screc output normalization
 f = "sox" + "/home/asterisk/partyline-screc/" ++ ~wavPin ++ ".wav" + "/home/asterisk/partyline-screc/" ++ ~wavPin ++ "_normalised.wav --norm=-5";
 
+m = "sox" + "/home/asterisk/partyline-screc/" ++ ~wavPin ++ "_normalised.wav" + "/home/asterisk/partyline-screc/" ++ ~wavPin ++ "_mono.wav" + "channels 1";
+
+//setup playback routine
+h = Routine {
+//	m.unixCmd("done: monify".postln;, false);
+	//~scoreBuf = Buffer.new;
+	~scoreBuf = Buffer.read(s, "/home/asterisk/partyline-screc/" ++ ~wavPin ++ "_mono.wav");
+	0.1.wait;
+	~scoreBuf.play;
+	"buffer duration = ".post;
+	~scoreBuf.duration.postln;
+	~scoreBuf.duration.wait;
+	//t= TempoClock.default;
+	//t.beats2secs(t.beats) // equivalent to t.seconds
+	//t = ~sceneDuration.seconds;
+	//t.wait;
+	~net.sendMsg('/timeline/scene',9999, ~telephoneNum, ~asteriskChannel, ~wavPin);
+};
+
+
 //setup normalize and concat routine.
 g = Routine {
 	f.unixCmd("done : normalised screc".postln;, false);
-	2.wait;
+	0.1.wait;
 	a.unixCmd("done : concat final output".postln, false);
+	0.1.wait;
+	m.unixCmd("done: monify".postln;, false);
+	0.1.wait;
+	h.play;
 };
+
+
+
 
 // the ServerOptions for rendering the soundfile
 options = ServerOptions.new.numOutputBusChannels_(2);
@@ -74,6 +101,10 @@ Require(thisProcess.nowExecutingPath.dirname +/+ "nrtscore/score" ++ ~sceneChoic
 
 
 
+
+//actual playback of score to audience telephone
+
+//~score.play;
 
 //5.wait;
 //a.unixCmd("done : concat final output" + "/home/asterisk/partyline-concat/" ++ ~wavPin ++ "_concat.wav".postln, false);

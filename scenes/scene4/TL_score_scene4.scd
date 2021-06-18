@@ -151,8 +151,12 @@ Pdef(\scene4, Pdef(\part1,
 ~myscore = Pdef(\scene4, Pdef(\main,
 	Pseq([
 		//start score
+		Pfunc({ "THIS IS THE START OF THE SCORE NOW".postln;}).collect,
 		Pfindur(40, Pdef(\part1)),
-		Pfunc({~net.sendMsg('/timeline/scene',9999, ~telephoneNum, ~asteriskChannel, ~wavPin)}).collect;
+		//Pfuncn({~net.sendMsg('/timeline/scene',9999, ~telephoneNum, ~asteriskChannel, ~wavPin)}, repeats: 1);
+		//Pfunc{ ~net.sendMsg('/timeline/scene',9999, ~telephoneNum, ~asteriskChannel, ~wavPin) },
+		Pfunc({ "THIS IS THE END OF THE SCORE NOW".postln;}).collect,
+		//Pfunc({~net.sendMsg('/timeline/scene',9999, ~telephoneNum, ~asteriskChannel, ~wavPin)}).collect;
 	],1),
 ));
 

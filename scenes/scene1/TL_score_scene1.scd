@@ -153,12 +153,19 @@ Pdef(\scene1, Pdef(\part2,
 //    SCORE PLAYER
 ///////////////////////
 
+//~callNetFunction = ~net.sendMsg('/timeline/scene',9999, ~telephoneNum, ~asteriskChannel, ~wavPin);
+
 ~myscore = Pdef(\scene1, Pdef(\main,
 	Pseq([
 		//start score
+		Pfunc({ "THIS IS THE START OF THE SCORE NOW".postln;}).collect,
 		Pfindur(33, Pdef(\part1)),
 		Pfindur(23, Pdef(\part2)),
-		Pfunc({~net.sendMsg('/timeline/scene',9999, ~telephoneNum, ~asteriskChannel, ~wavPin)}).collect;
+		//Pfuncn({~net.sendMsg('/timeline/scene',9999, ~telephoneNum, ~asteriskChannel, ~wavPin)}, repeats: 1);
+		//Pfunc{ ~net.sendMsg('/timeline/scene',9999, ~telephoneNum, ~asteriskChannel, ~wavPin) },
+		//~net.sendMsg('/timeline/scene',9999, ~telephoneNum, ~asteriskChannel, ~wavPin);,
+		Pfunc({ "THIS IS THE END OF THE SCORE NOW".postln;}).collect,
+		//Pfunc({~net.sendMsg('/timeline/scene',9999, ~telephoneNum, ~asteriskChannel, ~wavPin)}).collect;
 	],1),
 ));
 

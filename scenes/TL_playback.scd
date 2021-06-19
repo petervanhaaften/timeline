@@ -31,6 +31,9 @@ Require(thisProcess.nowExecutingPath.dirname +/+ "nrtscore/score" ++ ~sceneChoic
 c = "THE SELECTED NRTscore" ++ ~sceneChoice ++ ".scd";
 c.postln;
 
+z = "THE ~sceneDuration = " ++ ~sceneDuration;
+z.postln;
+
 //~pattern2 = ~pattern;
 ~pattern = ~pattern.asScore(~sceneDuration);
 

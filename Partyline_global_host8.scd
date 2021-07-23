@@ -47,8 +47,11 @@
 
 	~redirectChannel = {
 	//"asterisk -x 'channel redirect"+~asteriskChannel+"scenes-outro,1,1'".return;
+	//
+    //-- Executing [1@scenes-outro:1] playback("Local/0@scenes-00000004;2", "PARTYLINE/goodbye1")
 	arg asteriskChan = "LOCAL/hey";
-	var return = "asterisk -x 'channel redirect"+asteriskChan+"scenes-outro,1,1'";
+	//var return = "asterisk -x 'channel redirect"+asteriskChan+"scenes-outro,3,1'";
+		var return = "asterisk -x 'channel redirect"+asteriskChan+"scenes-outro,"++12.rand++",1'";
 	return;
 	//~asteriskChannel.postln;
 	};
@@ -98,7 +101,8 @@
 			~callerChan.postln;
 
 			Require(~srcdir +/+ "/scenes/scene0/TL_localcfg_scene0.scd");
-			Require(~srcdir +/+ "/scenes/scene0/TL_callflow_scene0.scd");
+			//Require(~srcdir +/+ "/scenes/scene0/TL_callflow_scene0.scd");
+			//Require(~srcdir +/+ "/scenes/TL_playback.scd");
 			"loaded scene 0".postln;
 			~callflow.reset;
 			~callflow.play;
@@ -111,8 +115,10 @@
 			~callerJackChan = msg[2];
 			~callerJackChan.postln;
 
-			Require(~srcdir +/+ "/scenes/scene2/TL_localcfg_scene2.scd");
-			Require(~srcdir +/+ "/scenes/scene2/TL_callflow_scene2.scd");
+			Require(~srcdir +/+ "/scenes/scene1/TL_localcfg_scene1.scd");
+			//Require(~srcdir +/+ "/scenes/scene2/TL_callflow_scene2.scd");
+			//Require(~srcdir +/+ "/scenes/TL_playback.scd");
+
 			"loaded scene 1".postln;
 			~callflow.reset;
 			~callflow.play;
@@ -126,7 +132,9 @@
 			~callerJackChan.postln;
 
 			Require(~srcdir +/+ "/scenes/scene2/TL_localcfg_scene2.scd");
-			Require(~srcdir +/+ "/scenes/scene2/TL_callflow_scene2.scd");
+			//Require(~srcdir +/+ "/scenes/scene2/TL_callflow_scene2.scd");
+			//Require(~srcdir +/+ "/scenes/TL_playback.scd");
+
 			"loaded scene2".postln;
 			~callflow.reset;
 			~callflow.play;
@@ -140,12 +148,13 @@
 			~callerJackChan.postln;
 
 			Require(~srcdir +/+ "/scenes/scene3/TL_localcfg_scene3.scd");
-			Require(~srcdir +/+ "/scenes/scene3/TL_callflow_scene3.scd");
+			//Require(~srcdir +/+ "/scenes/scene3/TL_callflow_scene3.scd");
+			//Require(~srcdir +/+ "/scenes/TL_playback.scd");
+
 			"loaded scene3".postln;
 			~callflow.reset;
 			~callflow.play;
 		});
-
 		(msg[1] == 4).if({
 			// /timeline/scene/2
 			//delay 55
@@ -155,7 +164,9 @@
 			~callerJackChan.postln;
 
 			Require(~srcdir +/+ "/scenes/scene4/TL_localcfg_scene4.scd");
-			Require(~srcdir +/+ "/scenes/scene4/TL_callflow_scene4.scd");
+			//Require(~srcdir +/+ "/scenes/scene4/TL_callflow_scene4.scd");
+			//Require(~srcdir +/+ "/scenes/TL_playback.scd");
+
 			"loaded scene4".postln;
 			~callflow.reset;
 			~callflow.play;
@@ -169,7 +180,89 @@
 			~callerJackChan.postln;
 
 			Require(~srcdir +/+ "/scenes/scene5/TL_localcfg_scene5.scd");
-			Require(~srcdir +/+ "/scenes/scene5/TL_callflow_scene5.scd");
+			//Require(~srcdir +/+ "/scenes/scene5/TL_callflow_scene5.scd");
+			//Require(~srcdir +/+ "/scenes/TL_playback.scd");
+
+			"loaded scene5".postln;
+			~callflow.reset;
+			~callflow.play;
+		});
+		(msg[1] == 6).if({
+			// /timeline/scene/2
+			//delay 54
+			"/timeline/scene 5 << run scene 6 >>".postln;
+			"caller jack channel is:".postln;
+			~callerJackChan = msg[2];
+			~callerJackChan.postln;
+
+			Require(~srcdir +/+ "/scenes/scene6/TL_localcfg_scene6.scd");
+			//Require(~srcdir +/+ "/scenes/scene5/TL_callflow_scene5.scd");
+			//Require(~srcdir +/+ "/scenes/TL_playback.scd");
+
+			"loaded scene5".postln;
+			~callflow.reset;
+			~callflow.play;
+		});
+		(msg[1] == 7).if({
+			// /timeline/scene/2
+			//delay 54
+			"/timeline/scene 5 << run scene 7 >>".postln;
+			"caller jack channel is:".postln;
+			~callerJackChan = msg[2];
+			~callerJackChan.postln;
+
+			Require(~srcdir +/+ "/scenes/scene7/TL_localcfg_scene7.scd");
+			//Require(~srcdir +/+ "/scenes/scene5/TL_callflow_scene5.scd");
+			//Require(~srcdir +/+ "/scenes/TL_playback.scd");
+
+			"loaded scene5".postln;
+			~callflow.reset;
+			~callflow.play;
+		});
+		(msg[1] == 8).if({
+			// /timeline/scene/2
+			//delay 54
+			"/timeline/scene 5 << run scene 8 >>".postln;
+			"caller jack channel is:".postln;
+			~callerJackChan = msg[2];
+			~callerJackChan.postln;
+
+			Require(~srcdir +/+ "/scenes/scene8/TL_localcfg_scene8.scd");
+			//Require(~srcdir +/+ "/scenes/scene5/TL_callflow_scene5.scd");
+			//Require(~srcdir +/+ "/scenes/TL_playback.scd");
+
+			"loaded scene5".postln;
+			~callflow.reset;
+			~callflow.play;
+		});
+		(msg[1] == 9).if({
+			// /timeline/scene/2
+			//delay 54
+			"/timeline/scene 5 << run scene 9 >>".postln;
+			"caller jack channel is:".postln;
+			~callerJackChan = msg[2];
+			~callerJackChan.postln;
+
+			Require(~srcdir +/+ "/scenes/scene9/TL_localcfg_scene9.scd");
+			//Require(~srcdir +/+ "/scenes/scene5/TL_callflow_scene5.scd");
+			//Require(~srcdir +/+ "/scenes/TL_playback.scd");
+
+			"loaded scene5".postln;
+			~callflow.reset;
+			~callflow.play;
+		});
+		(msg[1] == 10).if({
+			// /timeline/scene/2
+			//delay 54
+			"/timeline/scene 5 << run scene 10 >>".postln;
+			"caller jack channel is:".postln;
+			~callerJackChan = msg[2];
+			~callerJackChan.postln;
+
+			Require(~srcdir +/+ "/scenes/scene10/TL_localcfg_scene10.scd");
+			//Require(~srcdir +/+ "/scenes/scene5/TL_callflow_scene5.scd");
+			//Require(~srcdir +/+ "/scenes/TL_playback.scd");
+
 			"loaded scene5".postln;
 			~callflow.reset;
 			~callflow.play;

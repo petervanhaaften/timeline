@@ -95,7 +95,7 @@ Pdef(\scene4, Pdef(\part1,
 			\verbDamp, Pseq([0, 0, 0, 0, 0, 0, 0], 1),
 			\out,0,
 		),
-		Pmono(
+				Pmono(
 			\gransyn,
 			\soundBuf,~sndbuf,
 			\dur, Pseq([5, 5, 5, 3, 12, 9, 12], 1),
@@ -148,19 +148,14 @@ Pdef(\scene4, Pdef(\part1,
 //    SCORE PLAYER
 ///////////////////////
 
-~myscore = Pdef(\scene4, Pdef(\main,
+~pattern = Pdef(\scene4, Pdef(\main,
 	Pseq([
 		//start score
-		Pfunc({ "THIS IS THE START OF THE SCORE NOW".postln;}).collect,
+		//Pfunc({ "THIS IS THE START OF THE SCORE NOW".postln;}).collect,
 		Pfindur(40, Pdef(\part1)),
-		//Pfuncn({~net.sendMsg('/timeline/scene',9999, ~telephoneNum, ~asteriskChannel, ~wavPin)}, repeats: 1);
-		//Pfunc{ ~net.sendMsg('/timeline/scene',9999, ~telephoneNum, ~asteriskChannel, ~wavPin) },
-		Pfunc({ "THIS IS THE END OF THE SCORE NOW".postln;}).collect,
-		//Pfunc({~net.sendMsg('/timeline/scene',9999, ~telephoneNum, ~asteriskChannel, ~wavPin)}).collect;
+		//Pfunc({~net.sendMsg('/timeline/scene',9999, ~telephoneNum, ~asteriskChannel, ~wavPin)}),
 	],1),
 ));
-
-
 
 
 /*

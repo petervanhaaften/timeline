@@ -41,12 +41,21 @@ z.postln;
 ~pattern.score.do{|e| ~score.add(e)};
 
 // setup concat
-a = "sox" + "/home/asterisk/partyline-snd/scene0_stereo.wav" + "/home/asterisk/partyline-snd/holdbeep.wav" + "/home/asterisk/partyline-voicerec/" ++ ~wavPin ++ "_stereo.wav" +"/home/asterisk/partyline-snd/holdbeep2.wav" + "/home/asterisk/partyline-screc/" ++ ~wavPin ++ "_normalised.wav" + "/home/asterisk/partyline-snd/goodbye0.wav" + "/home/asterisk/partyline-concat/" ++ ~wavPin ++ "_concat.wav";
-
+a = "sox" + "/home/asterisk/partyline-snd/scene" ++ ~sceneChoice ++ "_stereo.wav" + "/home/asterisk/partyline-snd/holdbeep.wav" + "/home/asterisk/partyline-voicerec/" ++ ~wavPin ++ "_stereo.wav" +"/home/asterisk/partyline-snd/holdbeep2.wav" + "/home/asterisk/partyline-screc/" ++ ~wavPin ++ "_normalised.wav" + "/home/asterisk/partyline-snd/goodbye"++12.rand++".wav" + "/home/asterisk/partyline-concat/" ++ ~wavPin ++ "_concat.wav";
+a.postln;
 // setup screc output normalization
 f = "sox" + "/home/asterisk/partyline-screc/" ++ ~wavPin ++ ".wav" + "/home/asterisk/partyline-screc/" ++ ~wavPin ++ "_normalised.wav --norm=-5";
 
 m = "sox" + "/home/asterisk/partyline-screc/" ++ ~wavPin ++ "_normalised.wav" + "/home/asterisk/partyline-screc/" ++ ~wavPin ++ "_mono.wav" + "channels 1";
+
+//copy screc
+//o =  "sox" + "/home/asterisk/partyline-screc/" ++ ~wavPin ++ ".wav" + "/home/asterisk/partyline-video/" ++ "scene" ++ ~sceneChoice ++ "_" ++ ~wavPin ++  "_normalised.wav --norm=-5";
+
+//take normalised screc, and concat it with goodbye for video
+o = "sox" + "/home/asterisk/partyline-screc/" ++ ~wavPin ++ "_normalised.wav" + "/home/asterisk/partyline-snd/goodbye"++12.rand++".wav" + "/home/asterisk/partyline-vidmus/" ++ ~wavPin ++ ".wav";
+
+//concat holdbeep w/ voicerec normalised w/ holdbeep again
+p = "sox" + "/home/asterisk/partyline-snd/holdbeep.wav" + "/home/asterisk/partyline-voicerec/" ++ ~wavPin ++ "_stereo.wav" +"/home/asterisk/partyline-snd/holdbeep2.wav" + "/home/asterisk/partyline-vidvox/" ++ ~wavPin ++ "_scene" ++ ~sceneChoice ++ "_vidvox.wav";
 
 //setup playback routine
 h = Routine {
@@ -73,6 +82,9 @@ g = Routine {
 	a.unixCmd("done : concat final output".postln, false);
 	0.1.wait;
 	m.unixCmd("done: monify".postln;, false);
+	0.1.wait;
+	o.unixCmd("done: concat vidmus");
+	p.unixCmd("done: concat vidvox");
 	0.1.wait;
 	h.play;
 };
@@ -102,8 +114,7 @@ options = ServerOptions.new.numOutputBusChannels_(2);
 //Require(thisProcess.nowExecutingPath.dirname +/+ "newscore/score" ++ ~currentScene ++ ".scd");
 Require(thisProcess.nowExecutingPath.dirname +/+ "nrtscore/score" ++ ~sceneChoice ++ ".scd");
 
-
-
+//~playscore.reset;
 
 //actual playback of score to audience telephone
 
@@ -112,5 +123,8 @@ Require(thisProcess.nowExecutingPath.dirname +/+ "nrtscore/score" ++ ~sceneChoic
 //5.wait;
 //a.unixCmd("done : concat final output" + "/home/asterisk/partyline-concat/" ++ ~wavPin ++ "_concat.wav".postln, false);
 )
+
+
+
 
 // should be normalizing at end of recordNRT not concatenating

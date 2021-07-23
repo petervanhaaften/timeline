@@ -203,12 +203,11 @@ Pdef(\scene9, Pdef(\part2,
 //    SCORE PLAYER
 ///////////////////////
 
-~myscore = Pdef(\scene9, Pdef(\main,
+~pattern = Pdef(\scene9, Pdef(\main,
 	Pseq([
 		//start score
 		Pfindur(34, Pdef(\part1)),
 		Pfindur(45, Pdef(\part2)),
-		Pfunc({~net.sendMsg('/timeline/scene',9999, ~telephoneNum, ~asteriskChannel, ~wavPin)}).collect;
 	],1),
 ));
 

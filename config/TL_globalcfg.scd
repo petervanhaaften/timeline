@@ -45,7 +45,7 @@ Require(~simplerec);
 Require(~simplelogic);
 //if called during scene, it will trigger 9999 hangup, so do before
 //0.5.wait;
-Require(~timescore);
+//Require(~timescore);
 Require(~killscore);
 
 Require(~srcdir +/+ "/Partyline_global_host8.scd/");

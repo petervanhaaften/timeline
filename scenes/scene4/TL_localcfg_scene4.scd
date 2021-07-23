@@ -2,7 +2,7 @@
 //TIMELINE LOCAL SCLANG CONFIG
 // # flag for timeline src directory
 ~srcdir = Platform.userHomeDir +/+ "src/timeline/";
-~sceneDuration = 40;
+//~sceneDuration = 40;
 
 // # flag for timescore location.
 ~timescore = ~srcdir +/+ "scenes/scene4/TL_score_scene4.scd";

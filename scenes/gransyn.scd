@@ -20,6 +20,7 @@ SynthDef(\gransyn, { |out = 0, soundBuf, gate = 1, attack = 0.01, release = 0.5,
 	lpFreq = VarLag.kr(lpFreq, lpLag, lpCurve);
 	hpFreq = VarLag.kr(hpFreq, hpLag, hpCurve);
 	rate = VarLag.ar(Demand.ar(trig, 0, rate + rateNoiseSig, inf), rateLag, rateCurve);
+	//rate = VarLag.ar(Demand.ar(trig, 0, rate, inf), rateLag, rateCurve);
 	overlap = VarLag.ar(Demand.ar(trig, 0, overlap + overlapNoiseSig, inf), overlapLag, overlapCurve);
 	//trigRate = VarLag.kr(trigRate, trigRateLag, trigRateCurve);
 	posRateM = VarLag.kr(posRateM, posRateMLag, posRateMCurve);
@@ -67,21 +68,21 @@ SynthDef(\gransyn, { |out = 0, soundBuf, gate = 1, attack = 0.01, release = 0.5,
 	///////////
 	// apply compression
 	sigCompressorL = Compander.ar(sigL, sigL,
-        thresh: 0.4,
-        slopeBelow: 0.5,
+        thresh: 0.3,
+        slopeBelow: 0.6,
         slopeAbove: 0.1,
-        clampTime:  0.01,
-        relaxTime:  0.01,
+        clampTime:  0.002,
+        relaxTime:  0.1,
 		mul: 1,
 		add: 0,
     );
 
 	sigCompressorR = Compander.ar(sigR, sigR,
-        thresh: 0.4,
-        slopeBelow: 0.5,
+        thresh: 0.3,
+        slopeBelow: 0.6,
         slopeAbove: 0.1,
-        clampTime:  0.01,
-        relaxTime:  0.01,
+        clampTime:  0.002,
+        relaxTime:  0.1,
 		mul: 1,
 		add: 0,
     );

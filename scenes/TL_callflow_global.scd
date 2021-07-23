@@ -121,7 +121,8 @@ calling of ~recordvoice function.
 	///////////////////////
 	(
 		~voiceplayback_pt2 = Routine.new( {
-			~playscore.reset;
+			//JULY 9 PLAYSCORE CUT
+			//~playscore.reset;
 			//reset crap
 			b.free;
 			b = Buffer.alloc(s, 100 * s.sampleRate);
@@ -134,8 +135,10 @@ calling of ~recordvoice function.
 			//start global score
 
 			1.wait;
-			~playscore.play;
+			//JULY 9 PLAYSCORE CUT
+			//~playscore.play;
 			//~recordvoice.play;
+			Require(~srcdir +/+ "/scenes/TL_playback.scd");
 		};);
 	);
 

@@ -1,3 +1,5 @@
+
+
 ///////////////////////
 //   SCENE 0 / PART 1
 ///////////////////////
@@ -261,13 +263,12 @@ Pdef(\scene0, Pdef(\part3,
 //    SCORE PLAYER
 ///////////////////////
 
-~myscore = 	Pdef(\scene0, Pdef(\main,
+~pattern = Pdef(\scene0, Pdef(\main,
 	Pseq([
 		//start score
 		Pfindur(17, Pdef(\part1)),
 		Pfindur(20, Pdef(\part2)),
 		Pfindur(22, Pdef(\part3)),
-		Pfunc({~net.sendMsg('/timeline/scene',9999, ~telephoneNum, ~asteriskChannel, ~wavPin)}).collect;
 	],1),
 ));
 

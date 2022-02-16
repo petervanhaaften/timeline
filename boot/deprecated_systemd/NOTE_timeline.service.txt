@@ -1,0 +1,16 @@
+# copy timeline service to systemd usr dir
+>cp timeline.service /usr/local/lib/systemd/system/timeline.service
+
+# reload daemon
+>sudo systemctl daemon-reload
+
+# enable timeline script
+>sudo systemctl enable timeline
+Created symlink /etc/systemd/system/default.target.wants/timeline.service → /usr/local/lib/systemd/system/timeline.service.
+
+# check status
+>systemctl status timeline
+● timeline.service - Timeline
+   Loaded: loaded (/usr/local/lib/systemd/system/timeline.service; enabled; vend
+   Active: inactive (dead)
+lines 1-3/3 (END)

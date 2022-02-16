@@ -1,0 +1,1 @@
+stick timeline.desktop into ~/.config/autostart/timeline.desktop

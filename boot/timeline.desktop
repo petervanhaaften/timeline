@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Timeline
+Comment=Services for timeline
+Exec=/home/asterisk/src/timeline/boot/timeline_service.sh
+OnlyShowIn=XFCE;
+StartupNotify=false
+Terminal=false
+Hidden=false
